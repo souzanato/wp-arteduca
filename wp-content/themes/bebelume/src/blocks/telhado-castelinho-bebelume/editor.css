@@ -1,0 +1,10 @@
+/* Estilos apenas no editor */
+.editor-telhado-castelinho-bebelume {
+    border: 2px dashed #0073aa;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.preview-telhado-castelinho-bebelume {
+    min-height: 200px;
+}

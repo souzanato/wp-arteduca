@@ -1,0 +1,49 @@
+/* ============================================
+   Bebelume Plyr — estilos do wrapper
+   ============================================ */
+
+.bbl-plyr-wrapper {
+    width: 100%;
+}
+
+.bbl-plyr-wrapper .plyr {
+    width: 100%;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+/* Embed (YouTube / Vimeo) responsivo */
+.bbl-plyr-wrapper .plyr__video-embed {
+    width: 100%;
+}
+
+/* ── Proporção do CONTAINER ──────────────────────────────────────────────── */
+.bbl-ratio-16x9 .plyr { aspect-ratio: 16 / 9; }
+.bbl-ratio-9x16 .plyr { aspect-ratio: 9 / 16; max-width: min(100%, 56.25vh); margin: 0 auto; }
+.bbl-ratio-4x3  .plyr { aspect-ratio: 4 / 3; }
+.bbl-ratio-1x1  .plyr { aspect-ratio: 1 / 1; }
+
+/* ── Vídeo preenche container com contain (sem corte) ───────────────────── */
+.bbl-plyr-wrapper .plyr video {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain;
+    background: #000; /* letterbox preto */
+}
+
+/* ── Caso especial: container 16:9 com vídeo 9:16 dentro ────────────────── 
+   Uso: adicionar classe bbl-video-portrait no bloco (Avançado → CSS adicional)
+   O container fica 16:9, o vídeo 9:16 centralizado com barras pretas        */
+.bbl-video-portrait .plyr {
+    aspect-ratio: 16 / 9;
+    background: #000;
+}
+
+.bbl-video-portrait .plyr video {
+    width: auto !important;
+    height: 100% !important;
+    max-width: 100%;
+    object-fit: contain;
+    margin: 0 auto;
+    display: block;
+}

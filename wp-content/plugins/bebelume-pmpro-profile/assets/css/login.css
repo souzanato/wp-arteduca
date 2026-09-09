@@ -1,0 +1,715 @@
+/**
+ * Bebelume PMPro Profile — login.css
+ * Estrutura: body > .bbl-card > (.bbl-left + .bbl-right > #login > form)
+ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+/* ── Body ──────────────────────────────────────────────────────────────────── */
+body.login {
+    background: #f0f4f8;
+    font-family: var(--bbl-font, 'Nunito', sans-serif);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+body.bbl-split {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* Card centralizado abaixo do header com espaçamento */
+body.bbl-split .bbl-card {
+    margin-top: 32px;
+    margin-bottom: 32px;
+}
+
+/* ── Card ──────────────────────────────────────────────────────────────────── */
+.bbl-card {
+    display: flex;
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    height: 680px;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 24px 80px rgba(0,0,0,.18);
+}
+
+/* ── Painel esquerdo ───────────────────────────────────────────────────────── */
+.bbl-left {
+    width: 44%;
+    flex-shrink: 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+    background: #E73665;
+}
+
+.bbl-left-img {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.bbl-left-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(26,16,64,.95) 50%, rgba(26,16,64,.5) 100%, rgba(26,16,64,.1) 100%);
+}
+
+.bbl-left-content {
+    position: relative;
+    z-index: 2;
+    padding: 36px;
+}
+
+.bbl-logo-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    mix-blend-mode: screen; /* Remove o fundo preto do JPEG */
+}
+
+.bbl-tagline {
+    font-size: 11px;
+    color: rgba(255,255,255,.65);
+    margin-top: 12px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+/* ── Painel direito ────────────────────────────────────────────────────────── */
+.bbl-right {
+    flex: 1;
+    background: #fff;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Reseta o #login nativo dentro do painel direito */
+.bbl-right #login {
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Esconde elementos nativos que não usamos */
+.bbl-right #login h1,
+.bbl-right #login #nav,
+.bbl-right #login #backtoblog,
+.language-switcher {
+    display: none !important;
+}
+
+/* ── Formulário ────────────────────────────────────────────────────────────── */
+.bbl-right #loginform,
+.bbl-right #registerform,
+.bbl-right #lostpasswordform,
+.bbl-right #resetpassform,
+.bbl-right #bbl_complete_form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 32px 40px;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    margin: 0;
+    background: #fff;
+}
+
+/* ── Tabs ──────────────────────────────────────────────────────────────────── */
+.bbl-tabs {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 20px;
+    background: #f5f7fa;
+    border-radius: 14px;
+    padding: 4px;
+}
+
+.bbl-tab {
+    flex: 1;
+    padding: 9px;
+    border-radius: 11px;
+    font-family: var(--bbl-font, 'Nunito', sans-serif);
+    font-size: 14px;
+    font-weight: 800;
+    text-align: center;
+    text-decoration: none;
+    color: #8a9ab0;
+    transition: all .2s;
+    background: transparent;
+}
+
+.bbl-tab--active {
+    background: #fff;
+    color: #E73665;
+    box-shadow: 0 1px 6px rgba(0,0,0,.10);
+}
+
+/* ── Título / subtítulo ────────────────────────────────────────────────────── */
+.bbl-form-header { margin-bottom: 16px; }
+
+.bbl-form-title {
+    font-family: var(--bbl-font, 'Nunito', sans-serif);
+    font-size: 26px;
+    font-weight: 800;
+    color: #1a1040;
+    margin: 0 0 4px;
+    padding: 0;
+    border: none;
+}
+
+.bbl-form-sub {
+    font-size: 13px;
+    color: var(--bbl-text-sec, #7a8999);
+    font-weight: 600;
+    margin: 0;
+}
+
+/* ── Botão Google ──────────────────────────────────────────────────────────── */
+.bbl-btn-google {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    height: 46px;
+    border: 1.5px solid var(--bbl-border, #e0e7ed);
+    border-radius: 12px;
+    background: #fff;
+    font-family: var(--bbl-font, 'Nunito', sans-serif);
+    font-size: 14px;
+    font-weight: 700;
+    color: #2c3e50;
+    text-decoration: none;
+    cursor: pointer;
+    transition: border-color .2s, box-shadow .2s;
+    margin-bottom: 4px;
+}
+
+.bbl-btn-google:hover {
+    border-color: #4285F4;
+    box-shadow: 0 0 0 3px rgba(66,133,244,.10);
+}
+
+/* ── Divisor ───────────────────────────────────────────────────────────────── */
+.bbl-divider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 14px 0;
+}
+
+.bbl-divider::before,
+.bbl-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #e8edf2;
+}
+
+.bbl-divider span {
+    font-size: 10px;
+    color: #b0bcc8;
+    font-weight: 800;
+    letter-spacing: .06em;
+    white-space: nowrap;
+}
+
+/* ── Labels ────────────────────────────────────────────────────────────────── */
+#loginform label,
+#registerform label,
+#lostpasswordform label,
+#resetpassform label,
+#bbl_complete_form label {
+    font-family: var(--bbl-font, 'Nunito', sans-serif);
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--bbl-text-sec, #7a8999);
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    margin-bottom: 4px;
+    display: block;
+}
+
+/* ── Inputs ────────────────────────────────────────────────────────────────── */
+#loginform input[type="text"],
+#loginform input[type="email"],
+#loginform input[type="password"],
+#registerform input[type="text"],
+#registerform input[type="email"],
+#registerform input[type="password"],
+#lostpasswordform input[type="text"],
+#lostpasswordform input[type="email"],
+#resetpassform input[type="text"],
+#resetpassform input[type="email"],
+#resetpassform input[type="password"],
+#bbl_complete_form input[type="text"],
+#bbl_complete_form input[type="email"],
+#bbl_complete_form input[type="password"] {
+    width: 100%;
+    height: 44px;
+    padding: 0 14px;
+    border: 1.5px solid var(--bbl-border, #e0e7ed);
+    border-radius: 10px;
+    background: #f8fafc;
+    font-family: var(--bbl-font, 'Nunito', sans-serif);
+    font-size: 14px;
+    color: #2c3e50;
+    outline: none;
+    transition: border-color .2s, box-shadow .2s, background .2s;
+    box-shadow: none;
+    box-sizing: border-box;
+}
+
+#loginform input:focus,
+#registerform input:focus,
+#lostpasswordform input:focus,
+#resetpassform input:focus,
+#bbl_complete_form input:focus {
+    border-color: var(--bbl-pink, #E73665);
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(231,54,101,.10);
+}
+
+/* ── P wrappers nativos do WP ──────────────────────────────────────────────── */
+#loginform p,
+#registerform p,
+#lostpasswordform p,
+#bbl_complete_form p {
+    margin-bottom: 12px;
+}
+
+/* ── Lembrar-me ────────────────────────────────────────────────────────────── */
+.forgetmenot {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px !important;
+}
+
+#rememberme {
+    accent-color: var(--bbl-pink, #E73665);
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+    cursor: pointer;
+    margin: 0;
+}
+
+.forgetmenot label {
+    font-size: 13px;
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: 600;
+    cursor: pointer;
+    margin: 0;
+}
+
+/* ── Botão submit ──────────────────────────────────────────────────────────── */
+input#wp-submit,
+input.button-primary,
+#bbl_complete_form input[type="submit"] {
+    width: 100%;
+    height: 50px;
+    background: linear-gradient(135deg, #E73665 0%, #c0254f 100%);
+    border: none;
+    border-radius: 12px;
+    color: #fff !important;
+    font-family: var(--bbl-font, 'Nunito', sans-serif);
+    font-size: 16px;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 4px 18px rgba(231,54,101,.30);
+    text-shadow: none;
+    transition: transform .15s, box-shadow .15s, filter .15s;
+}
+
+input#wp-submit:hover,
+input.button-primary:hover {
+    filter: brightness(1.06);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 22px rgba(231,54,101,.38);
+}
+
+input#wp-submit:focus,
+input.button-primary:focus,
+input#wp-submit:active,
+input.button-primary:active,
+input#wp-submit:focus-visible,
+input.button-primary:focus-visible {
+    background: linear-gradient(135deg, #E73665 0%, #c0254f 100%) !important;
+    color: #fff !important;
+    border-color: transparent !important;
+    box-shadow: 0 2px 8px rgba(231,54,101,.25) !important;
+    outline: none !important;
+    transform: translateY(0);
+}
+
+/* ── Mensagens erro/info ───────────────────────────────────────────────────── */
+#login_error,
+.login #login_error {
+    background: #fff0f3;
+    border-left: 4px solid var(--bbl-pink, #E73665);
+    border-radius: 0 10px 10px 0;
+    color: #c0254f;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 12px 14px;
+    margin-bottom: 12px;
+    box-shadow: none;
+}
+
+.login .message,
+#login .message {
+    background: #e8f8fb;
+    border-left: 4px solid var(--bbl-cyan, #00BCD4);
+    border-radius: 0 10px 10px 0;
+    color: #006d7e;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 12px 14px;
+    margin-bottom: 12px;
+    box-shadow: none;
+}
+
+/* ── reCAPTCHA / campos extras ─────────────────────────────────────────────── */
+.bbl-recaptcha-notice {
+    font-size: 10px;
+    color: #b0bcc8;
+    text-align: center;
+    margin-top: 8px;
+}
+.bbl-recaptcha-notice a { color: #b0bcc8; }
+
+.bbl-field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+
+
+/* ── Responsivo ────────────────────────────────────────────────────────────── */
+@media (max-width: 700px) {
+    body.bbl-split {
+        padding: 0;
+        align-items: flex-start;
+        min-height: 100vh;
+    }
+
+    .bbl-card {
+        flex-direction: column;
+        height: auto;
+        min-height: 100vh;
+        border-radius: 0;
+        max-width: 100%;
+        box-shadow: none;
+    }
+
+    /* Painel superior mobile — logo centralizada */
+    .bbl-left {
+        width: 100%;
+        height: 220px;
+        flex-shrink: 0;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .bbl-left-content {
+        padding: 24px 32px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+    }
+
+    .bbl-logo-img {
+        max-width: 180px;
+        width: auto;
+        margin: 0 auto;
+    }
+
+    .bbl-tagline {
+        display: none;
+    }
+
+    /* Painel inferior mobile — form scroll livre */
+    .bbl-right {
+        flex: 1;
+        overflow-y: visible;
+    }
+
+    .bbl-right #login {
+        flex: 1;
+    }
+
+    .bbl-right #loginform,
+    .bbl-right #registerform,
+    .bbl-right #lostpasswordform,
+    .bbl-right #resetpassform {
+        height: auto;
+        min-height: auto;
+        padding: 28px 24px 40px;
+        justify-content: flex-start;
+    }
+
+    .bbl-field-row { grid-template-columns: 1fr; }
+}
+
+/* ── Validação client-side ─────────────────────────────────────────────────── */
+.bbl-invalid {
+    border-color: #E73665 !important;
+    box-shadow: 0 0 0 3px rgba(231,54,101,.12) !important;
+    background: #fff !important;
+}
+
+.bbl-valid {
+    border-color: #66BB6A !important;
+    box-shadow: 0 0 0 3px rgba(102,187,106,.10) !important;
+}
+
+.bbl-field-error {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    color: #E73665;
+    margin-top: 5px;
+    padding-left: 2px;
+}
+
+/* ── Link Esqueci minha senha ──────────────────────────────────────────────── */
+.bbl-lost-password {
+    text-align: left;
+    margin-top: 12px;
+    margin-bottom: 0;
+}
+
+.bbl-lost-password a {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--bbl-text-sec, #7a8999);
+    text-decoration: none;
+    transition: color .15s;
+}
+
+.bbl-lost-password a:hover {
+    color: var(--bbl-pink, #E73665);
+}
+
+/* ── Link Sair da conta (tela completar cadastro) ──────────────────────────── */
+.bbl-logout-link {
+    text-align: center;
+    margin-top: 8px;
+}
+
+.bbl-logout-link a {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--bbl-text-sec, #7a8999);
+    text-decoration: none;
+    transition: color .15s;
+}
+
+.bbl-logout-link a:hover {
+    color: var(--bbl-pink, #E73665);
+}
+
+/* ── Asterisco nos labels da tela de completar cadastro ────────────────────── */
+#bbl_complete_form label span[aria-hidden="true"] {
+    display: none;
+}
+
+/* ── Tela completar cadastro — sem scroll no right (conteúdo cabe) ─────────── */
+.bbl-right #bbl_complete_form {
+    justify-content: center;
+}
+
+/* ── Tela de confirmação de e-mail ─────────────────────────────────────────── */
+.bbl-checkemail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 32px;
+    height: 100%;
+    flex: 1;
+}
+
+.bbl-checkemail-icon {
+    margin-bottom: 24px;
+}
+
+.bbl-checkemail-icon svg {
+    filter: drop-shadow(0 4px 16px rgba(231,54,101,.20));
+}
+
+.bbl-checkemail-title {
+    font-family: var(--bbl-font, 'Nunito', sans-serif);
+    font-size: 26px;
+    font-weight: 800;
+    color: #1a1040;
+    margin: 0 0 12px;
+}
+
+.bbl-checkemail-msg {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--bbl-text-sec, #7a8999);
+    line-height: 1.6;
+    margin: 0 0 8px;
+}
+
+.bbl-checkemail-hint {
+    font-size: 12px;
+    font-weight: 600;
+    color: #b0bcc8;
+    margin: 0 0 32px;
+}
+
+.bbl-checkemail-btn {
+    display: inline-block;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 40px;
+    background: linear-gradient(135deg, #E73665 0%, #c0254f 100%);
+    border-radius: 12px;
+    color: #fff !important;
+    font-family: var(--bbl-font, 'Nunito', sans-serif);
+    font-size: 16px;
+    font-weight: 800;
+    text-decoration: none;
+    box-shadow: 0 4px 18px rgba(231,54,101,.30);
+    transition: transform .15s, box-shadow .15s, filter .15s;
+}
+
+.bbl-checkemail-btn:hover {
+    filter: brightness(1.06);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 22px rgba(231,54,101,.38);
+}
+
+/* ── Botão reenviar confirmação ────────────────────────────────────────────── */
+.bbl-checkemail-resend {
+    display: inline-block;
+    margin-top: 16px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--bbl-pink, #E73665);
+    text-decoration: none;
+    border: 1.5px solid var(--bbl-pink, #E73665);
+    border-radius: 10px;
+    padding: 10px 24px;
+    transition: background .15s, color .15s;
+}
+
+.bbl-checkemail-resend:hover {
+    background: var(--bbl-pink, #E73665);
+    color: #fff !important;
+}
+
+/* ── Link Voltar (tela checkemail) ─────────────────────────────────────────── */
+.bbl-checkemail-back {
+    display: inline-block;
+    margin-top: 24px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--bbl-text-sec, #7a8999);
+    text-decoration: none;
+    transition: color .15s;
+}
+
+.bbl-checkemail-back:hover {
+    color: var(--bbl-pink, #E73665);
+}
+
+/* ── Remove medidor de senha e elementos desnecessários no resetpass ────────── */
+.password-strength-result,
+#pass-strength-result,
+.pw-weak, .pw-short, .pw-good, .pw-strong,
+.password-reset-form .description,
+#pass1-text,
+.button.wp-generate-pw,
+.indicator-hint,
+#pw-weak-text,
+#pw-short-text,
+#pw-good-text,
+#pw-strong-text,
+.pw-strength-text,
+#resetpassform .message {
+    display: none !important;
+}
+
+/* ── Remove medidor de senha e botão gerar senha ───────────────────────────── */
+.password-strength-result,
+#pass-strength-result,
+.pw-weak, .pw-short, .pw-good, .pw-strong,
+.password-hint,
+#pass1-text,
+.indicator-hint,
+#generate-password,
+.button.wp-generate-pw,
+.wp-generate-pw,
+div.pw-weak, div.pw-short, div.pw-good, div.pw-strong {
+    display: none !important;
+}
+
+/* ── Espaçamento do submit na tela de reset ────────────────────────────────── */
+#resetpassform .submit {
+    margin-top: 16px;
+}
+
+/* ── Espaço entre input de senha e botão no resetpassform ──────────────────── */
+#resetpassform .user-pass-wrap,
+#resetpassform input[type="password"],
+#resetpassform input[type="text"] {
+    margin-bottom: 20px !important;
+}
+
+#resetpassform .submit {
+    margin-top: 0;
+}
+
+/* ── Dica de senha para conta Google ──────────────────────────────────────── */
+.bbl-google-pw-hint {
+    font-size: 12px;
+    color: var(--bbl-text-sec, #7a8999);
+    font-weight: 600;
+    text-align: center;
+    margin-top: 12px;
+    padding: 12px 16px;
+    background: #f5f7fa;
+    border-radius: 10px;
+}
+
+.bbl-google-pw-hint a {
+    color: var(--bbl-pink, #E73665);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+/* ── Ícone de aviso (link expirado) — fundo amarelo ────────────────────────── */
+.bbl-checkemail-icon svg circle[fill="#FFF8E7"] {
+    /* variação amarela para aviso */
+}

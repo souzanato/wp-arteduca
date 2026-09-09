@@ -1,0 +1,107 @@
+/* ============================================
+   Bebelume Associação Andar
+   ============================================ */
+
+.wp-block-bebelume-andar.bebelume-nivel {
+    width: 100%;
+    overflow: visible;
+}
+
+.bebelume-associacoes-andar .bebelume-nivel {
+    line-height: 1 !important;
+}
+
+/* Garante line-height no conteúdo interno */
+.bebelume-andar.bebelume-associacoes-andar .andar-content,
+.bebelume-andar.bebelume-associacoes-andar .andar-content * {
+    line-height: 1.5 !important;
+}
+
+.wp-block-bebelume-andar .bebelume-andar.bebelume-associacoes-andar {
+    margin: 0 auto !important;
+    position: relative;
+    width: 100%;
+}
+
+/* Cancela o position:absolute do tema */
+.wp-block-bebelume-andar .bebelume-andar.bebelume-associacoes-andar .andar-content {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 4em;
+    background-color: #fff;
+    border-left: 3px solid #000;
+    border-right: 3px solid #000;
+    border-bottom: 3px solid #000;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* Garante que itens flex quebrem linha */
+.wp-block-bebelume-andar .andar-content {
+    flex-wrap: wrap !important;
+}
+
+/* Qualquer bloco filho: ocupa 100% */
+.wp-block-bebelume-andar .andar-content > *,
+.wp-block-bebelume-andar .andar-content .wp-block {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box;
+}
+
+/* figure e wp-block-video: sem margem */
+.wp-block-bebelume-andar .andar-content figure,
+.wp-block-bebelume-andar .andar-content .wp-block-video {
+    width: 100% !important;
+    display: block;
+}
+
+/* ── Utilitário: zero padding/margin ─────────────────────────────────────
+   Uso: bloco → Avançado → Classe CSS adicional → bbl-sem-padding          */
+.wp-block-bebelume-andar.bbl-sem-padding .bebelume-andar {
+    padding: 0 !important;
+}
+.wp-block-bebelume-andar.bbl-sem-padding .andar-content {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Vídeo padrão (16:9 ou qualquer landscape): estica 100% */
+.wp-block-bebelume-andar .andar-content video {
+    width: 100% !important;
+    height: auto !important;
+    display: block;
+}
+
+/* ── bbl-video-tall: vídeo 9:16 centralizado ─────────────────────────────
+   Uso: bloco de vídeo → Avançado → Classe CSS adicional → bbl-video-tall  */
+.wp-block-bebelume-andar .bbl-video-tall,
+.wp-block-bebelume-telhado .bbl-video-tall {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    width: 100% !important;
+    background-color: #000;  /* letterbox preto nas laterais */
+}
+
+/* O vídeo 9:16: altura limitada, width automático para não cortar */
+.wp-block-bebelume-andar .bbl-video-tall video,
+.wp-block-bebelume-telhado .bbl-video-tall video {
+    width: auto !important;
+    max-width: 100% !important;
+    max-height: 80vh !important;
+    height: auto !important;
+    display: block;
+    margin: 0 auto !important;
+}
+
+/* Tamanhos alternativos */
+.bbl-video-sm   video { max-height: 40vh  !important; width: auto !important; }
+.bbl-video-md   video { max-height: 55vh  !important; width: auto !important; }
+.bbl-video-lg   video { max-height: 80vh  !important; width: auto !important; }
+.bbl-video-full video { max-height: 100vh !important; width: auto !important; }

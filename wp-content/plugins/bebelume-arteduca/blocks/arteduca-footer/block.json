@@ -1,0 +1,15 @@
+{
+  "apiVersion": 2,
+  "name": "bebelume/arteduca-footer",
+  "title": "ArtEduca Footer",
+  "description": "Casca que move seu conteúdo para o footer da página.",
+  "category": "bebelume-arteduca",
+  "icon": "layout",
+  "keywords": ["footer", "arteduca", "bebelume"],
+  "supports": {
+    "html": false,
+    "align": false
+  },
+  "editorScript": "file:block.js",
+  "style": "file:style.css"
+}

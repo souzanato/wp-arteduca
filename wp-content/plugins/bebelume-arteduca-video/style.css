@@ -1,0 +1,381 @@
+/* Estilos para o frontend com Plyr */
+
+.bebelume-video-wrapper {
+    margin: 20px 0;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* Thumbnail clicável do vídeo */
+.bebelume-video-thumbnail {
+    position: relative;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #000;
+}
+
+.bebelume-video-thumbnail img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: opacity 0.3s ease;
+}
+
+/* Vídeo de preview (hover) */
+.bebelume-video-preview {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.bebelume-video-thumbnail:hover .bebelume-video-preview {
+    opacity: 1;
+}
+
+.bebelume-video-thumbnail:hover img {
+    opacity: 0;
+}
+
+/* Botão de play sobre o thumbnail */
+.bebelume-play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.bebelume-play-button::before {
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 25px solid #fff;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    margin-left: 5px;
+}
+
+.bebelume-video-thumbnail:hover .bebelume-play-button {
+    opacity: 0.3;
+}
+
+/* Duração do vídeo */
+.bebelume-video-duration {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    z-index: 5;
+}
+
+/* Lightbox/Modal */
+.bebelume-lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 999999;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.bebelume-lightbox.active {
+    display: flex;
+    opacity: 1;
+}
+
+.bebelume-lightbox-content {
+    position: relative;
+    width: 100%;
+    max-width: 1400px;
+    max-height: 90vh;
+    background: #000;
+    border-radius: 8px;
+    overflow: hidden;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.bebelume-lightbox.active .bebelume-lightbox-content {
+    transform: scale(1);
+}
+
+.bebelume-lightbox-close {
+    position: absolute;
+    top: -50px;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.bebelume-lightbox-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(90deg);
+}
+
+/* Botão de fechar em Fullscreen - Discreto mas visível */
+.bebelume-fullscreen-close {
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 400;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 9999999;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+    opacity: 0.7;
+}
+
+.bebelume-fullscreen-close:hover {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.85);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: scale(1.05);
+}
+
+.bebelume-fullscreen-close.active {
+    display: flex;
+}
+
+/* Auto-hide após 3 segundos de inatividade */
+.bebelume-fullscreen-close.auto-hide {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+/* Reaparece ao mover o mouse */
+.bebelume-fullscreen-close.show-on-move {
+    opacity: 0.7;
+    pointer-events: auto;
+}
+
+.bebelume-lightbox .bebelume-plyr-video {
+    width: 100%;
+    max-height: 90vh;
+    border-radius: 8px;
+    display: block;
+}
+
+/* Esconde o player original na página */
+.bebelume-plyr-video {
+    display: none;
+}
+
+/* Layout estilo YouTube: Logo + Título + Descrição */
+.bebelume-video-info {
+    display: flex;
+    margin-top: 12px;
+    gap: 12px;
+}
+
+.bebelume-logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    object-fit: cover;
+}
+
+.bebelume-video-text {
+    flex: 1;
+    min-width: 0;
+}
+
+.bebelume-video-title {
+    margin: 0 0 8px 0;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.4;
+    color: #0f0f0f;
+}
+
+.bebelume-video-description {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #606060;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/* Formatação inline - Negrito, Itálico, Sublinhado, etc */
+.bebelume-video-title strong,
+.bebelume-video-description strong {
+    font-weight: 700;
+}
+
+.bebelume-video-title em,
+.bebelume-video-description em {
+    font-style: italic;
+}
+
+.bebelume-video-title u,
+.bebelume-video-description u {
+    text-decoration: underline;
+}
+
+.bebelume-video-title s,
+.bebelume-video-description s {
+    text-decoration: line-through;
+    opacity: 0.7;
+}
+
+.bebelume-video-description a {
+    color: #065fd4;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.bebelume-video-description a:hover {
+    color: #0f0f0f;
+    text-decoration: underline;
+}
+
+/* Customizações extras do Plyr */
+.bebelume-video-wrapper.plyr-initialized {
+    /* Estilos quando o Plyr está inicializado */
+}
+
+/* Garante que o Plyr funcione bem em modo responsivo */
+.bebelume-video-wrapper .plyr {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .bebelume-video-info {
+        gap: 10px;
+    }
+    
+    .bebelume-logo {
+        width: 48px;
+        height: 48px;
+    }
+    
+    .bebelume-video-title {
+        font-size: 14px;
+    }
+    
+    .bebelume-video-description {
+        font-size: 13px;
+    }
+    
+    .bebelume-play-button {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .bebelume-play-button::before {
+        border-left: 18px solid #fff;
+        border-top: 11px solid transparent;
+        border-bottom: 11px solid transparent;
+    }
+    
+    .bebelume-lightbox {
+        padding: 10px;
+    }
+    
+    .bebelume-lightbox-close {
+        top: 10px;
+        right: 10px;
+        width: 35px;
+        height: 35px;
+        font-size: 20px;
+    }
+    
+    /* No mobile, desabilita preview no hover */
+    .bebelume-video-thumbnail:hover .bebelume-video-preview {
+        opacity: 0;
+    }
+    
+    .bebelume-video-thumbnail:hover img {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 480px) {
+    .bebelume-video-wrapper {
+        margin: 15px 0;
+    }
+    
+    .bebelume-video-info {
+        gap: 8px;
+    }
+    
+    .bebelume-logo {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .bebelume-video-title {
+        font-size: 13px;
+        margin-bottom: 6px;
+    }
+    
+    .bebelume-video-description {
+        font-size: 12px;
+    }
+    
+    .bebelume-play-button {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .bebelume-play-button::before {
+        border-left: 15px solid #fff;
+        border-top: 9px solid transparent;
+        border-bottom: 9px solid transparent;
+    }
+}

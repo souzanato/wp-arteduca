@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap');
+
+/*
+ * Fonte Handypot (manuscrita oficial da marca Bebelume) — versão PT-BR,
+ * com suporte completo a acentos (á, ã, ç, é, í, ó, õ, ú...).
+ * Mantemos 'Caveat' como 2ª opção só como rede de segurança, caso algum
+ * caractere raro fora do alfabeto latino básico não esteja no arquivo.
+ */
+@font-face {
+    font-family: 'Handypot';
+    src: url('../../assets/fonts/handypot-v2.woff2') format('woff2'),
+         url('../../assets/fonts/handypot-v2.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+.bebelume-marketing-titulo {
+    width: 100%;
+    padding-top: 32px;
+    padding-bottom: 32px;
+    padding-left: max(1em, calc((100% - 1050px) / 2));
+    padding-right: max(1em, calc((100% - 1050px) / 2));
+}
+
+.bebelume-titulo-handypot {
+    font-family: 'Handypot', 'Caveat', cursive;
+    font-weight: 400;
+    line-height: 1.15;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .bebelume-marketing-titulo {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+}

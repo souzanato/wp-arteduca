@@ -1,0 +1,24 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "bebelume/andar",
+  "version": "1.0.0",
+  "title": "Bebelume Associação Andar",
+  "category": "bebelume",
+  "description": "Bloco casca sem passarinhos, sem margem e sem padding. Ideal para empilhar andares.",
+  "supports": {
+    "html": false,
+    "color": {
+      "background": true,
+      "text": false
+    },
+    "spacing": {
+      "padding": true,
+      "margin": true
+    }
+  },
+  "textdomain": "bebelume-profile",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./editor.css",
+  "style": "file:./style.css"
+}

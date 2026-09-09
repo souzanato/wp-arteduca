@@ -1,0 +1,66 @@
+/* Buscador Bebelume ArtEduca */
+
+.bebelume-buscador-arteduca {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  background-color: #F5F0EA;
+	margin-top: 2em;
+}
+
+/* Barra colorida (mesmo estilo do Título ArtEduca) */
+.bebelume-titulo-barra-colorida {
+  height: 8px;
+  background: linear-gradient(to right, #2E5B9B, #6B4A9E, #D9534F, #F0AD4E);
+  margin-bottom: 0;
+  border-radius: 0;
+}
+
+/* Conteúdo do título (mesmo estilo do Título ArtEduca) */
+.bebelume-titulo-conteudo {
+  background-color: #000000;
+  padding: 1.5rem 2rem;
+  margin: 0;
+  width: 100%;
+}
+
+.bebelume-titulo-texto {
+  color: #ffffff;
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
+  padding: 0;
+  line-height: 1.2;
+}
+
+/* Container para blocos internos */
+.buscador-inner-blocks {
+  padding: 2rem 1rem;
+  background: transparent;
+  min-height: 100px;
+}
+
+/* Placeholder quando vazio (editor) */
+.buscador-inner-blocks .block-editor-inner-blocks > .block-editor-block-list__layout:empty::before {
+  content: 'Adicione blocos aqui (ex: Filtro ArtEduca)';
+  color: #999;
+  font-size: 1rem;
+  display: block;
+  padding: 2rem;
+  text-align: center;
+  border: 2px dashed #ddd;
+  border-radius: 8px;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .bebelume-titulo-conteudo {
+    padding: 1rem 1.5rem;
+  }
+  
+  .buscador-inner-blocks {
+    padding: 1.5rem 1rem;
+  }
+}

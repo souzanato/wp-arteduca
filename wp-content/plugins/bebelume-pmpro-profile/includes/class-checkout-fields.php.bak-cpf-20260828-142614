@@ -1,0 +1,114 @@
+<?php
+/**
+ * BBL_Checkout_Fields — Campos de Nome e Sobrenome no checkout
+ *
+ * Simplificado: CPF e Endereço removidos do checkout.
+ * CPF é coletado via BBL_Complete_Profile (pós-login).
+ * Endereço é coletado pelo PMPro nativo (billing fields) para compras com cartão.
+ *
+ * @package Bebelume_PMPro_Profile
+ */
+
+if ( ! defined( 'ABSPATH' ) ) exit;
+
+class BBL_Checkout_Fields {
+
+    private static $instance = null;
+
+    public static function get_instance(): self {
+        if ( null === self::$instance ) self::$instance = new self();
+        return self::$instance;
+    }
+
+    private function __construct() {
+        if ( ! function_exists( 'pmpro_hasMembershipLevel' ) ) return;
+        $this->hooks();
+    }
+
+    private function hooks(): void {
+        // Nome e Sobrenome (só para novos usuários)
+        add_action( 'pmpro_checkout_after_username',    [ $this, 'add_name_fields' ] );
+        add_action( 'pmpro_after_checkout',             [ $this, 'save_name_fields' ], 10, 2 );
+        add_filter( 'pmpro_registration_checks',        [ $this, 'validate_name_fields' ] );
+
+        // Cache antes do redirect Stripe / restore após retorno
+        add_filter( 'pmpro_registration_checks',        [ $this, 'cache_fields_before_stripe_redirect' ], 99 );
+        add_action( 'pmpro_after_checkout',             [ $this, 'restore_fields_from_cache' ], 5, 2 );
+
+        // Sincroniza com campos nativos PMPro
+        add_action( 'pmpro_after_checkout',             [ $this, 'sync_billing_fields' ], 20, 2 );
+    }
+
+    // ── Nome e Sobrenome ──────────────────────────────────────────────────────
+
+    public function add_name_fields(): void {
+        if ( is_user_logged_in() ) return;
+        $first = sanitize_text_field( $_POST['first_name'] ?? '' );
+        $last  = sanitize_text_field( $_POST['last_name']  ?? '' );
+        ?>
+        <div class="pmpro_form_field pmpro_form_field-text pmpro_form_field-first_name">
+            <label for="first_name" class="pmpro_form_label">
+                Nome <span class="pmpro_asterisk"><abbr title="Campo obrigatório">*</abbr></span>
+            </label>
+            <input id="first_name" name="first_name" type="text"
+                   class="pmpro_form_input pmpro_form_input-text pmpro_form_input-required"
+                   value="<?php echo esc_attr( $first ); ?>" required>
+        </div>
+        <div class="pmpro_form_field pmpro_form_field-text pmpro_form_field-last_name">
+            <label for="last_name" class="pmpro_form_label">
+                Sobrenome <span class="pmpro_asterisk"><abbr title="Campo obrigatório">*</abbr></span>
+            </label>
+            <input id="last_name" name="last_name" type="text"
+                   class="pmpro_form_input pmpro_form_input-text pmpro_form_input-required"
+                   value="<?php echo esc_attr( $last ); ?>" required>
+        </div>
+        <?php
+    }
+
+    public function validate_name_fields( bool $ok ): bool {
+        if ( is_user_logged_in() ) return $ok;
+        if ( empty( $_POST['first_name'] ) ) { pmpro_setMessage( 'O campo Nome é obrigatório.', 'pmpro_error' ); $ok = false; }
+        if ( empty( $_POST['last_name'] ) )  { pmpro_setMessage( 'O campo Sobrenome é obrigatório.', 'pmpro_error' ); $ok = false; }
+        return $ok;
+    }
+
+    public function save_name_fields( int $user_id, $order ): void {
+        if ( ! empty( $_POST['first_name'] ) ) update_user_meta( $user_id, 'first_name', sanitize_text_field( $_POST['first_name'] ) );
+        if ( ! empty( $_POST['last_name'] ) )  update_user_meta( $user_id, 'last_name',  sanitize_text_field( $_POST['last_name'] ) );
+    }
+
+    public function cache_fields_before_stripe_redirect( bool $ok ): bool {
+        if ( ! $ok ) return $ok;
+        $email = sanitize_email( $_POST['bemail'] ?? $_POST['username'] ?? '' );
+        if ( empty( $email ) && is_user_logged_in() ) $email = wp_get_current_user()->user_email;
+        if ( empty( $email ) ) return $ok;
+        set_transient( 'bbl_fields_' . md5( $email ), [
+            'first_name'   => sanitize_text_field( $_POST['first_name']   ?? '' ),
+            'last_name'    => sanitize_text_field( $_POST['last_name']    ?? '' ),
+        ], HOUR_IN_SECONDS * 2 );
+        return $ok;
+    }
+
+    public function restore_fields_from_cache( int $user_id, $order ): void {
+        if ( ! empty( $_POST['first_name'] ) || ! empty( $_POST['last_name'] ) ) return;
+        $user = get_userdata( $user_id );
+        if ( ! $user ) return;
+        $data = get_transient( 'bbl_fields_' . md5( $user->user_email ) );
+        if ( empty( $data ) ) return;
+        foreach ( $data as $key => $value ) { if ( ! empty( $value ) ) $_POST[ $key ] = $value; }
+        delete_transient( 'bbl_fields_' . md5( $user->user_email ) );
+    }
+
+    public function sync_billing_fields( int $user_id, $order ): void {
+        $first = get_user_meta( $user_id, 'first_name', true );
+        $last  = get_user_meta( $user_id, 'last_name',  true );
+        if ( $first ) update_user_meta( $user_id, 'pmpro_bfirstname', $first );
+        if ( $last )  update_user_meta( $user_id, 'pmpro_blastname',  $last );
+        $user = get_userdata( $user_id );
+        if ( $user ) update_user_meta( $user_id, 'pmpro_bemail', $user->user_email );
+    }
+}
+
+add_action( 'plugins_loaded', function() {
+    BBL_Checkout_Fields::get_instance();
+} );

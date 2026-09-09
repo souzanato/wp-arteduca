@@ -1,0 +1,63 @@
+.bebelume-accordion-tipo2 {
+    margin: 15px 0;
+}
+
+.bebelume-accordion-botao-tipo2 {
+    width: 100%;
+    padding: 20px 40px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #000000;
+    text-align: center;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+.bebelume-accordion-botao-tipo2:hover {
+    opacity: 0.85;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.bebelume-accordion-titulo-tipo2 {
+    color: #000000;
+}
+
+.bebelume-accordion-icone-custom {
+    margin-right: 10px;
+    display: inline-block;
+}
+
+.bebelume-accordion-conteudo-tipo2 {
+    background-color: transparent;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s ease;
+}
+
+.bebelume-accordion-conteudo-tipo2.expandido {
+    max-height: 5000px;
+}
+
+.bebelume-accordion-inner-tipo2 {
+    padding: 20px 40px;
+}
+
+/* Editor */
+.wp-block-bebelume-arteduca-accordion-tipo2 {
+    margin: 15px 0;
+}
+
+@media (max-width: 768px) {
+    .bebelume-accordion-botao-tipo2 {
+        padding: 15px 30px;
+        font-size: 1em;
+    }
+    
+    .bebelume-accordion-inner-tipo2 {
+        padding: 15px 25px;
+    }
+}

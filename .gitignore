@@ -1,0 +1,48 @@
+# ======================================================================
+# wp-arteduca — arquivos que NÃO vão para o repositório
+# (dados de implantação, mídia, segredos, dependências e itens
+#  regeneráveis / re-baixáveis). Código do site fica versionado.
+# ======================================================================
+
+# --- Configuração / segredos (nunca versionar) ---
+/wp-config.php
+/wp-config.php.bak-*
+
+# --- Mídia enviada (uploads) ---
+/wp-content/uploads/
+
+# --- Logs ---
+*.log
+/wp-content/debug.log
+/wp-content/bebelume-arteduca-debug.log
+
+# --- Dumps / backups de dados ---
+/backups/
+
+# --- Ferramentas locais / agentes ---
+/.claude/
+
+# --- Cache e arquivos regeneráveis do WP Super Cache ---
+/wp-content/cache/
+/wp-content/wp-cache-config.php
+/wp-content/advanced-cache.php
+/wp-content/upgrade/
+/wp-content/upgrade-temp-backup/
+
+# --- Traduções do núcleo WP (re-baixáveis: wp language install pt_BR) ---
+/wp-content/languages/
+
+# --- Tema: dependências de build + histórico git próprio do tema ---
+/wp-content/themes/bebelume/node_modules/
+/wp-content/themes/bebelume/.git/
+
+# --- Plugins: idiomas de terceiros não utilizados ---
+# Mantém apenas a tradução pt_BR do PMPro (usada no painel); descarta
+# os demais ~30 idiomas (~52 MB) e os templates de e-mail em outros idiomas.
+/wp-content/plugins/paid-memberships-pro/languages/*
+!/wp-content/plugins/paid-memberships-pro/languages/paid-memberships-pro-pt_BR.po
+!/wp-content/plugins/paid-memberships-pro/languages/paid-memberships-pro-pt_BR.mo
+
+# --- SO / editores ---
+.DS_Store
+*.swp

@@ -1,0 +1,325 @@
+/**
+ * Bebelume Plyr.io Custom Styles
+ * Customização do player Plyr.io com as cores da Bebelume
+ * 
+ * @package Bebelume_Profile
+ * @version 1.0.0
+ */
+
+/* ==========================================================================
+   Variáveis CSS do Plyr (Cores Bebelume)
+   ========================================================================== */
+
+:root {
+    /* Cor principal (Rosa Bebelume) */
+    --plyr-color-main: #E92963;
+    
+    /* Cor de fundo dos controles */
+    --plyr-video-control-background-hover: #E92963;
+    --plyr-audio-control-background-hover: #E92963;
+    
+    /* Cor do range (progresso/volume) */
+    --plyr-range-fill-background: #E92963;
+    --plyr-audio-range-track-background: #E92963;
+    
+    /* Tooltip */
+    --plyr-tooltip-background: #E92963;
+    --plyr-tooltip-color: #ffffff;
+    
+    /* Menu/Settings */
+    --plyr-menu-background: #ffffff;
+    --plyr-menu-color: #2D3748;
+    
+    /* Tab focus */
+    --plyr-tab-focus-color: #E92963;
+    
+    /* Badges */
+    --plyr-badge-background: #E92963;
+    --plyr-badge-text-color: #ffffff;
+}
+
+/* ==========================================================================
+   Container do Vídeo (ESSENCIAL - FAZ O VÍDEO APARECER)
+   ========================================================================== */
+
+.bebelume-video-container {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    background: #000;
+    margin-bottom: 2rem;
+}
+
+/* Responsivo 16:9 */
+.bebelume-video-container.ratio-16-9 {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+}
+
+/* ⭐ CRÍTICO: Player ocupa 100% do container */
+.bebelume-video-container .plyr {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.bebelume-video-container .plyr__video-wrapper,
+.bebelume-video-container .plyr__poster {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* ==========================================================================
+   Customizações do Botão Play Grande
+   ========================================================================== */
+
+.plyr__control--overlaid {
+    background: rgba(233, 41, 99, 0.9) !important;
+    border: 3px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4px 16px rgba(233, 41, 99, 0.4);
+    transition: all 0.3s ease;
+}
+
+.plyr__control--overlaid:hover,
+.plyr__control--overlaid:focus {
+    background: #E92963 !important;
+    box-shadow: 0 6px 24px rgba(233, 41, 99, 0.6);
+}
+
+/* Ícone do play grande */
+.plyr__control--overlaid svg {
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+/* ==========================================================================
+   Barra de Progresso
+   ========================================================================== */
+
+.plyr--video .plyr__progress input[type="range"]::-webkit-slider-thumb {
+    background: #E92963;
+    box-shadow: 0 1px 4px rgba(233, 41, 99, 0.5);
+}
+
+.plyr--video .plyr__progress input[type="range"]::-moz-range-thumb {
+    background: #E92963;
+    box-shadow: 0 1px 4px rgba(233, 41, 99, 0.5);
+}
+
+/* Buffer/Loading */
+.plyr--loading .plyr__progress__buffer {
+    background-color: rgba(233, 41, 99, 0.3);
+}
+
+/* ==========================================================================
+   Controles Ativos
+   ========================================================================== */
+
+.plyr__controls button:hover,
+.plyr__controls button.plyr__tab-focus,
+.plyr__controls button[aria-expanded="true"] {
+    background: #E92963 !important;
+    color: #ffffff;
+}
+
+/* ==========================================================================
+   Volume
+   ========================================================================== */
+
+.plyr__volume input[type="range"]::-webkit-slider-thumb {
+    background: #E92963;
+}
+
+.plyr__volume input[type="range"]::-moz-range-thumb {
+    background: #E92963;
+}
+
+/* ==========================================================================
+   Menu de Configurações
+   ========================================================================== */
+
+.plyr__menu__container {
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.plyr__menu__container [role="menuitemradio"][aria-checked="true"]::before {
+    background: #E92963;
+}
+
+.plyr__menu__container .plyr__control:hover {
+    background: rgba(233, 41, 99, 0.1);
+    color: #E92963;
+}
+
+/* ==========================================================================
+   Badges de Qualidade
+   ========================================================================== */
+
+.plyr__badge {
+    background: #E92963;
+    color: #ffffff;
+    font-weight: 600;
+    border-radius: 4px;
+    padding: 2px 6px;
+}
+
+/* ==========================================================================
+   Loading/Spinner
+   ========================================================================== */
+
+.plyr--loading .plyr__controls {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+/* ==========================================================================
+   Poster/Thumbnail
+   ========================================================================== */
+
+.plyr__poster {
+    background-size: cover;
+    background-position: center;
+}
+
+/* ==========================================================================
+   Caption/Legendas
+   ========================================================================== */
+
+.plyr__caption {
+    background: rgba(0, 0, 0, 0.8);
+    color: #ffffff;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+}
+
+/* ==========================================================================
+   Picture-in-Picture
+   ========================================================================== */
+
+.plyr--pip-supported [data-plyr="pip"] {
+    display: inline-block;
+}
+
+/* ==========================================================================
+   Responsivo - Mobile
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    .bebelume-video-container {
+        margin-bottom: 1.5rem;
+        border-radius: 6px;
+    }
+    
+    .plyr__control--overlaid {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .plyr__caption {
+        font-size: 0.875rem;
+        padding: 0.4rem 0.8rem;
+    }
+}
+
+/* ==========================================================================
+   Acessibilidade
+   ========================================================================== */
+
+.plyr__controls:focus-within {
+    outline: 2px solid #E92963;
+    outline-offset: 2px;
+}
+
+/* Skip links */
+.plyr__sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* ==========================================================================
+   Animações Suaves
+   ========================================================================== */
+
+.plyr__controls,
+.plyr__control,
+.plyr__progress,
+.plyr__volume {
+    transition: all 0.3s ease;
+}
+
+/* ==========================================================================
+   Dark Mode (se necessário)
+   ========================================================================== */
+
+@media (prefers-color-scheme: dark) {
+    .plyr--video {
+        --plyr-video-background: #1a1a1a;
+    }
+}
+
+/* ==========================================================================
+   Estados de Erro
+   ========================================================================== */
+
+.plyr--error .plyr__control--overlaid {
+    background: rgba(255, 107, 107, 0.9) !important;
+}
+
+/* ==========================================================================
+   Customização Adicional - Wrapper com Sombra
+   ========================================================================== */
+
+.bebelume-video-wrapper {
+    position: relative;
+    margin: 2rem 0;
+}
+
+.bebelume-video-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: linear-gradient(135deg, rgba(233, 41, 99, 0.1), rgba(141, 198, 132, 0.1));
+    border-radius: 16px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.bebelume-video-wrapper:hover::before {
+    opacity: 1;
+}
+
+/* ==========================================================================
+   Títulos e Meta Info
+   ========================================================================== */
+
+.bebelume-video-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #2D3748;
+    margin-bottom: 0.5rem;
+}
+
+.bebelume-video-description {
+    font-size: 0.95rem;
+    color: #718096;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}

@@ -1,0 +1,49 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "bebelume-arteduca/link-externo",
+  "title": "Bebelume Link Externo",
+  "category": "bebelume-arteduca",
+  "icon": "admin-links",
+  "description": "Bloco para adicionar links externos com estilo personalizado",
+  "keywords": ["link", "externo", "url", "visitar"],
+  "attributes": {
+    "titulo": {
+      "type": "string",
+      "default": "Link Interessante"
+    },
+    "descricao": {
+      "type": "string",
+      "default": "Clique no botão abaixo para visitar o link."
+    },
+    "linkUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "linkTexto": {
+      "type": "string",
+      "default": "Visitar Site"
+    },
+    "corFundo": {
+      "type": "string",
+      "default": "#F3F0EB"
+    },
+    "corBotao": {
+      "type": "string",
+      "default": "#2A4582"
+    },
+    "alignment": {
+      "type": "string"
+    },
+    "abrirNovaAba": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "supports": {
+    "html": false
+  },
+  "textdomain": "bebelume-arteduca",
+  "editorScript": "file:./block.js",
+  "style": "file:./style.css"
+}

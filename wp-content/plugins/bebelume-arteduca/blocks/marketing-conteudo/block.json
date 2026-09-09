@@ -1,0 +1,22 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "bebelume-arteduca/marketing-conteudo",
+  "version": "1.3.0",
+  "title": "Marketing Bebelume — Conteúdo",
+  "category": "bebelume-arteduca",
+  "icon": "layout",
+  "description": "Bloco simples de conteúdo livre, com cor de fundo customizável.",
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "corFundo": {
+      "type": "string",
+      "default": "#F4F2EA"
+    }
+  },
+  "textdomain": "bebelume-arteduca",
+  "editorScript": "file:./block.js",
+  "style": "file:./style.css"
+}

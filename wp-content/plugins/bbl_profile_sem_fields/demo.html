@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bebelume Profile - Demo</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bbl-pink: #E73665;
+            --bbl-cyan: #00BCD4;
+            --bbl-yellow: #FFD54F;
+            --bbl-green: #66BB6A;
+            --bbl-orange: #FF9800;
+            
+            --bbl-white: #FFFFFF;
+            --bbl-bg-light: #F5F9FC;
+            --bbl-bg-card: #FFFFFF;
+            --bbl-border: #E0E7ED;
+            --bbl-text-primary: #2C3E50;
+            --bbl-text-secondary: #5A6C7D;
+            --bbl-text-tertiary: #8A9BA8;
+            
+            --bbl-font-display: 'Nunito', sans-serif;
+            --bbl-font-body: 'Quicksand', sans-serif;
+            
+            --bbl-space-xs: 0.5rem;
+            --bbl-space-sm: 1rem;
+            --bbl-space-md: 1.5rem;
+            --bbl-space-lg: 2rem;
+            --bbl-space-xl: 3rem;
+            
+            --bbl-radius-sm: 8px;
+            --bbl-radius-md: 12px;
+            --bbl-radius-lg: 16px;
+            --bbl-radius-xl: 24px;
+            
+            --bbl-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --bbl-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
+            --bbl-shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+            
+            --bbl-transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: var(--bbl-font-body);
+            background: var(--bbl-bg-light);
+            color: var(--bbl-text-primary);
+            line-height: 1.6;
+        }
+
+        .demo-wrapper {
+            min-height: 100vh;
+            padding: var(--bbl-space-lg);
+        }
+
+        .demo-header {
+            max-width: 900px;
+            margin: 0 auto var(--bbl-space-xl);
+            text-align: center;
+        }
+
+        .demo-title {
+            font-family: var(--bbl-font-display);
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--bbl-pink);
+            margin: 0 0 var(--bbl-space-sm);
+            letter-spacing: -0.02em;
+        }
+
+        .demo-subtitle {
+            font-size: 1.1rem;
+            color: var(--bbl-text-secondary);
+            font-weight: 500;
+        }
+
+        .demo-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--bbl-bg-card);
+            border-radius: var(--bbl-radius-xl);
+            box-shadow: var(--bbl-shadow-lg);
+            padding: var(--bbl-space-xl);
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .demo-avatar-section {
+            display: flex;
+            align-items: center;
+            gap: var(--bbl-space-lg);
+            padding-bottom: var(--bbl-space-xl);
+            margin-bottom: var(--bbl-space-xl);
+            border-bottom: 3px solid var(--bbl-border);
+        }
+
+        .demo-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 5px solid var(--bbl-cyan);
+            background: linear-gradient(135deg, var(--bbl-cyan), var(--bbl-pink));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            box-shadow: var(--bbl-shadow-md);
+        }
+
+        .demo-avatar-info h2 {
+            font-family: var(--bbl-font-display);
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--bbl-text-primary);
+            margin: 0 0 var(--bbl-space-xs);
+        }
+
+        .demo-avatar-info p {
+            font-size: 1rem;
+            color: var(--bbl-text-secondary);
+            margin: 0;
+        }
+
+        .demo-form {
+            display: flex;
+            flex-direction: column;
+            gap: var(--bbl-space-lg);
+        }
+
+        .demo-form-row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--bbl-space-lg);
+        }
+
+        .demo-field {
+            display: flex;
+            flex-direction: column;
+            gap: var(--bbl-space-sm);
+        }
+
+        .demo-label {
+            display: flex;
+            align-items: center;
+            gap: var(--bbl-space-sm);
+            font-family: var(--bbl-font-display);
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--bbl-text-primary);
+        }
+
+        .demo-badge {
+            background: var(--bbl-green);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .demo-char-count {
+            margin-left: auto;
+            font-size: 0.85rem;
+            color: var(--bbl-text-tertiary);
+            font-weight: 500;
+        }
+
+        .demo-input,
+        .demo-textarea {
+            width: 100%;
+            background: var(--bbl-white);
+            border: 2px solid var(--bbl-border);
+            border-radius: var(--bbl-radius-md);
+            padding: var(--bbl-space-md);
+            color: var(--bbl-text-primary);
+            font-size: 1rem;
+            font-family: var(--bbl-font-body);
+            transition: var(--bbl-transition);
+        }
+
+        .demo-input:focus,
+        .demo-textarea:focus {
+            outline: none;
+            border-color: var(--bbl-cyan);
+            box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.1);
+        }
+
+        .demo-input-readonly {
+            background: var(--bbl-bg-light);
+            cursor: not-allowed;
+            color: var(--bbl-text-tertiary);
+        }
+
+        .demo-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .demo-form-actions {
+            display: flex;
+            gap: var(--bbl-space-md);
+            justify-content: flex-end;
+            padding-top: var(--bbl-space-lg);
+            border-top: 2px solid var(--bbl-border);
+        }
+
+        .demo-btn {
+            padding: var(--bbl-space-md) var(--bbl-space-xl);
+            border: none;
+            border-radius: var(--bbl-radius-md);
+            font-size: 1rem;
+            font-weight: 700;
+            font-family: var(--bbl-font-display);
+            cursor: pointer;
+            transition: var(--bbl-transition);
+        }
+
+        .demo-btn-primary {
+            background: var(--bbl-pink);
+            color: white;
+            box-shadow: var(--bbl-shadow-sm);
+        }
+
+        .demo-btn-primary:hover {
+            background: #d42757;
+            transform: translateY(-2px);
+            box-shadow: var(--bbl-shadow-md);
+        }
+
+        .demo-btn-secondary {
+            background: var(--bbl-white);
+            color: var(--bbl-text-secondary);
+            border: 2px solid var(--bbl-border);
+        }
+
+        .demo-btn-secondary:hover {
+            background: var(--bbl-bg-light);
+            border-color: var(--bbl-cyan);
+            color: var(--bbl-cyan);
+        }
+
+        @media (max-width: 768px) {
+            .demo-wrapper {
+                padding: var(--bbl-space-md);
+            }
+            
+            .demo-title {
+                font-size: 2rem;
+            }
+            
+            .demo-container {
+                padding: var(--bbl-space-lg);
+            }
+            
+            .demo-avatar-section {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .demo-avatar {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .demo-form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .demo-form-actions {
+                flex-direction: column;
+            }
+            
+            .demo-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-wrapper">
+        
+        <header class="demo-header">
+            <h1 class="demo-title">Meu Perfil</h1>
+            <p class="demo-subtitle">Edite suas informações pessoais</p>
+        </header>
+        
+        <div class="demo-container">
+            
+            <div class="demo-avatar-section">
+                <div class="demo-avatar">👤</div>
+                <div class="demo-avatar-info">
+                    <h2>Renato Silva</h2>
+                    <p>renato@bebelume.com</p>
+                </div>
+            </div>
+            
+            <form class="demo-form">
+                
+                <div class="demo-form-row">
+                    <div class="demo-field">
+                        <label class="demo-label">Nome</label>
+                        <input type="text" class="demo-input" value="Renato" placeholder="Digite seu nome">
+                    </div>
+                    
+                    <div class="demo-field">
+                        <label class="demo-label">Sobrenome</label>
+                        <input type="text" class="demo-input" value="Silva" placeholder="Digite seu sobrenome">
+                    </div>
+                </div>
+                
+                <div class="demo-form-row">
+                    <div class="demo-field">
+                        <label class="demo-label">
+                            E-mail
+                            <span class="demo-badge">Verificado ✓</span>
+                        </label>
+                        <input type="email" class="demo-input demo-input-readonly" value="renato@bebelume.com" readonly>
+                    </div>
+                    
+                    <div class="demo-field">
+                        <label class="demo-label">Website</label>
+                        <input type="url" class="demo-input" placeholder="https://seu-site.com">
+                    </div>
+                </div>
+                
+                <div class="demo-field">
+                    <label class="demo-label">
+                        Sobre você
+                        <span class="demo-char-count">0 / 500</span>
+                    </label>
+                    <textarea class="demo-textarea" placeholder="Conte-nos um pouco sobre você..."></textarea>
+                </div>
+                
+                <div class="demo-form-actions">
+                    <button type="button" class="demo-btn demo-btn-secondary">Cancelar</button>
+                    <button type="button" class="demo-btn demo-btn-primary">Salvar Alterações</button>
+                </div>
+                
+            </form>
+            
+        </div>
+        
+    </div>
+    
+    <script>
+        // Contador de caracteres
+        document.querySelector('.demo-textarea').addEventListener('input', function(e) {
+            const count = e.target.value.length;
+            const counter = document.querySelector('.demo-char-count');
+            counter.textContent = count + ' / 500';
+        });
+        
+        // Simular salvamento
+        document.querySelector('.demo-btn-primary').addEventListener('click', function() {
+            alert('✅ Perfil salvo com sucesso!\n\nEste é apenas uma demonstração. No WordPress real, os dados seriam salvos no banco de dados.');
+        });
+        
+        // Simular cancelamento
+        document.querySelector('.demo-btn-secondary').addEventListener('click', function() {
+            if (confirm('Tem certeza que deseja cancelar?')) {
+                location.reload();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "bebelume-arteduca/marketing-titulo",
+  "version": "1.4.0",
+  "title": "Marketing Bebelume — Título",
+  "category": "bebelume-arteduca",
+  "icon": "editor-textcolor",
+  "description": "Título com a fonte manuscrita Handypot, cor de fundo e cor de texto customizáveis.",
+  "supports": {
+    "html": false,
+    "anchor": true
+  },
+  "attributes": {
+    "titulo": {
+      "type": "string",
+      "default": "Título"
+    },
+    "corFundo": {
+      "type": "string",
+      "default": "#F4F2EA"
+    },
+    "corTexto": {
+      "type": "string",
+      "default": "#000000"
+    },
+    "tamanhoFonte": {
+      "type": "number",
+      "default": 48
+    },
+    "alignment": {
+      "type": "string",
+      "default": "left"
+    }
+  },
+  "textdomain": "bebelume-arteduca"
+}

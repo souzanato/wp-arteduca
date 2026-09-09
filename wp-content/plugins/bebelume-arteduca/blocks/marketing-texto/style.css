@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+.bebelume-marketing-texto {
+    width: 100%;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    padding-left: max(1em, calc((100% - 1050px) / 2));
+    padding-right: max(1em, calc((100% - 1050px) / 2));
+}
+
+.bebelume-texto-opensans {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+}
+
+/*
+ * Força tamanho/cor/peso também nos parágrafos internos (core/paragraph).
+ * Necessário porque o tema costuma definir font-size próprio em <p>,
+ * com mais especificidade do que a herança normal do CSS.
+ */
+.bebelume-texto-opensans,
+.bebelume-texto-opensans p {
+    font-size: var(--bebelume-texto-tamanho, 18px) !important;
+    color: var(--bebelume-texto-cor, inherit) !important;
+    font-weight: var(--bebelume-texto-peso, 400) !important;
+    font-family: 'Open Sans', sans-serif !important;
+}
+
+.bebelume-texto-opensans p {
+    margin: 0 0 1em 0;
+}
+
+.bebelume-texto-opensans p:last-child {
+    margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+    .bebelume-marketing-texto {
+        padding-top: 16px;
+        padding-bottom: 16px;
+    }
+}

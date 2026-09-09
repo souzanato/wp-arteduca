@@ -1,0 +1,53 @@
+/* ============================================
+   Bebelume Associação Andar — CSS do editor
+   ============================================ */
+
+.editor-styles-wrapper .wp-block-bebelume-andar.bebelume-nivel {
+    width: 100%;
+    overflow: visible;
+}
+
+.editor-styles-wrapper .wp-block-bebelume-andar .bebelume-andar.bebelume-associacoes-andar {
+    margin: 0 auto !important;
+    position: relative;
+    width: 100%;
+}
+
+.editor-styles-wrapper .wp-block-bebelume-andar .bebelume-andar.bebelume-associacoes-andar .andar-content {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 4em;
+    background-color: #fff;
+    border-left: 3px solid #000;
+    border-right: 3px solid #000;
+    border-bottom: 3px solid #000;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex !important;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.editor-styles-wrapper .wp-block-bebelume-andar .bebelume-andar.bebelume-associacoes-andar .andar-content .block-editor-inner-blocks,
+.editor-styles-wrapper .wp-block-bebelume-andar .bebelume-andar.bebelume-associacoes-andar .andar-content .block-editor-block-list__layout {
+    min-height: 4em;
+    width: 100%;
+}
+
+.editor-styles-wrapper .wp-block-bebelume-andar .bebelume-andar.bebelume-associacoes-andar .andar-content figure,
+.editor-styles-wrapper .wp-block-bebelume-andar .bebelume-andar.bebelume-associacoes-andar .andar-content .wp-block-video {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+}
+
+.editor-styles-wrapper .wp-block-bebelume-andar .bebelume-andar.bebelume-associacoes-andar .andar-content video {
+    width: 100% !important;
+    height: auto !important;
+    display: block;
+}

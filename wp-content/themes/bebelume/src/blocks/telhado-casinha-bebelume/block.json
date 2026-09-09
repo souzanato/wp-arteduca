@@ -1,0 +1,37 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "bebelume/telhado-casinha-bebelume",
+  "version": "1.0.0",
+  "title": "Telhado Casinha Bebelume",
+  "category": "bebelume",
+  "icon": "admin-home",
+  "description": "Bloco do telhado da Casinha Bebelume com nuvens e fumacinha",
+  "keywords": ["bebelume", "telhado", "casinha"],
+  "textdomain": "bebelume-theme",
+  "supports": {
+    "html": false,
+    "anchor": true
+  },
+  "attributes": {
+    "backgroundImage": {
+      "type": "string",
+      "default": ""
+    },
+    "backgroundColor": {
+      "type": "string",
+      "default": "#87CEEB"
+    },
+    "showClouds": {
+      "type": "boolean",
+      "default": true
+    },
+    "showSmoke": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./editor.css",
+  "style": "file:./style.css"
+}

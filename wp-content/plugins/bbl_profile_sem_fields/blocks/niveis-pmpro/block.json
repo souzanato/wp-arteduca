@@ -1,0 +1,28 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "bebelume/niveis-pmpro",
+  "version": "1.0.0",
+  "title": "Bebelume Níveis PMPro",
+  "category": "bebelume",
+  "icon": "groups",
+  "description": "Exibe os níveis de um grupo PMPro com opção de seleção.",
+  "parent": ["bebelume/andar"],
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "groupId": {
+      "type": "number",
+      "default": 0
+    },
+    "groupName": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "textdomain": "bebelume-profile",
+  "editorScript": "file:./index.js",
+  "style": "file:./style.css",
+  "render": "file:./render.php"
+}

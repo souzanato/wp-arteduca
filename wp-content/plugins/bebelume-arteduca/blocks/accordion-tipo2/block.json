@@ -1,0 +1,35 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "bebelume-arteduca/accordion-tipo2",
+  "version": "1.1.0",
+  "title": "Accordion ArtEduca - Tipo 2",
+  "category": "bebelume-arteduca",
+  "icon": "minus",
+  "description": "Accordion expansível de nível 2 com botão arredondado",
+  "supports": {
+    "html": false,
+    "anchor": true
+  },
+  "attributes": {
+    "titulo": {
+      "type": "string",
+      "default": "Clique para expandir"
+    },
+    "corBotao": {
+      "type": "string",
+      "default": "#D1D1D1"
+    },
+    "iconeHtml": {
+      "type": "string",
+      "default": ""
+    },
+    "uniqueId": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "textdomain": "bebelume-arteduca",
+  "editorScript": "file:./block.js",
+  "style": "file:./style.css"
+}

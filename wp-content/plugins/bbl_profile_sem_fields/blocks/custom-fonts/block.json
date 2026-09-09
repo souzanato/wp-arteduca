@@ -1,0 +1,77 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "bebelume/custom-fonts",
+  "version": "1.0.0",
+  "title": "Bebelume Custom Fonts",
+  "category": "bebelume",
+  "icon": "editor-paragraph",
+  "description": "Parágrafo com fonte customizada (webfont). As fontes carregadas ficam disponíveis globalmente.",
+  "supports": {
+    "html": false,
+    "color": {
+      "text": true,
+      "background": false
+    },
+    "typography": {
+      "fontSize": true
+    },
+    "spacing": {
+      "margin": true,
+      "padding": true
+    }
+  },
+  "attributes": {
+    "content": {
+      "type": "string",
+      "default": ""
+    },
+    "fontFamily": {
+      "type": "string",
+      "default": ""
+    },
+    "fontSize": {
+      "type": "number",
+      "default": 16
+    },
+    "textColor": {
+      "type": "string",
+      "default": "#000000"
+    },
+    "textAlign": {
+      "type": "string",
+      "default": "left"
+    },
+    "fontWeight": {
+      "type": "string",
+      "default": "normal"
+    },
+    "italic": {
+      "type": "boolean",
+      "default": false
+    },
+    "backgroundColor": {
+      "type": "string",
+      "default": ""
+    },
+    "lineHeight": {
+      "type": "string",
+      "default": ""
+    },
+    "letterSpacing": {
+      "type": "string",
+      "default": ""
+    },
+    "textDecoration": {
+      "type": "string",
+      "default": ""
+    },
+    "textTransform": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "textdomain": "bebelume-profile",
+  "editorScript": "file:./index.js",
+  "style": "file:./style.css"
+}

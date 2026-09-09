@@ -1,0 +1,539 @@
+/* Arquivo: assets/css/style.css */
+
+/* Fonte Mario DemiBold */
+@font-face {
+    font-family: 'Mario';
+    src: url('../fonts/Mario-DemiBold.otf') format('opentype'),
+        url('../fonts/Mario-DemiBold.woff2') format('woff2'),
+        url('../fonts/Mario-DemiBold.woff') format('woff'),
+        url('../fonts/Mario-DemiBold.ttf') format('truetype'),
+        url('../fonts/Mario-DemiBold.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Mario-DemiBold.svg#Mario-DemiBold') format('svg');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Container Principal */
+.video-playlist-container {
+    margin: 20px 0;
+    padding: 0;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.video-playlist-title {
+    font-family: 'Mario', Impact, 'Arial Black', sans-serif;
+    font-size: 3em;
+    font-weight: 600;
+    margin: 0 0 15px 0;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-left: 1em;
+}
+
+.video-playlist-description {
+    font-size: 16px;
+    color: #666;
+    margin: 0 0 20px 0;
+    text-align: left;
+}
+
+/* Slider de Vídeos */
+.video-playlist-slider {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    max-width: 100%;
+    padding: 0 5px;
+}
+
+.video-slider-wrapper {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    max-width: 100%;
+}
+
+.video-slider-track {
+    display: flex;
+    gap: 12px;
+    transition: transform 0.3s ease;
+    will-change: transform;
+}
+
+.video-slide {
+    flex-shrink: 0;
+    display: block;
+}
+
+.video-thumb {
+    position: relative;
+    width: auto;
+    height: 112px;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background: #000;
+    display: block;
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+.video-thumb:focus {
+    outline: none !important;
+    border: none !important;
+}
+
+.video-thumb:focus-visible {
+    outline: 2px solid #4A90E2;
+    outline-offset: 2px;
+}
+
+.video-thumb:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2) !important;
+}
+
+.video-thumb img {
+    width: auto;
+    height: 112px;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+    background: #000;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+.video-play-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+}
+
+.video-thumb:hover .video-play-overlay {
+    opacity: 1;
+}
+
+/* Botões de Navegação do Slider */
+.video-slider-nav {
+    background: #fff;
+    border: 2px solid #ddd;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+    z-index: 2;
+}
+
+.video-slider-nav:hover:not(:disabled) {
+    background: #f5f5f5;
+    border-color: #999;
+    transform: scale(1.1);
+}
+
+.video-slider-nav:disabled {
+    cursor: not-allowed;
+    opacity: 0.3;
+}
+
+.video-slider-nav svg {
+    color: #333;
+}
+
+
+
+/* Mensagem de lista vazia */
+.video-playlist-empty {
+    padding: 40px;
+    text-align: center;
+    background: #f9f9f9;
+    border-radius: 8px;
+    color: #666;
+    font-size: 16px;
+}
+
+/* Customização do Fancybox */
+.fancybox__caption {
+    text-align: center;
+    padding: 20px;
+}
+
+.fancybox__caption h2 {
+    margin: 0 0 15px 0;
+    font-size: 24px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.fancybox__caption p {
+    color: #ccc;
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Forçar conteúdo dentro do castelinho */
+.andar-content .video-playlist-container,
+.bebelume-andar .video-playlist-container {
+    max-width: 100%;
+    overflow: hidden;
+    padding: .5em;
+}
+
+.andar-content .video-slider-wrapper,
+.bebelume-andar .video-slider-wrapper {
+    max-width: 100%;
+    overflow: hidden;
+}
+
+/* Remove borda forçada do tema */
+.video-thumb,
+.video-thumb *,
+.video-slide,
+.video-slide *,
+.video-thumb img,
+.video-slide img {
+    border: none !important;
+    outline: none !important;
+	background-color: transparent;
+}
+
+.andar-content .video-thumb,
+.bebelume-andar .video-thumb {
+    border: none !important;
+    outline: none !important;
+}
+
+/* ==========================================
+   CLASSES DE CORES - BEBELUME
+   ========================================== */
+
+/* Títulos com cores de texto */
+.video-playlist-title.rosa {
+    color: #FF6B9D;
+}
+
+.video-playlist-title.amarelo {
+    color: #FFD93D;
+}
+
+.video-playlist-title.roxo {
+    color: #B19CD9;
+}
+
+.video-playlist-title.verde {
+    color: #95E1D3;
+}
+
+.video-playlist-title.laranja {
+    color: #F38181;
+}
+
+.video-playlist-title.azul {
+    color: #6C9BD1;
+}
+
+.video-playlist-title.turquesa {
+    color: #4ECDC4;
+}
+
+.video-playlist-title.rosa-bebe {
+    color: #FFC1CC;
+}
+
+/* Thumbnails com bordas coloridas */
+.video-slide.rosa .video-thumb {
+    border: 5px solid #FF6B9D !important;
+    border-radius: 12px;
+}
+
+.video-slide.amarelo .video-thumb {
+    border: 5px solid #FFD93D !important;
+    border-radius: 12px;
+}
+
+.video-slide.roxo .video-thumb {
+    border: 5px solid #B19CD9 !important;
+    border-radius: 12px;
+}
+
+.video-slide.verde .video-thumb {
+    border: 5px solid #95E1D3 !important;
+    border-radius: 12px;
+}
+
+.video-slide.laranja .video-thumb {
+    border: 5px solid #F38181 !important;
+    border-radius: 12px;
+}
+
+.video-slide.azul .video-thumb {
+    border: 5px solid #6C9BD1 !important;
+    border-radius: 12px;
+}
+
+.video-slide.turquesa .video-thumb {
+    border: 5px solid #4ECDC4 !important;
+    border-radius: 12px;
+}
+
+.video-slide.rosa-bebe .video-thumb {
+    border: 5px solid #FFC1CC !important;
+    border-radius: 12px;
+}
+
+/* Efeito hover nas bordas coloridas */
+.video-slide.rosa .video-thumb:hover {
+    box-shadow: 0 8px 20px rgba(255, 107, 157, 0.4) !important;
+}
+
+.video-slide.amarelo .video-thumb:hover {
+    box-shadow: 0 8px 20px rgba(255, 217, 61, 0.4) !important;
+}
+
+.video-slide.roxo .video-thumb:hover {
+    box-shadow: 0 8px 20px rgba(177, 156, 217, 0.4) !important;
+}
+
+.video-slide.verde .video-thumb:hover {
+    box-shadow: 0 8px 20px rgba(149, 225, 211, 0.4) !important;
+}
+
+.video-slide.laranja .video-thumb:hover {
+    box-shadow: 0 8px 20px rgba(243, 129, 129, 0.4) !important;
+}
+
+.video-slide.azul .video-thumb:hover {
+    box-shadow: 0 8px 20px rgba(108, 155, 209, 0.4) !important;
+}
+
+.video-slide.turquesa .video-thumb:hover {
+    box-shadow: 0 8px 20px rgba(78, 205, 196, 0.4) !important;
+}
+
+.video-slide.rosa-bebe .video-thumb:hover {
+    box-shadow: 0 8px 20px rgba(255, 193, 204, 0.4) !important;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .video-playlist-container {
+        padding: 15px;
+    }
+    
+    .video-playlist-title {
+        font-size: 22px;
+    }
+    
+    .video-slide {
+        display: block;
+    }
+    
+    .video-thumb {
+        width: auto;
+        height: 90px;
+    }
+    
+    .video-thumb img {
+        height: 90px;
+    }
+    
+    .video-slider-nav {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .video-modal-content {
+        max-width: 100%;
+    }
+    
+    .video-modal-title {
+        font-size: 20px;
+    }
+    
+    .video-modal-close {
+        top: -45px;
+        right: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .video-playlist-slider {
+        gap: 10px;
+    }
+    
+    .video-slider-track {
+        gap: 10px;
+    }
+    
+    .video-slide {
+        display: block;
+    }
+    
+    .video-thumb {
+        width: auto;
+        height: 79px;
+    }
+    
+    .video-thumb img {
+        height: 79px;
+    }
+    
+    .video-slider-nav {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .video-slider-nav svg {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .video-modal-backdrop {
+        padding: 10px;
+    }
+    
+    .video-modal-title {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+    
+    .video-modal-description {
+        font-size: 14px;
+    }
+}
+
+/* ==========================================
+   PREVIEW POPUP - SISTEMA DE DUPLO CLIQUE
+   ========================================== */
+
+.video-preview-popup {
+    position: absolute;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    pointer-events: none;
+}
+
+.video-preview-popup.active {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+}
+
+.video-preview-popup.closing {
+    opacity: 0;
+    transform: scale(0.8);
+    pointer-events: none;
+}
+
+.video-preview-popup img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    background: #000;
+}
+
+.video-preview-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding-bottom: 15px;
+    background: transparent;
+    transition: background 0.2s ease;
+    pointer-events: none;
+}
+
+.video-preview-popup:hover .video-preview-overlay {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.video-preview-overlay svg {
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+    transition: transform 0.2s ease;
+}
+
+.video-preview-popup:hover .video-preview-overlay svg {
+    transform: scale(1.1);
+}
+
+.video-preview-overlay p {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    font-weight: 600;
+    max-width: 80%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.video-preview-popup:hover .video-preview-overlay p {
+    opacity: 1;
+}
+
+/* Garante que iframe e video ocupem todo espaço */
+.video-preview-popup iframe,
+.video-preview-popup video {
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
+    border: none;
+    background: #000;
+}
+
+/* Estilo do container do player */
+.preview-player-container {
+    position: relative;
+}
+
+/* Hint de "clique para tela cheia" */
+.preview-hint {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Animação de pulso no ícone de play */
+@keyframes pulse-play {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.video-preview-popup.active .video-preview-overlay svg {
+    animation: pulse-play 2s ease-in-out infinite;
+}

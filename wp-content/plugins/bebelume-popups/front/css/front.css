@@ -1,0 +1,26 @@
+/* Bebelume Popups – Frontend */
+
+/* Remove default Bootstrap modal-content styling */
+.bpp-modal .modal-content {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+}
+
+/* Allow badge to overflow */
+.bpp-modal .modal-dialog {
+  overflow: visible !important;
+  margin-top: 160px !important;
+}
+
+/* Position variants */
+.bpp-modal .modal-dialog-top {
+  align-items: flex-start;
+}
+
+.bpp-modal .modal-dialog-bottom {
+  align-items: flex-end;
+  margin-top: 0 !important;
+  margin-bottom: 20px;
+}

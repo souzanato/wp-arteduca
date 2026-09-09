@@ -1,0 +1,16 @@
+{
+  "name": "bebelume-theme",
+  "version": "1.0.0",
+  "description": "Tema Bebelume com blocos Gutenberg",
+  "scripts": {
+    "start": "wp-scripts start",
+    "build": "wp-scripts build && npm run copy-metadata",
+    "copy-metadata": "cp src/blocks/sobre-nos/block.json build/blocks/sobre-nos/ && cp src/blocks/andar-casinha-bebelume/block.json build/blocks/andar-casinha-bebelume/ && cp src/blocks/andar-castelinho-bebelume/block.json build/blocks/andar-castelinho-bebelume/ && cp src/blocks/telhado-casinha-bebelume/block.json build/blocks/telhado-casinha-bebelume/ && cp src/blocks/telhado-castelinho-bebelume/block.json build/blocks/telhado-castelinho-bebelume/ && cp src/blocks/telhado-passarinhos-bebelume/block.json build/blocks/telhado-passarinhos-bebelume/ && cp src/blocks/terreo-casinha-bebelume/block.json build/blocks/terreo-casinha-bebelume/ && cp src/blocks/terreo-castelinho-bebelume/block.json build/blocks/terreo-castelinho-bebelume/",
+    "format": "wp-scripts format",
+    "lint:css": "wp-scripts lint-style",
+    "lint:js": "wp-scripts lint-js"
+  },
+  "devDependencies": {
+    "@wordpress/scripts": "^27.0.0"
+  }
+}

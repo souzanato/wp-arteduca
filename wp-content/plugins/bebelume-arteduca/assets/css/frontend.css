@@ -1,0 +1,532 @@
+/* caminho do arquivo: assets/css/frontend.css */
+
+/* ===================================
+   TÍTULO ARTEDUCA
+   =================================== */
+
+   /* Importa Open Sans do Google Fonts */
+
+.link-amarelo-arteduca a {
+	text-decoration: none;
+	color: #EAB35E;
+}
+
+.teaser-capa {
+	width: 100%;
+	border-radius: 16px;
+	box-shadow: 0 12px 30px rgba(25, 35, 45, 0.18);
+}
+
+.assinar-agora-btn-branco {
+background-color: #ffffff;
+    border-radius: 2em;
+    border: 1px solid #dcdcdc;
+    display: inline-block;
+    cursor: pointer;
+    color: #666666;
+    font-family: Arial;
+    font-size: 32px;
+    font-weight: bold;
+    padding: 6px 24px;
+    text-decoration: none;
+    padding: .5em;
+    width: 50%;
+
+}
+.assinar-agora-btn-branco:hover {
+	background-color:#f6f6f6;
+}
+.assinar-agora-btn-branco:active {
+	position:relative;
+	top:1px;
+}
+
+.assinar-agora-btn-vermelho {
+    background-color: #E85648;
+    border-radius: 2em;
+    border: 1px solid #E85648;
+    display: inline-block;
+    cursor: pointer;
+    color: #fff;
+    font-family: Arial;
+    font-size: 25px;
+    font-weight: bold;
+    padding: 6px 24px;
+    text-decoration: none;
+    padding: .5em;
+    width: 100%;
+    text-align: center;
+}
+
+.assinar-agora-btn-vermelho:hover {
+	background-color:#ffffff;
+	color: #E85648;
+}
+.assinar-agora-btn-vermelho:active {
+	position:relative;
+	top:1px;
+}
+
+
+/* Recorta corretamente o vídeo e os controles do Plyr */
+.teaser-capa .plyr,
+.teaser-capa video {
+	width: 100%;
+	display: block;
+	border-radius: 16px;
+	overflow: hidden;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap');
+
+/* Aplica Open Sans apenas em posts */
+body.single-post,
+body.single-post * {
+    font-family: 'Open Sans', sans-serif !important;
+}
+
+body.single-post #main-content {
+    display: flex;
+}
+
+body.single-post article {
+    box-shadow: 
+        0 4px 16px rgba(42, 69, 130, 0.08),
+        0 8px 32px rgba(92, 79, 147, 0.06);
+    border-radius: 12px;
+    overflow: hidden;
+    background: #ffffff;
+    margin: 20px auto;
+    max-width: 1200px;
+    padding: 0;
+}
+
+body.single-post article {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.bebelume-titulo-arteduca {
+    margin: 0;
+    width: 100%;
+    border-top-left-radius: .5em;
+    border-top-right-radius: .5em;
+
+}
+
+.bebelume-titulo-barra-colorida {
+    border-top-left-radius: .5em;
+    border-top-right-radius: .5em;
+    height: 8px;
+    background: linear-gradient(
+        to right,
+        #2A4582 0%,
+        #2A4582 20%,
+        #5C4F93 20%,
+        #5C4F93 40%,
+        #D75F4D 40%,
+        #D75F4D 60%,
+        #EAB35E 60%,
+        #EAB35E 80%,
+        #000000 80%,
+        #000000 100%
+    );
+}
+
+/* Background gradiente para posts individuais */
+body.single-post {
+    min-height: 100vh;
+}
+
+.bebelume-titulo-conteudo {
+    padding: 30px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bebelume-titulo-texto {
+    color: #ffffff;
+    font-size: 2.5em;
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* ===================================
+   ACCORDION TIPO 1
+   =================================== */
+.bebelume-accordion-tipo1 {
+    margin-bottom: 0;
+    border-bottom: .5em solid #F3F0EB;
+}
+
+.bebelume-accordion-cabecalho-tipo1 {
+    width: 100%;
+    padding: 20px 30px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: left;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.bebelume-accordion-cabecalho-tipo1:hover {
+    opacity: 0.9;
+}
+
+.bebelume-accordion-cabecalho-tipo1:focus {
+    outline: 2px solid rgba(255, 255, 255, 0.5);
+    outline-offset: -2px;
+}
+
+.bebelume-accordion-icone {
+    font-size: 1.5em;
+    transition: transform 0.3s ease;
+    display: inline-block;
+    line-height: 1;
+}
+
+.bebelume-accordion-cabecalho-tipo1[aria-expanded="true"] .bebelume-accordion-icone {
+    transform: rotate(180deg);
+}
+
+.bebelume-accordion-titulo strong {
+    font-weight: 800;
+    font-size: 110%;
+}
+
+.bebelume-accordion-titulo {
+    flex: 1;
+    color: #ffffff;
+    font-weight: normal;
+}
+
+.bebelume-accordion-icone-custom {
+    margin-right: 10px;
+    display: inline-block;
+}
+
+.bebelume-accordion-conteudo-tipo1 {
+    background-color: #F3F0EB;
+    transition: all 0.3s ease;
+    max-height: 0;
+    overflow: hidden;
+}
+
+.bebelume-accordion-conteudo-tipo1.expandido {
+    max-height: 5000px;
+}
+
+.bebelume-accordion-inner {
+    padding: 30px;
+}
+
+/* ===================================
+   ACCORDION TIPO 2
+   =================================== */
+.bebelume-accordion-tipo2 {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.wp-block-bebelume-arteduca-video {
+    padding: 1em;
+    background-color: #fff;
+    border-radius: .5em;
+        min-height: 21em;
+}
+
+.bebelume-accordion-botao-tipo2 {
+    width: 100%;
+    padding: 20px 40px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #000000;
+    text-align: center;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+.bebelume-accordion-botao-tipo2:hover {
+    opacity: 0.85;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.bebelume-accordion-botao-tipo2:focus {
+    outline: 2px solid rgba(0, 0, 0, 0.3);
+    outline-offset: 2px;
+}
+
+.bebelume-accordion-titulo-tipo2 {
+    color: #000000;
+    font-weight: 600;
+}
+
+.bebelume-accordion-titulo-tipo2 strong {
+    font-size: 110%;
+}
+
+.bebelume-accordion-tipo2 .bebelume-accordion-icone-custom {
+    margin-right: 10px;
+    display: inline-block;
+}
+
+.bebelume-accordion-conteudo-tipo2 {
+    background-color: transparent;
+    transition: all 0.3s ease;
+    max-height: 0;
+    overflow: hidden;
+}
+
+.bebelume-accordion-conteudo-tipo2.expandido {
+    max-height: 5000px;
+}
+
+.bebelume-accordion-inner-tipo2 {
+    padding: 20px 40px;
+}
+
+/* ===================================
+   RESPONSIVO
+   =================================== */
+
+   @media (max-width: 1024px) {
+    body.single-post article {
+        margin: 15px 20px;
+        border-radius: 8px;
+    }
+}
+
+@media (max-width: 768px) {
+    body.single-post article {
+        width: 100%;
+        margin-top: 0;
+        margin-left: 0;
+        margin-right: 0;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .bebelume-titulo-texto {
+        font-size: 1.8em;
+        letter-spacing: 1px;
+    }
+
+    .bebelume-titulo-conteudo {
+        padding: 20px 25px;
+    }
+
+    .bebelume-accordion-cabecalho-tipo1 {
+        padding: 15px 20px;
+        font-size: 1em;
+    }
+
+    .bebelume-accordion-inner {
+        padding: 20px;
+    }
+
+    .bebelume-accordion-botao-tipo2 {
+        padding: 15px 30px;
+        font-size: 1em;
+    }
+
+    .bebelume-accordion-inner-tipo2 {
+        padding: 15px 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .bebelume-titulo-texto {
+        font-size: 1.4em;
+    }
+
+    .bebelume-accordion-icone {
+        font-size: 1.2em;
+    }
+
+    body.single-post article {
+        padding: 0;
+    }
+}
+
+/* ===================================
+   ICON BOX
+   =================================== */
+.bebelume-icon-box {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    border-left: 4px solid #2A4582;
+}
+
+.bebelume-icon-box-icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background-color: #2A4582;
+    border-radius: 50%;
+    color: #ffffff;
+}
+
+.bebelume-icon-box-icon i {
+    width: 24px;
+    height: 24px;
+    stroke: currentColor;
+}
+
+.bebelume-icon-box-text {
+    flex: 1;
+    margin: 0;
+}
+
+.bebelume-icon-box-text div,
+.bebelume-icon-box-text p {
+    margin: 0;
+    line-height: 1.6;
+    color: #333333;
+}
+
+/* Suporte a formatação de texto */
+.bebelume-icon-box-text strong {
+    font-weight: bold;
+}
+
+.bebelume-icon-box-text em {
+    font-style: italic;
+}
+
+.bebelume-icon-box-text u {
+    text-decoration: underline;
+}
+
+.bebelume-icon-box-text s {
+    text-decoration: line-through;
+}
+
+.bebelume-icon-box-text a {
+    color: #2A4582;
+    text-decoration: underline;
+}
+
+.bebelume-icon-box-text a:hover {
+    color: #1a2d5c;
+}
+
+/* Icon Box Responsivo */
+@media (max-width: 768px) {
+    .bebelume-icon-box {
+        gap: 15px;
+        padding: 15px;
+    }
+    
+    .bebelume-icon-box-icon {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .bebelume-icon-box-icon i {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .bebelume-icon-box {
+        gap: 12px;
+        padding: 12px;
+    }
+    
+    .bebelume-icon-box-icon {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .bebelume-icon-box-icon i {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+
+
+
+/* ── Cadeado para não-assinantes ─────────────────────────── */
+.filtro-post-card--locked {
+    cursor: pointer;
+    overflow: visible !important; /* desfaz o overflow:hidden do card pai */
+}
+
+.filtro-card-locked-wrap {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px 8px 0 0;
+    height: 200px;   /* mesma altura do filtro-card-image */
+    flex-shrink: 0;
+}
+
+/* A imagem dentro do wrap ocupa o espaço todo */
+.filtro-card-locked-wrap .filtro-card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.filtro-card-lock-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    opacity: 1;
+    border-radius: 0;
+    z-index: 2;
+}
+
+.filtro-card-lock-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: rgba(235, 42, 97, 0.90);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.filtro-card-lock-text {
+    font-size: 12px;
+    font-weight: 700;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    text-shadow: 0 1px 3px rgba(0,0,0,.5);
+}
+
+.filtro-post-card--locked .filtro-card-title {
+    color: #888;
+}

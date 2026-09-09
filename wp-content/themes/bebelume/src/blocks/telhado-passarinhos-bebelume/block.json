@@ -1,0 +1,24 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "bebelume/telhado-passarinhos-bebelume",
+  "version": "1.0.0",
+  "title": "Telhado Passarinhos Bebelume",
+  "category": "bebelume",
+  "icon": "admin-multisite",
+  "description": "Telhado Passarinhos Bebelume com opção de nuvens flutuantes",
+  "keywords": ["bebelume", "telhado", "passarinhos", "nuvens"],
+  "textdomain": "bebelume-theme",
+  "supports": { "html": false, "anchor": true },
+  "attributes": {
+    "backgroundColor": { "type": "string", "default": "#ffffff" },
+    "link": { "type": "string", "default": "" },
+    "invertLayout": { "type": "boolean", "default": false },
+    "hasImage": { "type": "boolean", "default": false },
+    "showClouds": { "type": "boolean", "default": true },
+    "showGarden": { "type": "boolean", "default": false }
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./editor.css",
+  "style": "file:./style.css"
+}

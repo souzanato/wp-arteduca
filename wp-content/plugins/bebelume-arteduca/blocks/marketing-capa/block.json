@@ -1,0 +1,20 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "bebelume-arteduca/marketing-capa",
+  "version": "1.4.0",
+  "title": "Marketing Bebelume — Capa",
+  "category": "bebelume-arteduca",
+  "icon": "cover-image",
+  "description": "Capa/hero institucional do Bebelume ArtEduca, com moldura colorida e conteúdo livre.",
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "corFundo": {
+      "type": "string",
+      "default": "#F4F2EA"
+    }
+  },
+  "textdomain": "bebelume-arteduca"
+}

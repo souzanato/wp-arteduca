@@ -1,0 +1,43 @@
+/* =============================================
+   Bloco: ArtEduca Footer — Editor
+   ============================================= */
+.arteduca-footer-editor-wrapper {
+    border: 2px dashed #e8194b;
+    border-radius: 8px;
+    padding: 1rem;
+    background: #fff5f7;
+}
+
+.arteduca-footer-editor-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #e8194b;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.75rem;
+}
+
+.arteduca-footer-innerblocks {
+    background: #fff;
+    border-radius: 6px;
+    padding: 0.75rem;
+}
+
+/* =============================================
+   Bloco: ArtEduca Footer — Frontend
+   (o bloco fica oculto no conteúdo e aparece no footer)
+   ============================================= */
+.arteduca-footer-block {
+    display: none; /* esconde no lugar original */
+}
+
+.arteduca-footer-block.no-footer {
+    display: block; /* fallback: se não achar footer, mostra no lugar */
+}
+
+/* quando movido para o footer */
+.site-footer .arteduca-footer-block {
+    display: block;
+    text-align: center;
+    padding: 2rem 1rem 1rem;
+}

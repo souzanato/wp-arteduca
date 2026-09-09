@@ -1,0 +1,14 @@
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Ignora em TODAS as pastas
+**/.DS_Store
+
+node_modules/
+build/

@@ -1,0 +1,31 @@
+/* ============================================
+   Bebelume Telhado — espelha o CSS do tema
+   As imagens ficam no plugin; o ::before/::after
+   do .andar-content aponta para cá via PHP inline.
+   ============================================ */
+
+/* Garante que o bloco não seja cortado pela admin bar */
+.bebelume-nivel.wp-block-bebelume-telhado {
+    overflow: visible;
+}
+
+/* Empurra o bloco para baixo da barra superior */
+.bebelume-associacoes-telhado {
+    margin-top: 5em !important;
+}
+
+.bebelume-associacoes-telhado .bebelume-nivel {
+    line-height: 1 !important;
+}
+
+/* Garante line-height no conteúdo interno */
+.bebelume-andar.telhado-passarinhos-bebelume .andar-content,
+.bebelume-andar.telhado-passarinhos-bebelume .andar-content * {
+    line-height: 1.5 !important;
+}
+
+/* Eleva os passarinhos acima da admin bar (z-index: 99) e do header (9998) */
+.bebelume-andar.telhado-passarinhos-bebelume .andar-content::before,
+.bebelume-andar.telhado-passarinhos-bebelume .andar-content::after {
+    z-index: 99999 !important;
+}

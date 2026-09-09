@@ -1,0 +1,102 @@
+/* Estilos para o editor Gutenberg */
+
+.bebelume-video-wrapper {
+    margin: 20px 0;
+}
+
+.bebelume-video-placeholder {
+    user-select: none;
+}
+
+/* RichText editável - Título */
+.bebelume-video-title {
+    margin: 0 0 8px 0 !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    line-height: 1.4 !important;
+    color: #0f0f0f !important;
+    outline: none;
+    border: 2px dashed transparent;
+    padding: 4px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.bebelume-video-title:focus {
+    border-color: #007cba;
+    background: rgba(0, 124, 186, 0.05);
+}
+
+.bebelume-video-title[data-is-placeholder-visible="true"]::before {
+    color: #999 !important;
+    font-style: italic;
+}
+
+/* RichText editável - Descrição */
+.bebelume-video-description {
+    margin: 0 !important;
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+    color: #606060 !important;
+    outline: none;
+    border: 2px dashed transparent;
+    padding: 4px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    min-height: 40px;
+    white-space: pre-wrap;
+}
+
+.bebelume-video-description:focus {
+    border-color: #007cba;
+    background: rgba(0, 124, 186, 0.05);
+}
+
+.bebelume-video-description[data-is-placeholder-visible="true"]::before {
+    color: #999 !important;
+    font-style: italic;
+}
+
+/* Formatação inline no editor */
+.bebelume-video-title strong,
+.bebelume-video-description strong {
+    font-weight: 700 !important;
+}
+
+.bebelume-video-title em,
+.bebelume-video-description em {
+    font-style: italic !important;
+}
+
+.bebelume-video-title u,
+.bebelume-video-description u {
+    text-decoration: underline !important;
+}
+
+.bebelume-video-title s,
+.bebelume-video-description s {
+    text-decoration: line-through !important;
+}
+
+.bebelume-video-description a {
+    color: #007cba !important;
+    text-decoration: underline !important;
+}
+
+/* Ajustes para o painel de controle */
+.components-base-control__label {
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.components-color-palette {
+    margin-top: 8px;
+}
+
+/* Preview do Plyr no editor */
+.bebelume-plyr-video {
+    width: 100%;
+    border-radius: 8px;
+    display: block;
+}

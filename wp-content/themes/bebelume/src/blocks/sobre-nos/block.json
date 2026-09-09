@@ -1,0 +1,37 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "bebelume/sobre-nos",
+  "version": "1.0.0",
+  "title": "Sobre Nós",
+  "category": "design",
+  "icon": "info",
+  "description": "Bloco customizado com design orgânico para seção Sobre Nós",
+  "keywords": ["sobre", "about", "bebelume"],
+  "textdomain": "bebelume",
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": "SOBRE NÓS"
+    },
+    "content": {
+      "type": "string",
+      "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    },
+    "buttonText": {
+      "type": "string",
+      "default": "LEIA MAIS"
+    },
+    "buttonUrl": {
+      "type": "string",
+      "default": "#"
+    }
+  },
+  "supports": {
+    "html": false,
+    "align": ["wide", "full"]
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}

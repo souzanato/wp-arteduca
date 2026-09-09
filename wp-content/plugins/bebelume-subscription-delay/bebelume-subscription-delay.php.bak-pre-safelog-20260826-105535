@@ -1,0 +1,159 @@
+<?php
+/**
+ * Plugin Name: Bebelume - Subscription Delay DEBUG
+ * Description: VERSÃO DEBUG - Mostra o que está sendo enviado ao Stripe
+ * Version: 4.1.0 DEBUG
+ * Author: Bebelume
+ */
+
+if (!defined('ABSPATH')) {
+    exit;
+}
+
+class Bebelume_Subscription_Delay_Debug {
+
+    private static $instance = null;
+
+    public static function get_instance() {
+        if (null === self::$instance) {
+            self::$instance = new self();
+        }
+        return self::$instance;
+    }
+
+    private function __construct() {
+        add_action('pmpro_membership_level_after_other_settings', array($this, 'add_delay_field'));
+        add_action('pmpro_save_membership_level', array($this, 'save_delay_field'));
+
+        // PRIORIDADE ALTA para executar DEPOIS de todos os outros
+        add_filter('pmpro_stripe_checkout_session_parameters', array($this, 'modify_and_debug_stripe_params'), 999, 3);
+
+        add_filter('pmpro_get_membership_level', array($this, 'add_delay_to_level'), 10, 2);
+    }
+
+    public function add_delay_field($level) {
+        $delay_days = get_option('pmpro_level_' . $level->id . '_delay_days', '');
+        ?>
+        <h3 class="topborder">Configurações de Trial (Bebelume DEBUG)</h3>
+        <table class="form-table">
+            <tbody>
+                <tr>
+                    <th scope="row" valign="top">
+                        <label for="bebelume_delay_days">Trial Grátis (dias)</label>
+                    </th>
+                    <td>
+                        <input type="number"
+                               id="bebelume_delay_days"
+                               name="bebelume_delay_days"
+                               value="<?php echo esc_attr($delay_days); ?>"
+                               min="0"
+                               max="730"
+                               step="1"
+                               style="width: 100px;">
+                        <p class="description">
+                            <strong>VERSÃO DEBUG:</strong> Este plugin vai registrar no log do WordPress o que está sendo enviado ao Stripe.<br>
+                            Configure aqui: <strong>30 dias</strong><br>
+                            Depois faça checkout e veja o arquivo: <code>/wp-content/debug.log</code>
+                        </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <?php
+    }
+
+    public function save_delay_field($level_id) {
+        if (isset($_POST['bebelume_delay_days'])) {
+            $delay_days = intval($_POST['bebelume_delay_days']);
+            if ($delay_days > 730) {
+                $delay_days = 730;
+            }
+            update_option('pmpro_level_' . $level_id . '_delay_days', $delay_days);
+        }
+    }
+
+    public function add_delay_to_level($level, $level_id) {
+        if (!empty($level) && !empty($level_id)) {
+            $delay_days = get_option('pmpro_level_' . $level_id . '_delay_days', 0);
+            $level->subscription_delay = intval($delay_days);
+        }
+        return $level;
+    }
+
+    /**
+     * FUNÇÃO DE DEBUG - Registra TUDO que está sendo enviado ao Stripe
+     */
+    public function modify_and_debug_stripe_params($checkout_session_params, $morder, $customer) {
+        // Pegar o nível do pedido
+        $level_id = $morder->membership_id;
+
+        // LOG 1: O que chegou ANTES da nossa modificação
+        error_log('===============================================');
+        error_log('BEBELUME DEBUG - STRIPE CHECKOUT SESSION PARAMS');
+        error_log('===============================================');
+        error_log('Level ID: ' . $level_id);
+        error_log('Params ANTES da modificação:');
+        error_log(print_r($checkout_session_params, true));
+
+        if (!empty($level_id)) {
+            $delay_days = get_option('pmpro_level_' . $level_id . '_delay_days', 0);
+            $delay_days = intval($delay_days);
+
+            error_log('Delay configurado no plugin: ' . $delay_days . ' dias');
+
+            if ($delay_days > 0) {
+                if ($delay_days > 730) {
+                    $delay_days = 730;
+                }
+
+                // FORÇAR o trial_period_days
+                if (isset($checkout_session_params['subscription_data'])) {
+                    $checkout_session_params['subscription_data']['trial_period_days'] = $delay_days;
+                } else {
+                    $checkout_session_params['subscription_data'] = array(
+                        'trial_period_days' => $delay_days
+                    );
+                }
+
+                error_log('Trial period FORÇADO para: ' . $delay_days . ' dias');
+            }
+        }
+
+        // LOG 2: O que vai ser enviado DEPOIS da nossa modificação
+        error_log('-----------------------------------------------');
+        error_log('Params DEPOIS da modificação:');
+        error_log(print_r($checkout_session_params, true));
+        error_log('===============================================');
+
+        return $checkout_session_params;
+    }
+}
+
+function bebelume_subscription_delay_debug_init() {
+    if (!class_exists('MemberOrder')) {
+        add_action('admin_notices', 'bebelume_subscription_delay_debug_notice');
+        return;
+    }
+
+    // Ativar debug do WordPress
+    if (!defined('WP_DEBUG')) {
+        define('WP_DEBUG', true);
+    }
+    if (!defined('WP_DEBUG_LOG')) {
+        define('WP_DEBUG_LOG', true);
+    }
+
+    Bebelume_Subscription_Delay_Debug::get_instance();
+}
+add_action('plugins_loaded', 'bebelume_subscription_delay_debug_init');
+
+function bebelume_subscription_delay_debug_notice() {
+    ?>
+    <div class="notice notice-error">
+        <p>
+            <strong>Bebelume - Subscription Delay DEBUG</strong> requer o plugin
+            <strong>Paid Memberships Pro</strong> para funcionar.
+        </p>
+    </div>
+    <?php
+}

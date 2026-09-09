@@ -1,0 +1,35 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "bebelume/filtro-arteduca",
+  "title": "Filtro ArtEduca",
+  "category": "bebelume",
+  "icon": "search",
+  "description": "Busca e filtro de posts por campos de experiência",
+  "keywords": ["busca", "filtro", "campos", "pesquisa"],
+  "textdomain": "bebelume-arteduca",
+  "editorScript": "file:./block.js",
+  "style": "file:./style.css",
+  "attributes": {
+    "apiBaseUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "selectedCategories": {
+      "type": "array",
+      "default": []
+    },
+    "postsLimit": {
+      "type": "number",
+      "default": 20
+    },
+    "searchPlaceholder": {
+      "type": "string",
+      "default": "Buscar..."
+    }
+  },
+  "supports": {
+    "html": false,
+    "align": ["wide", "full"]
+  }
+}

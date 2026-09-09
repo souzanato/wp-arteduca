@@ -1,0 +1,27 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "bebelume-arteduca/titulo-arteduca",
+  "version": "1.1.0",
+  "title": "Título ArtEduca",
+  "category": "bebelume-arteduca",
+  "icon": "heading",
+  "description": "Título decorativo com barra colorida superior",
+  "supports": {
+    "html": false,
+    "anchor": true
+  },
+  "attributes": {
+    "titulo": {
+      "type": "string",
+      "default": "TÍTULO"
+    },
+    "corFundo": {
+      "type": "string",
+      "default": "#000000"
+    }
+  },
+  "textdomain": "bebelume-arteduca",
+  "editorScript": "file:./block.js",
+  "style": "file:./style.css"
+}

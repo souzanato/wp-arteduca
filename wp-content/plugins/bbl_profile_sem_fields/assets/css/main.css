@@ -1,0 +1,2765 @@
+/**
+ * Bebelume Profile - Main Stylesheet COMPILADO
+ * Contém: admin-ui.css + main.css + pmpro-custom.css + pmpro-levels.css
+ * 
+ * NÃO é carregado quando o usuário é administrador
+ */
+
+/* ========================================
+   FONTS
+   ======================================== */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&family=Nunito:wght@400;600;700;800&family=Quicksand:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
+
+/* Bootstrap Icons (separado do Bootstrap CSS) */
+@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css');
+
+/* ========================================
+   CSS VARIABLES
+   ======================================== */
+:root {
+    --bbl-pink: #E73665;
+    --bbl-cyan: #00BCD4;
+    --bbl-yellow: #FFD54F;
+    --bbl-green: #66BB6A;
+    --bbl-white: #FFFFFF;
+    --bbl-bg-light: #F5F9FC;
+    --bbl-border: #E0E7ED;
+    --bbl-text-primary: #2C3E50;
+    --bbl-text-secondary: #5A6C7D;
+    --bbl-text-tertiary: #8A9BA8;
+    --bbl-font-display: 'Nunito', sans-serif;
+    --bbl-font-body: 'Quicksand', sans-serif;
+    --bbl-font-pmpro: 'Open Sans', sans-serif; /* ← Open Sans */
+    --bbl-radius-md: 12px;
+    --bbl-radius-lg: 16px;
+    --bbl-radius-xl: 24px;
+}
+
+.pmpro,
+.pmpro * {
+    font-family: 'Open Sans', sans-serif !important;
+    line-height: 1;
+}
+
+/* ========================================
+   ADMIN UI - BACKGROUND
+   ======================================== */
+#wpcontent {
+    background-color: #F5F9FC !important;
+}
+
+.bt-3px {
+	border-top: 3px solid #000 !important;
+}
+
+#menu-dashboard,
+#screen-meta-links,
+#wp-admin-bar-wp-logo,
+#wp-admin-bar-site-name,
+#wp-admin-bar-password_protected,
+.wp-not-current-submenu.wp-menu-separator {
+    display: none !important;
+}
+
+/* ========================================
+   TOPBAR (Barra Superior)
+   ======================================== */
+#wpadminbar {
+    background: linear-gradient(135deg, var(--bbl-pink) 0%, var(--bbl-cyan) 100%) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+    height: 80px !important;
+    min-height: 80px !important;
+}
+
+#wpadminbar * {
+    color: white !important;
+}
+
+#wpadminbar .ab-top-menu > li {
+    height: 80px !important;
+}
+
+#wpadminbar .ab-top-menu > li > .ab-item {
+    height: 80px !important;
+    line-height: 80px !important;
+    padding: 0 15px !important;
+}
+
+#wpadminbar .ab-top-secondary > li > .ab-item {
+    height: 80px !important;
+    line-height: 80px !important;
+}
+
+#wpadminbar .ab-item,
+#wpadminbar a.ab-item,
+#wpadminbar > #wp-toolbar span.ab-label,
+#wpadminbar > #wp-toolbar span.noticons {
+    color: white !important;
+}
+
+#wpadminbar .ab-icon:before,
+#wpadminbar .ab-item:before {
+    color: white !important;
+}
+
+#wpadminbar .ab-top-menu > li:hover > .ab-item,
+#wpadminbar .ab-top-menu > li.hover > .ab-item {
+    background: rgba(255, 255, 255, 0.2) !important;
+    color: white !important;
+}
+
+#wpadminbar #wp-admin-bar-root-default > #wp-admin-bar-menu-toggle {
+    display: none !important;
+}
+
+#wpadminbar #wp-admin-bar-root-default > li:first-child {
+    margin-left: 170px !important;
+}
+
+#wpadminbar .avatar {
+    width: 32px !important;
+    height: 32px !important;
+    vertical-align: middle !important;
+    margin-right: 8px !important;
+}
+
+#wpadminbar .ab-submenu {
+    background: white !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15) !important;
+    margin-top: 0 !important;
+}
+
+#wpadminbar .ab-submenu .ab-item {
+    color: var(--bbl-text-primary) !important;
+    height: auto !important;
+    line-height: 1.5 !important;
+    padding: 12px 16px !important;
+}
+
+#wpadminbar .ab-submenu .ab-item:hover {
+    background: var(--bbl-bg-light) !important;
+    color: var(--bbl-pink) !important;
+}
+
+#wpcontent,
+#wpbody {
+    padding-top: 0;
+}
+
+html.wp-toolbar {
+    padding-top: 80px !important;
+}
+
+.pmpro_message.pmpro_success {
+    border-left-color: var(--bbl-green) !important;
+    background-color: #fff !important;
+}
+
+/* ========================================
+   MENU DROPDOWN DO USUÁRIO
+   ======================================== */
+#wpadminbar #wp-admin-bar-my-account .ab-sub-wrapper {
+    background: white !important;
+    border-radius: 12px !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15) !important;
+    overflow: hidden !important;
+    min-width: 280px !important;
+    margin-top: 8px !important;
+}
+
+#wpadminbar #wp-admin-bar-user-actions {
+    padding: 16px 0 !important;
+}
+
+#wpadminbar #wp-admin-bar-user-info {
+    border-bottom: 2px solid var(--bbl-border) !important;
+    padding-bottom: 16px !important;
+    margin-bottom: 8px !important;
+}
+
+#wpadminbar #wp-admin-bar-user-info .ab-item {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    padding: 20px 24px !important;
+    height: auto !important;
+    line-height: 1.5 !important;
+    background: transparent !important;
+}
+
+#wpadminbar #wp-admin-bar-user-info .ab-item:hover {
+    background: var(--bbl-bg-light) !important;
+}
+
+#wpadminbar #wp-admin-bar-user-info .avatar {
+    width: 64px !important;
+    height: 64px !important;
+    border-radius: 50% !important;
+    border: 3px solid var(--bbl-cyan) !important;
+    margin: 0 0 12px 0 !important;
+    box-shadow: 0 4px 12px rgba(0, 188, 212, 0.2) !important;
+}
+
+#wpadminbar #wp-admin-bar-user-info .display-name {
+    display: block !important;
+    text-align: center !important;
+    width: 100% !important;
+    line-height: 1.6 !important;
+    padding: 0 !important;
+}
+
+#wpadminbar #wp-admin-bar-user-info .display-name:first-of-type {
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    color: var(--bbl-text-primary) !important;
+    margin-bottom: 4px !important;
+    font-family: 'Nunito', sans-serif !important;
+}
+
+#wpadminbar #wp-admin-bar-user-info .display-name.edit-profile {
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    color: var(--bbl-cyan) !important;
+    font-family: 'Quicksand', sans-serif !important;
+    transition: color 0.3s ease !important;
+}
+
+#wpadminbar #wp-admin-bar-user-info .ab-item:hover .display-name.edit-profile {
+    color: var(--bbl-pink) !important;
+}
+
+#wpadminbar #wp-admin-bar-logout {
+    margin: 8px 16px !important;
+}
+
+#wpadminbar #wp-admin-bar-logout .ab-item {
+    background: linear-gradient(135deg, var(--bbl-pink) 0%, #d32f5a 100%) !important;
+    color: white !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    padding: 12px 20px !important;
+    border-radius: 8px !important;
+    text-align: center !important;
+    height: auto !important;
+    line-height: 1.4 !important;
+    transition: all 0.3s ease !important;
+    font-family: 'Quicksand', sans-serif !important;
+    box-shadow: 0 2px 8px rgba(231, 54, 101, 0.3) !important;
+}
+
+#wpadminbar #wp-admin-bar-logout .ab-item:hover {
+    background: linear-gradient(135deg, #d32f5a 0%, #b82847 100%) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 12px rgba(231, 54, 101, 0.4) !important;
+}
+
+#wpadminbar #wp-admin-bar-logout .ab-item:active {
+    transform: translateY(0) !important;
+}
+
+#wpadminbar #wp-admin-bar-logout .ab-item:before {
+    content: '👋' !important;
+    margin-right: 8px !important;
+    font-size: 16px !important;
+}
+
+/* ========================================
+   SIDEBAR (Menu Lateral)
+   ======================================== */
+#adminmenumain,
+#adminmenuback,
+#adminmenuwrap {
+    background: white !important;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.08) !important;
+}
+
+#adminmenu,
+#adminmenu .wp-submenu {
+    background: white !important;
+}
+
+#adminmenu a {
+    color: var(--bbl-text-primary) !important;
+    transition: all 0.3s ease !important;
+}
+
+#adminmenu .wp-menu-image:before,
+#adminmenu .wp-menu-image img {
+    color: var(--bbl-text-secondary) !important;
+}
+
+#adminmenu li.menu-top:hover,
+#adminmenu li.opensub > a.menu-top,
+#adminmenu li > a.menu-top:focus {
+    background: linear-gradient(90deg, rgba(231, 54, 101, 0.1) 0%, rgba(0, 188, 212, 0.1) 100%) !important;
+    color: var(--bbl-pink) !important;
+    box-shadow: none !important;
+}
+
+#adminmenu li.menu-top:hover .wp-menu-image:before,
+#adminmenu li.opensub > a.menu-top .wp-menu-image:before {
+    color: var(--bbl-pink) !important;
+}
+
+#adminmenu .wp-has-current-submenu .wp-submenu .wp-submenu-head,
+#adminmenu .wp-menu-arrow,
+#adminmenu .wp-has-current-submenu a.wp-has-current-submenu,
+#adminmenu li.current a.menu-top,
+#adminmenu .wp-has-current-submenu:hover .wp-submenu .wp-submenu-head {
+    background: linear-gradient(90deg, var(--bbl-pink) 0%, var(--bbl-cyan) 100%) !important;
+    color: white !important;
+}
+
+#adminmenu .current .wp-menu-image:before,
+#adminmenu .wp-has-current-submenu .wp-menu-image:before {
+    color: white !important;
+}
+
+#adminmenu li.current a.menu-top .wp-menu-name {
+    color: white !important;
+}
+
+#adminmenu .wp-menu-separator {
+    background: var(--bbl-border) !important;
+    height: 2px !important;
+}
+
+#collapse-button {
+    color: var(--bbl-text-secondary) !important;
+}
+
+#collapse-button:hover {
+    color: var(--bbl-pink) !important;
+}
+
+#adminmenu .wp-submenu {
+    background: var(--bbl-bg-light) !important;
+}
+
+#adminmenu .wp-submenu a {
+    color: var(--bbl-text-secondary) !important;
+}
+
+#adminmenu .wp-submenu a:hover {
+    color: var(--bbl-cyan) !important;
+    background: white !important;
+}
+
+#adminmenu .wp-submenu li.current a {
+    color: var(--bbl-pink) !important;
+    font-weight: 600 !important;
+}
+
+#adminmenu .awaiting-mod,
+#adminmenu .update-plugins {
+    background: var(--bbl-pink) !important;
+    color: white !important;
+    border-radius: 12px !important;
+}
+
+/* ========================================
+   FOOTER DO WORDPRESS
+   ======================================== */
+#wpfooter {
+    color: var(--bbl-text-tertiary) !important;
+}
+
+#wpfooter a {
+    color: var(--bbl-cyan) !important;
+    text-decoration: none !important;
+}
+
+#wpfooter a:hover {
+    color: var(--bbl-pink) !important;
+}
+
+/* ========================================
+   PERFIL DO USUÁRIO
+   ======================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.bbl-profile-wrapper {
+    min-height: 100vh;
+    background: var(--bbl-bg-light);
+    font-family: var(--bbl-font-body);
+    color: var(--bbl-text-primary);
+    padding: 2rem;
+}
+
+.bbl-header {
+    max-width: 900px;
+    margin: 0 auto 3rem;
+    text-align: center;
+}
+
+.bbl-title {
+    font-family: var(--bbl-font-display);
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--bbl-pink);
+    margin: 0 0 1rem;
+    letter-spacing: -0.02em;
+}
+
+.bbl-subtitle {
+    font-size: 1.1rem;
+    color: var(--bbl-text-secondary);
+    font-weight: 500;
+}
+
+.bbl-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    border-radius: var(--bbl-radius-xl);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    padding: 3rem;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.bbl-avatar-section {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding-bottom: 3rem;
+    margin-bottom: 3rem;
+    border-bottom: 3px solid var(--bbl-border);
+}
+
+.bbl-avatar-wrapper {
+    position: relative;
+}
+
+.bbl-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 5px solid var(--bbl-cyan);
+    object-fit: cover;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.bbl-avatar-info h2 {
+    font-family: var(--bbl-font-display);
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--bbl-text-primary);
+    margin: 0 0 0.5rem;
+}
+
+.bbl-avatar-info p {
+    font-size: 1rem;
+    color: var(--bbl-text-secondary);
+    margin: 0;
+}
+
+.bbl-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.bbl-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.bbl-field {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.bbl-field-full {
+    margin-bottom: 24px;
+}
+
+.bbl-profile-wrapper .bbl-label,
+.bbl-form .bbl-label,
+label.bbl-label {
+    display: block !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    color: #2C3E50 !important;
+    margin-bottom: 12px !important;
+    font-family: 'Nunito', sans-serif !important;
+}
+
+.bbl-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #66BB6A 0%, #4CAF50 100%);
+    color: white;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-left: 8px;
+    vertical-align: middle;
+}
+
+.bbl-profile-wrapper .bbl-input,
+.bbl-profile-wrapper .bbl-textarea,
+.bbl-form .bbl-input,
+.bbl-form .bbl-textarea,
+input.bbl-input,
+textarea.bbl-textarea {
+    width: 100% !important;
+    padding: 20px 24px !important;
+    font-size: 18px !important;
+    font-family: 'Quicksand', sans-serif !important;
+    font-weight: 400 !important;
+    color: #2C3E50 !important;
+    background: #F8FAFB !important;
+    border: 2px solid #E8EEF2 !important;
+    border-radius: 16px !important;
+    transition: all 0.3s ease !important;
+    outline: none !important;
+    line-height: 1.5 !important;
+    min-height: 64px !important;
+    box-sizing: border-box !important;
+}
+
+.bbl-profile-wrapper .bbl-input::placeholder,
+.bbl-profile-wrapper .bbl-textarea::placeholder,
+.bbl-form .bbl-input::placeholder,
+.bbl-form .bbl-textarea::placeholder {
+    color: #A8B4C0 !important;
+    font-weight: 400 !important;
+}
+
+.bbl-profile-wrapper .bbl-input:focus,
+.bbl-profile-wrapper .bbl-textarea:focus,
+.bbl-form .bbl-input:focus,
+.bbl-form .bbl-textarea:focus {
+    background: #FFFFFF !important;
+    border-color: #00BCD4 !important;
+    box-shadow: 0 0 0 4px rgba(0, 188, 212, 0.1) !important;
+}
+
+.bbl-profile-wrapper .bbl-input:hover:not(:focus),
+.bbl-profile-wrapper .bbl-textarea:hover:not(:focus),
+.bbl-form .bbl-input:hover:not(:focus),
+.bbl-form .bbl-textarea:hover:not(:focus) {
+    border-color: #D0D8E0 !important;
+}
+
+.bbl-profile-wrapper .bbl-input-readonly,
+.bbl-form .bbl-input-readonly,
+input.bbl-input-readonly {
+    background: #F0F4F7 !important;
+    color: #5A6C7D !important;
+    cursor: not-allowed !important;
+    border-color: #E0E7ED !important;
+}
+
+.bbl-profile-wrapper .bbl-input-readonly:focus,
+.bbl-form .bbl-input-readonly:focus {
+    box-shadow: none !important;
+    border-color: #E0E7ED !important;
+}
+
+.bbl-profile-wrapper .bbl-textarea,
+.bbl-form .bbl-textarea,
+textarea.bbl-textarea {
+    min-height: 140px !important;
+    resize: vertical !important;
+}
+
+.bbl-password-hint {
+    margin: -12px 0 28px 0;
+    font-size: 15px;
+    color: var(--bbl-text-secondary);
+    padding-left: 4px;
+}
+
+.bbl-form-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: flex-end;
+    margin-top: 32px;
+    padding-top: 28px;
+    border-top: 2px solid var(--bbl-border);
+}
+
+.bbl-btn {
+    padding: 16px 32px;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: var(--bbl-font-display);
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: none;
+    letter-spacing: 0;
+    min-width: 160px;
+}
+
+.bbl-btn-primary {
+    background: linear-gradient(135deg, var(--bbl-pink) 0%, #d32f5a 100%);
+    color: white;
+    box-shadow: 0 4px 16px rgba(231, 54, 101, 0.25);
+}
+
+.bbl-btn-primary:hover {
+    background: linear-gradient(135deg, #d32f5a 0%, #b82847 100%);
+    box-shadow: 0 6px 20px rgba(231, 54, 101, 0.35);
+    transform: translateY(-2px);
+}
+
+.bbl-btn-primary:active {
+    transform: translateY(0);
+}
+
+.bbl-btn-primary:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+.bbl-btn-secondary {
+    background: white;
+    color: var(--bbl-text-secondary);
+    border: 2px solid var(--bbl-border);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.bbl-btn-secondary:hover {
+    background: var(--bbl-bg-light);
+    border-color: var(--bbl-text-secondary);
+    color: var(--bbl-text-primary);
+    transform: translateY(-2px);
+}
+
+.bbl-toast {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    background: white;
+    border-radius: var(--bbl-radius-md);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    min-width: 300px;
+    transform: translateX(400px);
+    opacity: 0;
+    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 9999;
+    border-left: 4px solid var(--bbl-green);
+}
+
+.bbl-toast-show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.bbl-toast-success {
+    border-left-color: var(--bbl-green);
+}
+
+.bbl-toast-error {
+    border-left-color: var(--bbl-pink);
+}
+
+.bbl-toast-info {
+    border-left-color: var(--bbl-cyan);
+}
+
+.bbl-toast-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--bbl-green);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.bbl-toast-error .bbl-toast-icon {
+    background: var(--bbl-pink);
+}
+
+.bbl-toast-info .bbl-toast-icon {
+    background: var(--bbl-cyan);
+}
+
+.bbl-toast-message {
+    flex: 1;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--bbl-text-primary);
+}
+
+.bbl-btn.loading {
+    position: relative;
+    color: transparent;
+    pointer-events: none;
+}
+
+.bbl-btn.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.bebelume-level-teasers .teaser-text p {
+    font-size: 1.5em;
+    text-transform: none;
+    font-weight: normal;
+    color: #333;
+}
+
+.bebelume-level-teasers p {
+text-transform: uppercase;
+    color: #34B8D2;
+    font-size: 2em;
+    font-weight: 700;
+    text-align: center;
+    margin: 0;
+    padding: .5em 0;
+}
+
+/* ========================================
+   PMPRO - CHECKOUT
+   ======================================== */
+.pmpro {
+    padding: 2em;
+}
+
+.white-bkg {
+        background-color: #fff !important;
+}
+
+.yellow-text {
+    color: var(--bbl-yellow);
+}
+
+.white-text {
+    color: #fff;
+}
+
+.pink-bkg {
+    background-color: var(--bbl-pink) !important;
+}
+
+.pmpro_card {
+    background: var(--bbl-white) !important;
+    border-radius: 24px !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12) !important;
+    border: none !important;
+    margin-bottom: 32px !important;
+    overflow: hidden !important;
+}
+
+.pmpro_card_content {
+    padding: 40px !important;
+}
+
+.pmpro_card_title,
+.pmpro_form_heading {
+    font-family: 'Nunito', sans-serif !important;
+    font-size: 28px !important;
+    font-weight: 800 !important;
+    color: var(--bbl-pink) !important;
+    margin: 0 0 24px 0 !important;
+    letter-spacing: -0.02em !important;
+}
+
+.pmpro_level_name_text strong {
+    color: var(--bbl-cyan) !important;
+    font-weight: 700 !important;
+}
+
+.pmpro_level_description_text {
+    background: var(--bbl-bg-light) !important;
+    border-left: 4px solid var(--bbl-cyan) !important;
+    padding: 20px 24px !important;
+    border-radius: 12px !important;
+    margin: 24px 0 !important;
+}
+
+.pmpro_level_description_text p {
+    margin: 0 !important;
+    color: var(--bbl-text-secondary) !important;
+    font-size: 16px !important;
+    line-height: 1.6 !important;
+}
+
+.pmpro_level_cost_text {
+    background: linear-gradient(135deg, rgba(231, 54, 101, 0.1) 0%, rgba(0, 188, 212, 0.1) 100%) !important;
+    border-radius: 16px !important;
+    padding: 24px !important;
+    margin: 24px 0 !important;
+}
+
+.pmpro_level_cost_text strong {
+    color: var(--bbl-pink) !important;
+    font-size: 20px !important;
+    font-weight: 700 !important;
+}
+
+.pmpro_form_label {
+    display: block !important;
+    font-family: 'Nunito', sans-serif !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    color: var(--bbl-text-primary) !important;
+    margin-bottom: 12px !important;
+}
+
+.pmpro_asterisk {
+    color: var(--bbl-pink) !important;
+}
+
+.pmpro_form_input,
+.pmpro_form_input-text,
+.pmpro_form_input-email,
+.pmpro_form_input-password {
+    width: 100% !important;
+    padding: 20px 24px !important;
+    font-size: 18px !important;
+    font-family: 'Quicksand', sans-serif !important;
+    font-weight: 400 !important;
+    color: var(--bbl-text-primary) !important;
+    background: #F8FAFB !important;
+    border: 2px solid #E8EEF2 !important;
+    border-radius: 16px !important;
+    transition: all 0.3s ease !important;
+    outline: none !important;
+    line-height: 1.5 !important;
+    min-height: 64px !important;
+    box-sizing: border-box !important;
+}
+
+.pmpro_form_input::placeholder {
+    color: #A8B4C0 !important;
+}
+
+.pmpro_form_input:focus {
+    background: var(--bbl-white) !important;
+    border-color: var(--bbl-cyan) !important;
+    box-shadow: 0 0 0 4px rgba(0, 188, 212, 0.1) !important;
+}
+
+.pmpro_form_input:hover:not(:focus) {
+    border-color: #D0D8E0 !important;
+}
+
+.pmpro_cols-2 {
+    display: block !important;
+}
+
+.pmpro_form_field {
+    margin-bottom: 24px !important;
+    width: 100% !important;
+}
+
+.pmpro_form_field-password {
+    position: relative !important;
+}
+
+.pmpro_btn-password-toggle {
+    position: absolute !important;
+    right: 16px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    background: transparent !important;
+    border: none !important;
+    cursor: pointer !important;
+    color: var(--bbl-cyan) !important;
+    padding: 8px !important;
+    transition: all 0.3s ease !important;
+}
+
+.pmpro_btn-password-toggle:hover {
+    color: var(--bbl-pink) !important;
+}
+
+.pmpro_btn-submit-checkout {
+    width: 100% !important;
+    padding: 20px 32px !important;
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    font-family: 'Nunito', sans-serif !important;
+    background: linear-gradient(135deg, var(--bbl-pink) 0%, #d32f5a 100%) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 16px !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 16px rgba(231, 54, 101, 0.25) !important;
+    text-transform: none !important;
+    letter-spacing: 0 !important;
+}
+
+.pmpro_btn-submit-checkout:hover {
+    background: linear-gradient(135deg, #d32f5a 0%, #b82847 100%) !important;
+    box-shadow: 0 6px 20px rgba(231, 54, 101, 0.35) !important;
+    transform: translateY(-2px) !important;
+}
+
+.pmpro_btn-submit-checkout:active {
+    transform: translateY(0) !important;
+}
+
+.pmpro_card_actions {
+    background: var(--bbl-bg-light) !important;
+    padding: 20px 40px !important;
+    text-align: center !important;
+    font-size: 16px !important;
+    color: var(--bbl-text-secondary) !important;
+}
+
+.pmpro_card_actions a {
+    color: var(--bbl-cyan) !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+    transition: color 0.3s ease !important;
+}
+
+.pmpro_card_actions a:hover {
+    color: var(--bbl-pink) !important;
+    text-decoration: underline !important;
+}
+
+.pmpro_message {
+    background: #fff !important;
+    border-left: 4px solid var(--bbl-cyan) !important;
+    border-radius: 12px !important;
+    padding: 20px 24px !important;
+    margin-bottom: 24px !important;
+    font-size: 16px !important;
+}
+
+.pmpro_message.pmpro_error {
+    background-color: #fff !important;
+    border-left-color: var(--bbl-pink) !important;
+}
+
+.pmpro_message.pmpro_success {
+    background-color: #fff !important;
+    border-left-color: var(--bbl-green) !important;
+}
+
+.pmpro_hidden {
+    display: none !important;
+}
+
+#pmpro_processing_message {
+    text-align: center !important;
+    margin-top: 20px !important;
+    font-size: 16px !important;
+    color: var(--bbl-cyan) !important;
+    font-weight: 600 !important;
+}
+
+.pmpro_form_field-username {
+    display: none !important;
+}
+
+/* ========================================
+   PMPRO - PÁGINA DE NÍVEIS
+   ======================================== */
+.pmpro-pink-bkg {
+    background-color: #E72A63 !important;
+}
+
+.pmpro-yellow-bkg {
+    background-color: #F7D21A !important;
+}
+
+.pmpro-pink-bkg,
+.pmpro-yellow-bkg {
+    /* border: 25px solid transparent; */
+    /* border-image: url('../images/andar-bebelume.png') 35 round; */
+    /* border-image-outset: 0; */
+    /* border-radius: 8px; */
+    /* padding: 20px;
+    position: relative;
+    border-left: 4px solid #000; */
+    position: relative;
+    padding: 20px 20px 20px 50px !important; /* espaço para o tipo na esquerda */
+
+}
+
+.bebelume-pink-title {
+    color: #E72A63;
+}
+
+.bebelume-cyan-title {
+    color: #3ACBE7;
+}
+
+.bebelume-cyan-rib-text {
+    background-color: #3ACBE7;
+    color: #fff !important;
+}
+
+.bebelume-800-bold-text {
+    font-weight: 800;
+}
+
+.nivel-tipo {
+    /* font-size: 1.5em;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    letter-spacing: 0.5px;
+    font-weight: 700; */
+        position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-size: 1.5em;
+    font-weight: 900;
+    letter-spacing: 2px;
+    background-color: rgba(0,0,0,0.15);
+    margin: 0;
+    text-align: center;
+}
+
+.nivel-preco-novo {
+    /* margin: 20px 0;
+    text-align: right; */
+    text-align: left;
+    margin: 0 0 15px 0;
+}
+
+.preco-valor {
+    /* font-size: 3.5em;
+    margin: 0;
+    line-height: 1 !important;
+    font-weight: 300; */
+   font-size: clamp(2.5em, 6vw, 4em);
+    font-weight: 700 !important;
+    line-height: 1 !important;
+    margin: 0;
+}
+
+.preco-periodo {
+    /* font-size: 1.5em;
+    margin: 8px 0 0 0;
+    font-weight: 700;
+    letter-spacing: 0.3px; */
+    font-size: 1.2em;
+    margin: 5px 0 0 0;    
+}
+
+.pmpro-pink-bkg .nivel-tipo {
+    text-align: right;
+}
+
+.nivel-descricao {
+    margin: 20px 0;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.nivel-descricao p {
+    margin: 0;
+}
+
+.nivel-expiracao {
+    font-size: 13px;
+    margin: 15px 0;
+    opacity: 0.8;
+}
+
+.nivel-trial {
+    background-color: rgba(255, 255, 255, 0.5); /* Branco com 50% de opacidade */
+    padding: 1em;
+        margin: 2em 0;
+}
+
+.nivel-trial p {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
+    opacity: 1; /* Garante que o texto está 100% opaco */
+}
+
+
+
+.pmpro-pink-bkg .nivel-tipo,
+.pmpro-pink-bkg .preco-valor,
+.pmpro-pink-bkg .preco-periodo,
+.pmpro-pink-bkg .nivel-descricao,
+.pmpro-pink-bkg .nivel-descricao p,
+.pmpro-pink-bkg .nivel-expiracao {
+    color: #ffffff !important;
+}
+
+.pmpro-yellow-bkg .nivel-tipo,
+.pmpro-yellow-bkg .preco-valor,
+.pmpro-yellow-bkg .preco-periodo,
+.pmpro-yellow-bkg .nivel-descricao,
+.pmpro-yellow-bkg .nivel-descricao p,
+.pmpro-yellow-bkg .nivel-expiracao {
+    color: #1a1a1a !important;
+}
+
+.nivel-acao {
+    margin-top: 25px;
+}
+
+.nivel-acao a {
+    display: block;
+    text-align: center;
+    padding: 16px 24px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    font-family: 'Nunito', sans-serif;
+    width: 100%;
+}
+
+.pmpro-pink-bkg .nivel-acao a {
+    background: #ffffff;
+    color: #E72A63;
+    border: 2px solid #ffffff;
+}
+
+.pmpro-pink-bkg .nivel-acao a:hover {
+    background: transparent;
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
+.pmpro-yellow-bkg .nivel-acao a {
+    background: #1a1a1a;
+    color: #F7D21A;
+    border: 2px solid #1a1a1a;
+}
+
+.pmpro-yellow-bkg .nivel-acao a:hover {
+    background: transparent;
+    color: #1a1a1a;
+    border-color: #1a1a1a;
+}
+
+.nivel-atual {
+    position: relative;
+}
+
+.nivel-atual::before {
+    content: "✓ SEU PLANO";
+    position: absolute;
+    top: -15px;
+    right: 10px;
+    background: #4CAF50;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.nivel-item {
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.pmpro-texto-azul {
+    height: 100%;
+    font-size: 2em;
+    color: #49ADC9;
+    text-transform: uppercase;
+}
+
+body.pmpro-levels footer {
+    margin-top: -40px !important;
+}
+
+.mw-900 {
+    max-width: 900px;
+}
+
+.pmpro_card_subtitle {
+    font-weight: 500;
+    font-size: 80%;
+}
+
+.pmpro-checkout-page.pmpro {
+    margin: 0;
+}
+
+.pmpro-checkout-page .pmpro_processing_message {
+    color: #fff;
+}
+
+/* ========================================
+   RESPONSIVO
+   ======================================== */
+@media (max-width: 768px) {
+    /* Admin UI Mobile */
+    #wpadminbar {
+        height: 46px !important;
+        min-height: 46px !important;
+    }
+    
+    #wpadminbar .ab-top-menu > li > .ab-item {
+        height: 46px !important;
+        line-height: 46px !important;
+    }
+    
+    #wpadminbar #wp-admin-bar-root-default > li:first-child {
+        margin-left: 120px !important;
+    }
+    
+    #wpcontent,
+    #wpbody {
+        padding-top: 46px !important;
+    }
+    
+    html.wp-toolbar {
+        padding-top: 46px !important;
+    }
+    
+    #wpadminbar #wp-admin-bar-my-account .ab-sub-wrapper {
+        min-width: 240px !important;
+    }
+    
+    #wpadminbar #wp-admin-bar-user-info .avatar {
+        width: 56px !important;
+        height: 56px !important;
+    }
+    
+    #wpadminbar #wp-admin-bar-user-info .display-name:first-of-type {
+        font-size: 16px !important;
+    }
+    
+    #wpadminbar #wp-admin-bar-logout .ab-item {
+        padding: 10px 16px !important;
+        font-size: 13px !important;
+    }
+    
+    /* Profile Mobile */
+    .bbl-profile-wrapper {
+        padding: 1.5rem;
+    }
+    
+    .bbl-title {
+        font-size: 2rem;
+    }
+    
+    .bbl-subtitle {
+        font-size: 1rem;
+    }
+    
+    .bbl-container {
+        padding: 2rem;
+    }
+    
+    .bbl-avatar-section {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .bbl-avatar {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .bbl-form-row {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .bbl-input,
+    .bbl-textarea {
+        font-size: 16px;
+        padding: 18px 20px;
+        min-height: 56px;
+    }
+    
+    .bbl-label {
+        font-size: 15px;
+    }
+    
+    .bbl-form-actions {
+        flex-direction: column;
+    }
+    
+    .bbl-btn {
+        width: 100%;
+    }
+    
+    .bbl-toast {
+        right: 15px;
+        left: 15px;
+        min-width: auto;
+    }
+    
+    /* PMPro Mobile */
+    .pmpro_card_content {
+        padding: 24px !important;
+    }
+    
+    .pmpro_card_title,
+    .pmpro_form_heading {
+        font-size: 24px !important;
+    }
+    
+    .pmpro_form_input {
+        font-size: 16px !important;
+        padding: 18px 20px !important;
+        min-height: 56px !important;
+    }
+    
+    .pmpro_btn-submit-checkout {
+        font-size: 16px !important;
+        padding: 18px 24px !important;
+    }
+    
+    /* Levels Mobile */
+    .pmpro-pink-bkg,
+    .pmpro-yellow-bkg {
+        border-width: 15px;
+        border-image-slice: 25;
+        padding: 15px;
+    }
+    
+    .preco-valor {
+        font-size: 32px;
+    }
+    
+    .nivel-tipo {
+        font-size: 12px;
+    }
+    
+    .preco-periodo {
+        font-size: 1.5em;
+        margin: 8px 0 0 0;
+        font-weight: 700;
+        letter-spacing: 0.3px;        
+    }
+    
+    .nivel-descricao {
+        font-size: 14px;
+    }
+    
+    .nivel-acao a {
+        padding: 14px 20px;
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #wpadminbar #wp-admin-bar-root-default > li:first-child {
+        margin-left: 100px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .bbl-title {
+        font-size: 1.75rem;
+    }
+    
+    .bbl-container {
+        padding: 1.5rem;
+        border-radius: var(--bbl-radius-lg);
+    }
+    
+    .pmpro-pink-bkg,
+    .pmpro-yellow-bkg {
+        border-width: 10px;
+        border-image-slice: 20;
+        padding: 12px;
+    }
+    
+    .preco-valor {
+        font-size: 28px;
+    }
+}
+
+/* ========================================
+   UTILITIES
+   ======================================== */
+.bbl-text-center {
+    text-align: center;
+}
+
+.bbl-mt-lg {
+    margin-top: 2rem;
+}
+
+.bbl-mb-lg {
+    margin-bottom: 2rem;
+}
+
+
+/* ========================================
+   CHECKOUT PROFISSIONAL - CONVERSÃO OTIMIZADA
+   Baseado em melhores práticas Stripe/Shopify
+   ======================================== */
+
+/* Container principal */
+.pmpro-checkout-page {
+    background: #f8f9fa;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Header com trust badges */
+.bbl-checkout-header {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.bbl-trust-badges {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.trust-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #2C3E50;
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.trust-badge i {
+    color: #00BCD4;
+    font-size: 20px;
+}
+
+/* Cards com visual clean */
+.pmpro-checkout-page .pmpro_card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    border: 1px solid #e8ecef;
+    margin-bottom: 20px;
+    overflow: hidden;
+    transition: box-shadow 0.2s ease;
+}
+
+.pmpro-checkout-page .pmpro_card:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.pmpro-checkout-page .pmpro_card_content {
+    padding: 30px;
+}
+
+/* Títulos com ícones */
+.pmpro-checkout-page .pmpro_card_title,
+.pmpro-checkout-page .pmpro_form_heading {
+    font-family: 'Nunito', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #2C3E50;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #f0f3f5;
+}
+
+.pmpro-checkout-page .pmpro_card_title i,
+.pmpro-checkout-page .pmpro_form_heading i {
+    color: #E73665;
+    font-size: 22px;
+    flex-shrink: 0;
+}
+
+.pmpro-checkout-page .pmpro_card_subtitle {
+    display: block;
+    font-size: 16px;
+    color: #5A6C7D;
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+/* Seção de custo destacada */
+.pmpro-checkout-page #pmpro_level_cost {
+    background: linear-gradient(135deg, #fff5f7 0%, #ffe8ee 100%);
+    border-left: 4px solid #E73665;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.pmpro-checkout-page .pmpro_level_cost_trial {
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+    border-left: 4px solid #4caf50;
+}
+
+.pmpro-checkout-page .pmpro_level_cost_trial p {
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    color: #1b5e20;
+    line-height: 1.6;
+}
+
+.pmpro-checkout-page .pmpro_level_cost_text {
+    font-family: 'Raleway', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #2C3E50;
+}
+
+.pmpro-checkout-page .pmpro_level_cost_text strong {
+    color: #E73665;
+    font-size: 24px;
+}
+
+/* Inputs modernos e limpos */
+.pmpro-checkout-page .pmpro_form_field {
+    margin-bottom: 18px;
+}
+
+.pmpro-checkout-page .pmpro_form_label {
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #2C3E50;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.pmpro-checkout-page .pmpro_form_input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e0e7ed;
+    border-radius: 8px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 15px;
+    transition: all 0.2s ease;
+    background: #ffffff;
+}
+
+.pmpro-checkout-page .pmpro_form_input:focus {
+    outline: none;
+    border-color: #E73665;
+    box-shadow: 0 0 0 3px rgba(231, 54, 101, 0.1);
+}
+
+.pmpro-checkout-page .pmpro_form_input:hover {
+    border-color: #c5d0da;
+}
+
+/* Botão principal CTA - DESTAQUE MÁXIMO */
+.pmpro-checkout-page .pmpro_btn-submit-checkout {
+    background: linear-gradient(135deg, #E73665 0%, #c42a54 100%);
+    color: #ffffff;
+    border: none;
+    padding: 18px 48px;
+    border-radius: 8px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(231, 54, 101, 0.3);
+    width: 100%;
+    margin-top: 10px;
+}
+
+.pmpro-checkout-page .pmpro_btn-submit-checkout:hover {
+    background: linear-gradient(135deg, #c42a54 0%, #a32245 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(231, 54, 101, 0.4);
+}
+
+.pmpro-checkout-page .pmpro_btn-submit-checkout:active {
+    transform: translateY(0);
+}
+
+/* Mensagens de status */
+.pmpro-checkout-page .pmpro_message {
+    padding: 16px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+        background: #fff !important;
+
+}
+
+.pmpro-checkout-page .pmpro_message.pmpro_error {
+    background-color: #fff !important;
+    border-left: 4px solid #f44336;
+    color: #c62828;
+}
+
+.pmpro-checkout-page .pmpro_message.pmpro_success {
+    background-color: #fff !important;
+    border-left: 4px solid #4caf50;
+    color: #2e7d32;
+}
+
+.pmpro-checkout-page .pmpro_message.pmpro_alert {
+    background-color: #fff !important;
+    border-left: 4px solid #ffc107;
+    color: #f57c00;
+}
+
+/* Footer do checkout - Confiança */
+.bbl-checkout-footer {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    margin-top: 30px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+.bbl-security-seal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+    border-radius: 8px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #1b5e20;
+}
+
+.bbl-security-seal i {
+    color: #4caf50;
+    font-size: 24px;
+}
+
+.bbl-payment-methods {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin: 20px 0;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.bbl-payment-methods .payment-label {
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #5A6C7D;
+    margin-right: 10px;
+}
+
+.bbl-payment-methods i {
+    font-size: 32px;
+    color: #2C3E50;
+    transition: color 0.2s ease;
+}
+
+.bbl-payment-methods i:hover {
+    color: #E73665;
+}
+
+.bbl-guarantee {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    background: #fff8e1;
+    border-radius: 8px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #f57c00;
+}
+
+.bbl-guarantee i {
+    color: #ffc107;
+    font-size: 20px;
+}
+
+/* Badge de desconto */
+.pmpro-checkout-page .pmpro_level_discount_applied {
+    background: #fff8e1;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-weight: 600;
+    color: #f57c00;
+    margin-bottom: 16px;
+    display: inline-block;
+}
+
+.pmpro-checkout-page .pmpro_tag-discount-code {
+    background: #E73665;
+    color: #ffffff;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Colunas responsivas */
+.pmpro-checkout-page .pmpro_cols-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+/* Card actions */
+.pmpro-checkout-page .pmpro_card_actions {
+    background: #f8f9fa;
+    padding: 16px 30px;
+    border-top: 1px solid #e8ecef;
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    color: #5A6C7D;
+    text-align: center;
+}
+
+.pmpro-checkout-page .pmpro_card_actions a {
+    color: #E73665;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.pmpro-checkout-page .pmpro_card_actions a:hover {
+    color: #c42a54;
+    text-decoration: underline;
+}
+
+/* Processing message */
+.pmpro-checkout-page #pmpro_processing_message {
+    text-align: center;
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #E73665;
+    margin-top: 16px;
+}
+
+/* Mobile responsivo */
+@media (max-width: 768px) {
+    .pmpro-checkout-page {
+        padding: 15px;
+    }
+    
+    .bbl-trust-badges {
+        gap: 20px;
+    }
+    
+    .trust-badge {
+        font-size: 12px;
+    }
+    
+    .trust-badge i {
+        font-size: 16px;
+    }
+    
+    .pmpro-checkout-page .pmpro_card_content {
+        padding: 20px;
+    }
+    
+    .pmpro-checkout-page .pmpro_cols-2 {
+        grid-template-columns: 1fr;
+    }
+    
+    .pmpro-checkout-page .pmpro_card_title,
+    .pmpro-checkout-page .pmpro_form_heading {
+        font-size: 18px;
+    }
+    
+    .pmpro-checkout-page .pmpro_btn-submit-checkout {
+        padding: 16px 32px;
+        font-size: 16px;
+    }
+    
+    .bbl-payment-methods {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .bbl-payment-methods i {
+        font-size: 24px;
+    }
+}
+
+/* Animações suaves */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.pmpro-checkout-page .pmpro_card {
+    animation: fadeInUp 0.4s ease-out;
+}
+
+
+/* ========================================
+   LOGIN PAGE - RESPONSIVE LAYOUT
+   ======================================== */
+
+/* Desktop - Formulário centralizado com 50% de largura */
+@media (min-width: 769px) {
+    #pmpro_login, #pmpro_register, #pmpro_lostpassword, #pmpro_resetpass {
+        width: 50%;
+        margin: 0 auto;
+    }
+    
+    .pmpro-login-page .pmpro_section, .pmpro-register-page .pmpro_section, .pmpro-lostpassword-page .pmpro_section, .pmpro-resetpass-page .pmpro_section {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+}
+
+/* Mobile - Formulário com 100% de largura */
+@media (max-width: 768px) {
+    #pmpro_login, #pmpro_register, #pmpro_lostpassword, #pmpro_resetpass {
+        width: 100%;
+    }
+    
+    .pmpro-login-page .pmpro_section, .pmpro-register-page .pmpro_section, .pmpro-lostpassword-page .pmpro_section, .pmpro-resetpass-page .pmpro_section  {
+        width: 100%;
+    }
+}
+
+/* Ajustes adicionais para melhor visual */
+#pmpro_login, #pmpro_register, #pmpro_lostpassword, #pmpro_resetpass {
+    padding: 0;
+}
+
+.pmpro-login-page, .pmpro-register-page, .pmpro-lostpassword-page, .pmpro-resetpass-page {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 200px); /* Ajuste conforme altura do header/footer */
+    justify-content: center;
+}
+
+/* ========================================
+   PALETA DE CORES BEBELUME - SÓBRIA
+   Versão profissional para documentos e impressão
+   ======================================== */
+:root {
+	/* Cores Primárias Bebelume */
+	--bebelume-pink: #E92963;
+	--bebelume-yellow: #F7D41C;
+	--bebelume-cyan: #2DCFED;
+	--bebelume-green: #8FC684;
+	--bebelume-purple: #9062E7;
+	--bebelume-wine: #B12B46;
+	
+	/* Tons Claros (backgrounds sutis) */
+	--bebelume-pink-light: #FFF5F8;
+	--bebelume-green-light: #F5FBF3;
+	--bebelume-cyan-light: #F0FBFE;
+	
+	/* Neutros */
+	--bebelume-text: #2d3748;
+	--bebelume-text-light: #718096;
+	--bebelume-border: #d1d5db;
+	--bebelume-bg: #ffffff;
+}
+
+/* ========================================
+   CONFIRMATION PAGE STYLES
+   ======================================== */
+
+.bbl-confirmation-hero {
+	text-align: center;
+	padding: 3rem 2rem;
+	background: var(--bebelume-green);
+	border-radius: 8px;
+	margin-bottom: 2rem;
+	color: white;
+	border: 1px solid #6fa872;
+}
+
+.bbl-confirmation-hero-content {
+	position: relative;
+	z-index: 1;
+}
+
+.bbl-success-icon {
+	width: 80px;
+	height: 80px;
+	margin: 0 auto 1.5rem;
+	background: rgba(255, 255, 255, 0.2);
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.bbl-success-icon i {
+	font-size: 2.5rem;
+	color: white;
+}
+
+.bbl-confirmation-hero h1 {
+	font-size: 1.8rem;
+	margin: 0 0 0.5rem;
+	font-weight: 700;
+	color: white;
+}
+
+.bbl-confirmation-hero p {
+	font-size: 1rem;
+	margin: 0;
+	color: white;
+}
+
+.bbl-info-card {
+	background: white;
+	border: 2px solid var(--bebelume-border);
+	border-radius: 8px;
+	padding: 2rem;
+	margin: 2rem 0;
+}
+
+.bbl-info-card-header {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	margin-bottom: 1.5rem;
+	padding-bottom: 1rem;
+	border-bottom: 2px solid var(--bebelume-border);
+}
+
+.bbl-info-card-icon {
+	width: 48px;
+	height: 48px;
+	background: var(--bebelume-pink);
+	border-radius: 8px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+}
+
+.bbl-info-card-icon i {
+	font-size: 1.4rem;
+	color: white;
+}
+
+.bbl-info-card-title {
+	margin: 0;
+	font-size: 1.2rem;
+	font-weight: 700;
+	color: var(--bebelume-text);
+}
+
+.bbl-info-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	gap: 1.5rem;
+}
+
+.bbl-info-item {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.bbl-info-label {
+	font-size: 0.75rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	color: var(--bebelume-text-light);
+}
+
+.bbl-info-value {
+	font-size: 1.1rem;
+	font-weight: 700;
+	color: var(--bebelume-text);
+}
+
+.bbl-next-steps {
+	margin: 3rem 0;
+}
+
+.bbl-next-steps h2 {
+	font-size: 1.4rem;
+	margin-bottom: 1.5rem;
+	color: var(--bebelume-text);
+	font-weight: 700;
+	border-left: 4px solid var(--bebelume-pink);
+	padding-left: 1rem;
+}
+
+.bbl-steps-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	gap: 1.5rem;
+}
+
+.bbl-step-card {
+	background: white;
+	border: 2px solid var(--bebelume-border);
+	border-radius: 8px;
+	padding: 1.5rem;
+	transition: all 0.2s ease;
+}
+
+.bbl-step-card:hover {
+	border-color: var(--bebelume-pink);
+	box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.bbl-step-number {
+	width: 36px;
+	height: 36px;
+	background: var(--bebelume-text);
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: 700;
+	font-size: 1rem;
+	color: white;
+	margin-bottom: 1rem;
+}
+
+.bbl-step-card h3 {
+	font-size: 1.05rem;
+	margin: 0 0 0.5rem;
+	color: var(--bebelume-text);
+	font-weight: 700;
+}
+
+.bbl-step-card p {
+	font-size: 0.9rem;
+	margin: 0;
+	color: var(--bebelume-text-light);
+	line-height: 1.6;
+}
+
+.bbl-cta-button {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 1rem 2rem;
+	background: var(--bebelume-pink);
+	color: white;
+	border-radius: 6px;
+	text-decoration: none;
+	font-weight: 700;
+	font-size: 1rem;
+	transition: all 0.2s ease;
+	margin-top: 2rem;
+}
+
+.bbl-cta-button:hover {
+	background: var(--bebelume-wine);
+	color: white;
+	text-decoration: none;
+}
+
+.bbl-divider {
+	height: 1px;
+	background: var(--bebelume-border);
+	margin: 3rem 0;
+}
+
+/* ========================================
+   INVOICE PAGE STYLES
+   ======================================== */
+
+.bbl-invoice-header {
+	background: white;
+	border: 2px solid var(--bebelume-border);
+	border-radius: 8px 8px 0 0;
+	padding: 2rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 1.5rem;
+	border-bottom: none;
+}
+
+.bbl-invoice-title-section h2 {
+	margin: 0 0 0.25rem;
+	font-size: 1.6rem;
+	color: var(--bebelume-text);
+	font-weight: 700;
+}
+
+.bbl-invoice-code {
+	font-size: 0.85rem;
+	color: var(--bebelume-text-light);
+	font-weight: 500;
+}
+
+.bbl-invoice-actions {
+	display: flex;
+	gap: 0.75rem;
+	flex-wrap: wrap;
+}
+
+.bbl-btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.75rem 1.5rem;
+	border-radius: 6px;
+	font-weight: 600;
+	text-decoration: none;
+	transition: all 0.2s ease;
+	border: none;
+	cursor: pointer;
+	font-size: 0.9rem;
+}
+
+.bbl-btn-primary {
+	background: var(--bebelume-text);
+	color: white;
+}
+
+.bbl-btn-primary:hover {
+	background: #1a202c;
+	color: white;
+	text-decoration: none;
+}
+
+.bbl-btn-secondary {
+	background: white;
+	color: var(--bebelume-text);
+	border: 2px solid var(--bebelume-text);
+}
+
+.bbl-btn-secondary:hover {
+	background: var(--bebelume-text);
+	color: white;
+	text-decoration: none;
+}
+
+.bbl-status-badge {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.4rem 1rem;
+	border-radius: 4px;
+	font-weight: 700;
+	font-size: 0.85rem;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+}
+
+.bbl-status-success {
+	background: var(--bebelume-green);
+	color: white;
+}
+
+.bbl-status-pending {
+	background: var(--bebelume-yellow);
+	color: #5a4a00;
+}
+
+.bbl-status-refunded {
+	background: #e5e7eb;
+	color: var(--bebelume-text);
+}
+
+.bbl-invoice-body {
+	background: white;
+	border: 2px solid var(--bebelume-border);
+	border-top: 1px solid var(--bebelume-border);
+	border-radius: 0 0 8px 8px;
+	padding: 2rem;
+}
+
+.bbl-invoice-meta {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	gap: 2rem;
+	margin-bottom: 2rem;
+	padding-bottom: 2rem;
+	border-bottom: 2px solid var(--bebelume-border);
+}
+
+.bbl-meta-item {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.bbl-meta-label {
+	font-size: 0.7rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	color: var(--bebelume-text-light);
+}
+
+.bbl-meta-value {
+	font-size: 0.95rem;
+	color: var(--bebelume-text);
+	line-height: 1.6;
+	font-weight: 500;
+}
+
+.bbl-invoice-details-title {
+	font-size: 1.2rem;
+	font-weight: 700;
+	color: var(--bebelume-text);
+	margin: 0 0 1.5rem;
+	border-left: 4px solid var(--bebelume-pink);
+	padding-left: 1rem;
+}
+
+.bbl-invoice-table {
+	width: 100%;
+	border-collapse: collapse;
+	border: 2px solid var(--bebelume-border);
+	margin: 1.5rem 0;
+}
+
+.bbl-invoice-table thead {
+	background: #f9fafb;
+	border-bottom: 2px solid var(--bebelume-border);
+}
+
+.bbl-invoice-table th {
+	padding: 1rem;
+	text-align: left;
+	font-weight: 700;
+	color: var(--bebelume-text);
+	font-size: 0.8rem;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+}
+
+.bbl-invoice-table tbody td {
+	padding: 1.25rem 1rem;
+	border-top: 1px solid var(--bebelume-border);
+	color: var(--bebelume-text);
+}
+
+.bbl-invoice-table tbody td:first-child {
+	font-weight: 600;
+}
+
+.bbl-invoice-table tfoot {
+	background: #f9fafb;
+	font-weight: 700;
+	border-top: 2px solid var(--bebelume-border);
+}
+
+.bbl-invoice-table tfoot td {
+	padding: 1rem;
+}
+
+.bbl-invoice-table tfoot tr:last-child {
+	background: white;
+}
+
+.bbl-invoice-table tfoot tr:last-child td {
+	font-size: 1.1rem;
+	color: var(--bebelume-text);
+	padding: 1.25rem 1rem;
+	border-top: 2px solid var(--bebelume-border);
+}
+
+.bbl-discount-badge {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.5rem 1rem;
+	background: #fef3c7;
+	border: 1px solid #d97706;
+	border-radius: 4px;
+	color: #92400e;
+	font-weight: 700;
+	margin-top: 1rem;
+	font-size: 0.85rem;
+}
+
+.bbl-discount-badge i {
+	color: #d97706;
+}
+
+.bbl-invoice-footer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 1rem;
+	padding-top: 2rem;
+	margin-top: 2rem;
+	border-top: 2px solid var(--bebelume-border);
+}
+
+.bbl-invoice-footer a {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	color: var(--bebelume-text);
+	text-decoration: none;
+	font-weight: 600;
+	transition: all 0.2s ease;
+}
+
+.bbl-invoice-footer a:hover {
+	color: var(--bebelume-pink);
+	text-decoration: underline;
+}
+
+.bbl-order-list-header {
+	background: white;
+	border: 2px solid var(--bebelume-border);
+	border-radius: 8px;
+	padding: 2rem;
+	margin-bottom: 2rem;
+}
+
+.bbl-order-list-header h2 {
+	margin: 0;
+	font-size: 1.6rem;
+	color: var(--bebelume-text);
+	font-weight: 700;
+}
+
+.bbl-orders-table {
+	width: 100%;
+	border-collapse: collapse;
+	background: white;
+	border: 2px solid var(--bebelume-border);
+}
+
+.bbl-orders-table thead {
+	background: #f9fafb;
+	border-bottom: 2px solid var(--bebelume-border);
+}
+
+.bbl-orders-table th {
+	padding: 1rem;
+	text-align: left;
+	font-weight: 700;
+	color: var(--bebelume-text);
+	font-size: 0.8rem;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+}
+
+.bbl-orders-table tbody tr {
+	transition: background 0.2s ease;
+	border-bottom: 1px solid var(--bebelume-border);
+}
+
+.bbl-orders-table tbody tr:hover {
+	background: #f9fafb;
+}
+
+.bbl-orders-table tbody td {
+	padding: 1rem;
+	color: var(--bebelume-text);
+}
+
+.bbl-orders-table tbody td a {
+	color: var(--bebelume-text);
+	text-decoration: none;
+	font-weight: 600;
+	transition: color 0.2s ease;
+}
+
+.bbl-orders-table tbody td a:hover {
+	color: var(--bebelume-pink);
+	text-decoration: underline;
+}
+
+/* ========================================
+   PRINT STYLES
+   ======================================== */
+
+@media print {
+	.bbl-invoice-actions,
+	.bbl-invoice-footer,
+	.bbl-cta-button {
+		display: none !important;
+	}
+	
+	.bbl-confirmation-hero {
+		background: white !important;
+		color: var(--bebelume-text) !important;
+		border: 2px solid var(--bebelume-text) !important;
+		box-shadow: none !important;
+	}
+	
+	.bbl-confirmation-hero h1,
+	.bbl-confirmation-hero p {
+		color: var(--bebelume-text) !important;
+	}
+	
+	.bbl-success-icon {
+		background: white !important;
+		border: 2px solid var(--bebelume-text) !important;
+	}
+	
+	.bbl-success-icon i {
+		color: var(--bebelume-text) !important;
+	}
+	
+	.bbl-invoice-header,
+	.bbl-invoice-body,
+	.bbl-info-card,
+	.bbl-step-card {
+		border-color: #000 !important;
+		box-shadow: none !important;
+	}
+	
+	.bbl-invoice-table,
+	.bbl-orders-table {
+		border-color: #000 !important;
+	}
+	
+	.bbl-invoice-table thead,
+	.bbl-invoice-table tfoot,
+	.bbl-orders-table thead {
+		background: #f5f5f5 !important;
+		-webkit-print-color-adjust: exact;
+		print-color-adjust: exact;
+	}
+	
+	.bbl-status-badge {
+		border: 1px solid #000 !important;
+	}
+	
+	.bbl-next-steps,
+	.bbl-steps-grid {
+		display: none !important;
+	}
+}
+
+/* ========================================
+   RESPONSIVE STYLES
+   ======================================== */
+
+@media (max-width: 768px) {
+	.bbl-confirmation-hero {
+		padding: 2rem 1.5rem;
+	}
+	
+	.bbl-confirmation-hero h1 {
+		font-size: 1.4rem;
+	}
+	
+	.bbl-info-grid {
+		grid-template-columns: 1fr;
+	}
+	
+	.bbl-steps-grid {
+		grid-template-columns: 1fr;
+	}
+	
+	.bbl-invoice-header {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+	
+	.bbl-invoice-meta {
+		grid-template-columns: 1fr;
+		gap: 1.5rem;
+	}
+	
+	.bbl-invoice-table,
+	.bbl-orders-table {
+		font-size: 0.85rem;
+	}
+	
+	.bbl-invoice-table th,
+	.bbl-invoice-table td,
+	.bbl-orders-table th,
+	.bbl-orders-table td {
+		padding: 0.75rem 0.5rem;
+	}
+}
+
+/**
+ * Bebelume Plyr.io Custom Styles
+ * Customização do player Plyr.io com as cores da Bebelume
+ * 
+ * @package Bebelume_Profile
+ * @version 1.0.0
+ */
+
+/* ==========================================================================
+   Variáveis CSS do Plyr (Cores Bebelume)
+   ========================================================================== */
+
+:root {
+    /* Cor principal (Rosa Bebelume) */
+    --plyr-color-main: #E92963;
+    
+    /* Cor de fundo dos controles */
+    --plyr-video-control-background-hover: #E92963;
+    --plyr-audio-control-background-hover: #E92963;
+    
+    /* Cor do range (progresso/volume) */
+    --plyr-range-fill-background: #E92963;
+    --plyr-audio-range-track-background: #E92963;
+    
+    /* Tooltip */
+    --plyr-tooltip-background: #E92963;
+    --plyr-tooltip-color: #ffffff;
+    
+    /* Menu/Settings */
+    --plyr-menu-background: #ffffff;
+    --plyr-menu-color: #2D3748;
+    
+    /* Tab focus */
+    --plyr-tab-focus-color: #E92963;
+    
+    /* Badges */
+    --plyr-badge-background: #E92963;
+    --plyr-badge-text-color: #ffffff;
+}
+
+/* ==========================================================================
+   Container do Vídeo
+   ========================================================================== */
+
+.bebelume-video-container {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    background: #000;
+    margin-bottom: 2rem;
+}
+
+/* Responsivo 16:9 */
+.bebelume-video-container.ratio-16-9 {
+    padding-bottom: 56.25%;
+    height: 0;
+}
+
+.bebelume-video-container video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* ==========================================================================
+   Customização Adicional - Wrapper com Sombra
+   ========================================================================== */
+
+.bebelume-video-wrapper {
+    position: relative;
+    margin: 2rem 0;
+}
+
+.bebelume-video-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: linear-gradient(135deg, rgba(233, 41, 99, 0.1), rgba(141, 198, 132, 0.1));
+    border-radius: 16px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.bebelume-video-wrapper:hover::before {
+    opacity: 1;
+}
+
+/* ==========================================================================
+   Títulos e Meta Info
+   ========================================================================== */
+
+.bebelume-video-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #2D3748;
+    margin-bottom: 0.5rem;
+}
+
+.bebelume-video-description {
+    font-size: 0.95rem;
+    color: #718096;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.bebelume-final-message span {
+    font-size: 2em;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+
+/* ==========================================================================
+   Link de Registro (Checkout e outras páginas)
+   ========================================================================== */
+
+.bbl-register-link {
+    text-align: center;
+    padding: 25px 20px;
+    margin-top: 20px;
+    background: linear-gradient(135deg, rgba(231, 54, 101, 0.05) 0%, rgba(0, 188, 212, 0.05) 100%);
+    border-radius: 12px;
+    border: 2px dashed var(--bbl-border);
+}
+
+.bbl-register-text {
+    font-size: 1rem;
+    color: var(--bbl-text-secondary);
+    margin: 0 0 15px 0;
+    font-weight: 500;
+}
+
+.bbl-register-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, var(--bbl-cyan) 0%, #00A0B8 100%);
+    color: white;
+    border-radius: var(--bbl-radius-md);
+    font-family: var(--bbl-font-display);
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 188, 212, 0.2);
+}
+
+.bbl-register-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 188, 212, 0.3);
+    color: white;
+    text-decoration: none;
+}
+
+.bbl-register-btn i {
+    font-size: 1.1rem;
+}
+
+
+/* Volta ao Bootstrap com correção cirúrgica */
+.incluido-grid .row {
+  position: relative !important;
+}
+
+/* Linha vertical - pseudo-elemento no row */
+@media (min-width: 768px) {
+  .incluido-grid .row::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    left: 50% !important;
+    width: 3px !important;
+    background-color: #3ACBE7 !important;
+    transform: translateX(-50%) !important;
+  }
+}
+
+/* Bordas horizontais nos itens */
+.incluido-grid .col-12 {
+  border-bottom: 3px solid #3ACBE7 !important;
+	font-size: 1.3em;
+}
+
+/* Remove borda do último item no mobile */
+.incluido-grid .col-12:last-child {
+  border-bottom: none !important;
+}
+
+.incluido-grid {
+  padding: 0 4em !important;
+}
+
+/* No desktop remove borda dos 2 últimos */
+@media (min-width: 768px) {
+  .incluido-grid .col-12:nth-child(3),
+  .incluido-grid .col-12:nth-child(4) {
+    border-bottom: none !important;
+  }
+	
+  .incluido-grid {
+    padding: 0 9em 2em !important;
+  }
+}
+
+/* 2026-09-04 — aviso "benefício já utilizado" (plano cancelado/retornante): texto longo */
+.nivel-trial--usado p {
+    text-transform: none;
+    font-size: 0.95em;
+    line-height: 1.45;
+    font-weight: 600;
+}

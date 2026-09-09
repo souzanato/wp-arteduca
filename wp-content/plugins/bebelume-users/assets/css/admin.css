@@ -1,0 +1,381 @@
+/**
+ * Bebelume Users — estilos do admin.
+ *
+ * Segue as convenções do wp-admin de propósito: é ferramenta interna,
+ * e o operador já sabe ler essa interface. O acento rosa da marca aparece
+ * só nos pontos de estado, onde carrega informação.
+ */
+
+.bbl-users {
+	--bbl-rosa: #eb2a61;
+	--bbl-borda: #dcdcde;
+	--bbl-texto-fraco: #646970;
+}
+
+.bbl-users .bbl-lead {
+	max-width: 60em;
+	font-size: 14px;
+	color: var(--bbl-texto-fraco);
+}
+
+/* Cartões ---------------------------------------------------------- */
+
+.bbl-users .bbl-card {
+	background: #fff;
+	border: 1px solid var(--bbl-borda);
+	border-radius: 4px;
+	padding: 4px 20px 20px;
+	margin: 16px 0;
+	max-width: 1100px;
+}
+
+.bbl-users .bbl-card h2 {
+	font-size: 15px;
+	padding: 14px 0 6px;
+	margin: 0 0 8px;
+	border-bottom: 1px solid #f0f0f1;
+}
+
+.bbl-users .bbl-card h3 {
+	font-size: 13px;
+	margin: 24px 0 4px;
+}
+
+.bbl-users .bbl-count {
+	display: inline-block;
+	margin-left: 6px;
+	padding: 1px 8px;
+	border-radius: 10px;
+	background: #f0f0f1;
+	color: var(--bbl-texto-fraco);
+	font-size: 12px;
+	font-weight: 400;
+}
+
+.bbl-users .bbl-actions {
+	margin: 16px 0 4px;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	flex-wrap: wrap;
+}
+
+.bbl-users .bbl-inline {
+	margin-left: 12px;
+}
+
+.bbl-users .bbl-empty {
+	color: var(--bbl-texto-fraco);
+	padding: 8px 0 4px;
+}
+
+/* Aviso destacado -------------------------------------------------- */
+
+.bbl-users .bbl-callout {
+	border-left: 4px solid var(--bbl-rosa);
+	background: #fdf2f5;
+	padding: 12px 16px;
+	margin: 12px 0 16px;
+	line-height: 1.6;
+	max-width: 62em;
+}
+
+/* Tabelas ---------------------------------------------------------- */
+
+.bbl-users .bbl-table {
+	margin-top: 8px;
+}
+
+.bbl-users .bbl-table td {
+	vertical-align: middle;
+}
+
+.bbl-users .bbl-table input[type="text"],
+.bbl-users .bbl-table input[type="email"] {
+	width: 100%;
+}
+
+.bbl-users .bbl-cell-msg {
+	color: var(--bbl-texto-fraco);
+	font-size: 12px;
+}
+
+/* Selos de estado -------------------------------------------------- */
+
+.bbl-users .bbl-badge {
+	display: inline-block;
+	padding: 2px 8px;
+	border-radius: 3px;
+	font-size: 11px;
+	font-weight: 600;
+	line-height: 1.6;
+	white-space: nowrap;
+}
+
+.bbl-users .bbl-badge--rascunho {
+	background: #f0f0f1;
+	color: #50575e;
+}
+
+.bbl-users .bbl-badge--criado,
+.bbl-users .bbl-badge--ok {
+	background: #edfaef;
+	color: #1e6b2c;
+}
+
+.bbl-users .bbl-badge--existente,
+.bbl-users .bbl-badge--aviso {
+	background: #fcf3e3;
+	color: #8a6116;
+}
+
+.bbl-users .bbl-badge--erro {
+	background: #fcebec;
+	color: #a4262c;
+}
+
+/* Contadores ------------------------------------------------------- */
+
+.bbl-users .bbl-stats {
+	display: flex;
+	gap: 10px;
+	flex-wrap: wrap;
+	margin: 12px 0 4px;
+}
+
+.bbl-users .bbl-stat {
+	border: 1px solid var(--bbl-borda);
+	border-radius: 4px;
+	padding: 10px 18px;
+	min-width: 110px;
+	text-align: center;
+}
+
+.bbl-users .bbl-stat__num {
+	display: block;
+	font-size: 24px;
+	font-weight: 600;
+	line-height: 1.2;
+}
+
+.bbl-users .bbl-stat__label {
+	display: block;
+	font-size: 12px;
+	color: var(--bbl-texto-fraco);
+}
+
+.bbl-users .bbl-stat--erro .bbl-stat__num {
+	color: #a4262c;
+}
+
+/* Progresso -------------------------------------------------------- */
+
+.bbl-users .bbl-progress {
+	margin-top: 16px;
+}
+
+.bbl-users .bbl-progress__bar {
+	height: 10px;
+	background: #f0f0f1;
+	border-radius: 5px;
+	overflow: hidden;
+}
+
+.bbl-users .bbl-progress__fill {
+	height: 100%;
+	width: 0;
+	background: var(--bbl-rosa);
+	transition: width 0.25s ease;
+}
+
+@media ( prefers-reduced-motion: reduce ) {
+	.bbl-users .bbl-progress__fill {
+		transition: none;
+	}
+}
+
+.bbl-users .bbl-progress__label {
+	margin: 8px 0 0;
+	font-size: 13px;
+	color: var(--bbl-texto-fraco);
+}
+
+/* Retorno das ações ------------------------------------------------ */
+
+.bbl-users .bbl-feedback {
+	font-size: 13px;
+}
+
+.bbl-users .bbl-feedback--ok {
+	color: #1e6b2c;
+}
+
+.bbl-users .bbl-feedback--erro {
+	color: #a4262c;
+}
+
+.bbl-users .bbl-summary {
+	margin-bottom: 6px;
+	color: var(--bbl-texto-fraco);
+}
+
+.bbl-users .bbl-samples code {
+	display: inline-block;
+	margin: 8px 8px 0 0;
+	padding: 6px 10px;
+	background: #f6f7f7;
+	font-size: 14px;
+	letter-spacing: 0.5px;
+}
+
+/* Marcadores da mensagem ------------------------------------------- */
+
+.bbl-users .bbl-tokens {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 6px;
+	padding: 12px 0 4px;
+}
+
+.bbl-users .bbl-tokens__label {
+	font-size: 12px;
+	color: var(--bbl-texto-fraco);
+	margin-right: 4px;
+}
+
+.bbl-users .bbl-token {
+	font-family: Consolas, Monaco, monospace;
+	font-size: 12px;
+	padding: 3px 8px;
+	border: 1px solid var(--bbl-borda);
+	border-radius: 3px;
+	background: #f6f7f7;
+	color: #2c3338;
+	cursor: pointer;
+	line-height: 1.5;
+}
+
+.bbl-users .bbl-token:hover {
+	border-color: var(--bbl-rosa);
+	color: var(--bbl-rosa);
+}
+
+.bbl-users .bbl-token:focus-visible {
+	outline: 2px solid var(--bbl-rosa);
+	outline-offset: 1px;
+}
+
+.bbl-users .bbl-token--ok {
+	background: #edfaef;
+	border-color: #1e6b2c;
+	color: #1e6b2c;
+}
+
+/* Prévia da mensagem ----------------------------------------------- */
+
+.bbl-users .bbl-callout--alerta {
+	border-left-color: #8a6116;
+	background: #fcf3e3;
+	font-size: 13px;
+}
+
+.bbl-users .bbl-mailview {
+	border: 1px solid var(--bbl-borda);
+	border-radius: 4px;
+	overflow: hidden;
+	margin: 12px 0 4px;
+}
+
+.bbl-users .bbl-mailview__head {
+	background: #f6f7f7;
+	border-bottom: 1px solid var(--bbl-borda);
+	padding: 10px 16px;
+}
+
+.bbl-users .bbl-mailview__label {
+	display: block;
+	font-size: 11px;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	color: var(--bbl-texto-fraco);
+}
+
+.bbl-users .bbl-mailview__body {
+	padding: 16px 20px;
+	background: #fff;
+	max-height: 45vh;
+	overflow-y: auto;
+}
+
+.bbl-users .bbl-mailview__body p {
+	margin: 0 0 1em;
+}
+
+/* Modal de confirmação --------------------------------------------- */
+
+.bbl-users .bbl-modal {
+	position: fixed;
+	inset: 0;
+	background: rgba( 0, 0, 0, 0.55 );
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 100100;
+	padding: 20px;
+}
+
+.bbl-users .bbl-modal[hidden] {
+	display: none;
+}
+
+.bbl-users .bbl-modal__box {
+	background: #fff;
+	border-radius: 6px;
+	padding: 24px 28px;
+	max-width: 520px;
+	width: 100%;
+	box-shadow: 0 12px 40px rgba( 0, 0, 0, 0.25 );
+}
+
+.bbl-users .bbl-modal__box--wide {
+	max-width: 720px;
+}
+
+.bbl-users .bbl-modal__box h2 {
+	margin-top: 0;
+	border: 0;
+	padding: 0;
+	font-size: 18px;
+}
+
+.bbl-users .bbl-modal__list {
+	margin: 12px 0 20px 18px;
+	list-style: disc;
+	color: var(--bbl-texto-fraco);
+	font-size: 13px;
+	line-height: 1.7;
+}
+
+.bbl-users .bbl-modal__actions {
+	display: flex;
+	justify-content: flex-end;
+	gap: 8px;
+	margin: 0;
+}
+
+.bbl-users .bbl-modal__box .button:focus {
+	box-shadow: 0 0 0 2px var(--bbl-rosa);
+}
+
+/* Responsivo ------------------------------------------------------- */
+
+@media screen and ( max-width: 782px ) {
+	.bbl-users .bbl-card {
+		padding: 4px 12px 16px;
+	}
+
+	.bbl-users .bbl-stat {
+		flex: 1 1 40%;
+	}
+}

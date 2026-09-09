@@ -1,0 +1,20 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "bebelume-arteduca/campos-pedagogicos",
+  "version": "2.0.0",
+  "title": "Campos Pedagógicos",
+  "category": "bebelume-arteduca",
+  "icon": "welcome-learn-more",
+  "description": "Exibe os Direitos de Aprendizagem e Campos de Experiência marcados neste post",
+  "supports": {
+    "html": false,
+    "anchor": true
+  },
+  "usesContext": [],
+  "attributes": {},
+  "textdomain": "bebelume-arteduca",
+  "editorScript": "file:./block.js",
+  "style": "file:./style.css",
+  "render": "file:./render.php"
+}

@@ -1,0 +1,255 @@
+/**
+ * PMPro Email Diagnostic - Admin CSS
+ * Version: 1.0.0
+ */
+
+/* ========== Container Principal ========== */
+.pmpro-email-diag-wrap {
+    margin-top: 20px;
+}
+
+.pmpro-version {
+    background: #f0f0f1;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    color: #646970;
+    margin-left: 10px;
+}
+
+/* ========== Grid de Estatísticas ========== */
+.pmpro-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin: 20px 0 30px;
+}
+
+.stat-card {
+    background: white;
+    border: 1px solid #c3c4c7;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.stat-card.success {
+    border-left: 4px solid #00a32a;
+}
+
+.stat-card.error {
+    border-left: 4px solid #d63638;
+}
+
+.stat-icon {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.stat-value {
+    font-size: 32px;
+    font-weight: 700;
+    color: #1d2327;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    font-size: 13px;
+    color: #646970;
+    font-weight: 500;
+}
+
+/* ========== Grid Principal ========== */
+.pmpro-grid {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+@media (max-width: 1200px) {
+    .pmpro-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.pmpro-main-column,
+.pmpro-sidebar-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* ========== Postbox Customizado ========== */
+.pmpro-email-diag-wrap .postbox {
+    border: 1px solid #c3c4c7;
+    border-radius: 8px;
+}
+
+.pmpro-email-diag-wrap .postbox .hndle {
+    border-bottom: 1px solid #c3c4c7;
+    padding: 15px 20px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.pmpro-email-diag-wrap .postbox .inside {
+    padding: 20px;
+}
+
+/* ========== Status Badges ========== */
+.status-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.status-badge.success {
+    background: #d5f4e6;
+    color: #006b3f;
+}
+
+.status-badge.error {
+    background: #fce4e4;
+    color: #b32d2e;
+}
+
+.status-badge.warning {
+    background: #fff6d5;
+    color: #8a6116;
+}
+
+/* ========== Tabelas ========== */
+.pmpro-email-diag-wrap .widefat {
+    border: 1px solid #c3c4c7;
+    border-radius: 4px;
+}
+
+.pmpro-email-diag-wrap .widefat td,
+.pmpro-email-diag-wrap .widefat th {
+    padding: 12px;
+}
+
+.pmpro-email-diag-wrap .widefat th {
+    font-weight: 600;
+}
+
+/* ========== Formulário de Teste ========== */
+.pmpro-test-form p {
+    margin-bottom: 15px;
+}
+
+.pmpro-test-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.pmpro-test-form input[type="email"],
+.pmpro-test-form select {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #8c8f94;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.pmpro-test-form input[type="email"]:focus,
+.pmpro-test-form select:focus {
+    border-color: #2271b1;
+    box-shadow: 0 0 0 1px #2271b1;
+    outline: none;
+}
+
+.pmpro-test-form .button-hero {
+    font-size: 14px;
+    padding: 12px 24px;
+}
+
+/* ========== Guia Rápido ========== */
+.pmpro-guide-list {
+    margin: 0;
+    padding-left: 20px;
+    line-height: 1.8;
+}
+
+.pmpro-guide-list li {
+    margin-bottom: 8px;
+}
+
+/* ========== Soluções ========== */
+.pmpro-solutions h4 {
+    margin: 0 0 15px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.pmpro-solutions h5 {
+    margin: 15px 0 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #1d2327;
+}
+
+.pmpro-solutions p {
+    margin: 0 0 10px;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.pmpro-solutions ul {
+    margin: 0 0 15px;
+    padding-left: 20px;
+    font-size: 13px;
+}
+
+.pmpro-solutions ul li {
+    margin-bottom: 5px;
+}
+
+/* ========== Notice Inline ========== */
+.notice.inline {
+    margin: 0 0 15px;
+    padding: 10px 15px;
+}
+
+/* ========== Loading State ========== */
+.pmpro-test-form.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.pmpro-test-form.loading .button-primary:after {
+    content: '...';
+    animation: dots 1.5s steps(5, end) infinite;
+}
+
+@keyframes dots {
+    0%, 20% {
+        content: '.';
+    }
+    40% {
+        content: '..';
+    }
+    60%, 100% {
+        content: '...';
+    }
+}
+
+/* ========== Responsive ========== */
+@media (max-width: 782px) {
+    .pmpro-stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .stat-value {
+        font-size: 28px;
+    }
+}

@@ -1,0 +1,316 @@
+/* ===================================
+   BEBELUME DOC DOWNLOAD - BLOCO DE DOCUMENTO
+   =================================== */
+
+/* Container principal */
+.bebelume-documento-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 40px 30px;
+    margin: 30px 0;
+    border-radius: 12px;
+    background-color: #F3F0EB;
+    border: 2px dashed rgba(42, 69, 130, 0.2);
+    transition: all 0.3s ease;
+}
+
+.bebelume-documento-box:hover {
+    border-color: rgba(42, 69, 130, 0.4);
+    box-shadow: 0 4px 12px rgba(42, 69, 130, 0.1);
+}
+
+/* Ícone do documento */
+.bebelume-documento-icone {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bebelume-documento-icone i {
+    width: 48px;
+    height: 48px;
+    color: #2A4582;
+}
+
+/* Título */
+.bebelume-documento-titulo {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #2A4582;
+    margin: 0 0 15px 0;
+    line-height: 1.3;
+	text-align: center;
+}
+
+.bebelume-documento-titulo:empty:before {
+    content: 'Digite o título do documento...';
+    color: #999;
+    font-weight: normal;
+}
+
+/* Descrição */
+.bebelume-documento-descricao {
+    font-size: 1.1em;
+    color: #555;
+    margin: 0 0 25px 0;
+    line-height: 1.6;
+}
+
+.bebelume-documento-descricao:empty:before {
+    content: 'Digite a descrição do documento...';
+    color: #999;
+}
+
+/* Área de upload (editor) */
+.bebelume-documento-upload {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.bebelume-documento-upload button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1em;
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+/* Preview do documento (editor) */
+.bebelume-documento-preview {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+.bebelume-documento-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.bebelume-documento-extensao {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #2A4582 0%, #5C4F93 100%);
+    color: white;
+    font-weight: bold;
+    font-size: 0.9em;
+    border-radius: 8px;
+    text-transform: uppercase;
+    flex-shrink: 0;
+}
+
+.bebelume-documento-detalhes {
+    flex: 1;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.bebelume-documento-detalhes strong {
+    font-size: 1em;
+    color: #333;
+    word-break: break-word;
+}
+
+.bebelume-documento-tamanho {
+    font-size: 0.9em;
+    color: #777;
+}
+
+.bebelume-documento-acoes {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+/* Info do documento no frontend */
+.bebelume-documento-info-frontend {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding: 15px 20px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 8px;
+    flex-wrap: wrap;
+}
+
+.bebelume-documento-info-frontend .bebelume-documento-extensao {
+    width: 50px;
+    height: 50px;
+    font-size: 0.85em;
+}
+
+.bebelume-documento-nome {
+    font-weight: 600;
+    color: #333;
+    font-size: 1em;
+}
+
+.bebelume-documento-info-frontend .bebelume-documento-tamanho {
+    font-size: 0.9em;
+    color: #666;
+    background-color: rgba(42, 69, 130, 0.1);
+    padding: 4px 12px;
+    border-radius: 12px;
+}
+
+/* Botão de download */
+.bebelume-documento-botao {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 40px;
+    background-color: #2A4582;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.bebelume-documento-botao:hover {
+    background-color: #1a2d5c;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(42, 69, 130, 0.3);
+    color: white;
+    text-decoration: none;
+}
+
+.bebelume-documento-botao:active {
+    transform: translateY(0);
+}
+
+.bebelume-documento-botao i {
+    width: 20px;
+    height: 20px;
+}
+
+/* Formatação de texto */
+.bebelume-documento-titulo strong,
+.bebelume-documento-descricao strong {
+    font-weight: 800;
+}
+
+.bebelume-documento-titulo em,
+.bebelume-documento-descricao em {
+    font-style: italic;
+}
+
+.bebelume-documento-titulo u,
+.bebelume-documento-descricao u {
+    text-decoration: underline;
+}
+
+.bebelume-documento-descricao a {
+    color: #2A4582;
+    text-decoration: underline;
+}
+
+.bebelume-documento-descricao a:hover {
+    color: #1a2d5c;
+}
+
+/* ===================================
+   EDITOR GUTENBERG - ESTILOS ESPECÍFICOS
+   =================================== */
+
+.wp-block-bebelume-arteduca-documento {
+    margin: 20px 0;
+}
+
+/* No editor, deixar mais espaçamento */
+.editor-styles-wrapper .bebelume-documento-box {
+    margin: 30px auto;
+    max-width: 800px;
+}
+
+/* ===================================
+   RESPONSIVO
+   =================================== */
+
+@media (max-width: 768px) {
+    .bebelume-documento-box {
+        padding: 30px 20px;
+        margin: 20px 0;
+    }
+
+    .bebelume-documento-titulo {
+        font-size: 1.5em;
+    }
+
+    .bebelume-documento-descricao {
+        font-size: 1em;
+    }
+
+    .bebelume-documento-botao {
+        padding: 12px 30px;
+        font-size: 1em;
+    }
+
+    .bebelume-documento-info {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .bebelume-documento-detalhes {
+        text-align: center;
+    }
+
+    .bebelume-documento-info-frontend {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .bebelume-documento-box {
+        padding: 25px 15px;
+        border-radius: 8px;
+    }
+
+    .bebelume-documento-titulo {
+        font-size: 1.3em;
+    }
+
+    .bebelume-documento-descricao {
+        font-size: 0.95em;
+    }
+
+    .bebelume-documento-botao {
+        padding: 10px 25px;
+        font-size: 0.95em;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .bebelume-documento-extensao {
+        width: 50px;
+        height: 50px;
+        font-size: 0.8em;
+    }
+
+    .bebelume-documento-icone i {
+        width: 40px;
+        height: 40px;
+    }
+}

@@ -1,0 +1,424 @@
+/* Arquivo: assets/css/frontend.css */
+
+/* Título do vídeo */
+/* Título do vídeo com contraste automático */
+.video-playlist-container .video-title {
+    padding: 10px 8px ;
+    font-size: 1em ;
+    line-height: 1.4 ;
+    color: #fff ;
+    text-align: center ;
+    font-weight: 600 ;
+    min-height: 50px ;
+    display: flex ;
+    align-items: center ;
+    justify-content: center ;
+    width: 100% ;
+    /* CONTRASTE SUAVE - Sombra mais delicada */
+    text-shadow: 
+        0px 1px 2px rgba(0,0,0,0.6),
+        0px 2px 4px rgba(0,0,0,0.4),
+        0px 0px 8px rgba(0,0,0,0.3) ;
+
+}
+
+section.branco .video-playlist-container .video-title,
+section.amarelo .video-playlist-container .video-title  {
+    color: #000;
+    text-shadow: none;
+}
+
+.video-slide {
+    flex: 0 0 auto;
+    width: 200px;
+    margin-right: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.video-thumb {
+    flex: 0 0 auto;
+}
+
+/* Título do vídeo */
+/* Título do vídeo com contraste automático */
+.video-playlist-container .video-title {
+    padding: 10px 8px;
+    font-size: 1em;
+    line-height: 1.4;
+    color: #fff;
+    text-align: center;
+    font-weight: 600;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    /* CONTRASTE SUAVE - Sombra mais delicada */
+    text-shadow: 
+        0px 1px 2px rgba(0,0,0,0.6),
+        0px 2px 4px rgba(0,0,0,0.4),
+        0px 0px 8px rgba(0,0,0,0.3);
+}
+
+section.branco .video-playlist-container .video-title,
+section.amarelo .video-playlist-container .video-title {
+    color: #000;
+    text-shadow: none;
+}
+
+.video-slide {
+    flex: 0 0 auto;
+    width: 200px;
+    margin-right: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.video-thumb {
+    flex: 0 0 auto;
+    position: relative; /* IMPORTANTE para overlay funcionar */
+}
+
+/* ==========================================
+   CADEADO - VÍDEOS PROTEGIDOS PMPRO
+   ========================================== */
+
+/* Overlay escuro + cadeado */
+.video-lock-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+}
+
+.video-thumb.video-locked:hover .video-lock-overlay {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+/* Ícone de cadeado (FontAwesome style) */
+.lock-icon {
+    width: 64px;
+    height: 64px;
+    color: #ffffff;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+    animation: pulse-lock 2s ease-in-out infinite;
+}
+
+@keyframes pulse-lock {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.9;
+    }
+}
+
+/* Garante que thumbnail ainda apareça */
+.video-thumb.video-locked img {
+    display: block;
+    opacity: 1;
+}
+/* ==========================================
+   MODAL BOOTSTRAP - CUSTOMIZAÇÃO
+   Bootstrap já tem z-index correto (1055)!
+   ========================================== */
+
+/* Customização da modal */
+.vpb-modal-custom {
+    border-radius: 20px !important;
+    border: none !important;
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* Header da modal */
+.vpb-modal-custom .modal-header {
+    padding: 15px 15px 0 15px;
+}
+
+/* Botão de fechar customizado */
+.vpb-modal-custom .btn-close {
+    opacity: 0.5;
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+.vpb-modal-custom .btn-close:hover {
+    opacity: 1;
+    transform: rotate(90deg);
+}
+
+/* Body da modal */
+.vpb-modal-custom .modal-body {
+    padding: 20px 40px 40px 40px;
+}
+
+/* Ícone do cadeado */
+.vpb-modal-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+}
+
+.vpb-modal-icon svg {
+    width: 40px;
+    height: 40px;
+    stroke: #ffffff;
+}
+
+/* Título da modal */
+.vpb-modal-custom .modal-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #2d3748;
+}
+
+/* Mensagem */
+.vpb-modal-custom .text-muted {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Botões customizados */
+.vpb-modal-custom .btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    font-weight: 600;
+    padding: 14px 32px;
+    transition: all 0.3s ease;
+}
+
+.vpb-modal-custom .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
+}
+
+.vpb-modal-custom .btn-outline-secondary {
+    font-weight: 600;
+    padding: 12px 32px;
+    transition: all 0.3s ease;
+}
+
+.vpb-modal-custom .btn-outline-secondary:hover {
+    transform: translateY(-2px);
+}
+
+/* Backdrop customizado */
+.modal-backdrop {
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+
+/* ==========================================
+   FIX CRÍTICO - Z-INDEX MODAL E BACKDROP
+   ========================================== */
+
+/* Força backdrop sempre atrás da modal */
+.modal-backdrop {
+    z-index: 1040 !important;
+}
+
+/* Força modal sempre na frente do backdrop */
+.modal {
+    z-index: 1055 !important;
+}
+
+/* Previne múltiplos backdrops */
+.modal-backdrop + .modal-backdrop {
+    display: none !important;
+}
+
+/* Garante que modal-dialog fique visível */
+.modal-dialog {
+    z-index: 1056 !important;
+    position: relative;
+}
+
+/* ==========================================
+   GARANTIA ANTI-CONFLITO COM OUTROS MODAIS
+   ========================================== */
+
+/* Força modal a estar sempre visível quando display:flex */
+.vpb-modal[style*="display: flex"],
+.vpb-modal[style*="display:flex"] {
+    display: flex !important;
+    z-index: 2147483647 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Garante que botão de fechar esteja acessível */
+.vpb-modal-close {
+    z-index: 2147483647 !important;
+}
+
+/* Bloqueia scroll do body quando modal aberta */
+body.vpb-modal-open {
+    overflow: hidden !important;
+    height: 100vh !important;
+}
+
+/* Remove qualquer transformação que possa interferir */
+.vpb-modal {
+    transform: none !important;
+    -webkit-transform: none !important;
+}
+/* ==========================================
+   PLAYER BEBELUME — THUMBNAIL, PREVIEW, LIGHTBOX
+   ========================================== */
+
+/* Thumbnail wrapper — posição relativa para overlay */
+a.video-thumb {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+/* Preview animado (vídeo mudo que toca no hover) */
+.vpb-video-preview {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+a.video-thumb:hover .vpb-video-preview {
+    opacity: 1;
+}
+
+/* Botão play overlay */
+.vpb-play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 52px;
+    height: 52px;
+    background: rgba(0, 0, 0, 0.65);
+    border-radius: 50%;
+    pointer-events: none;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.vpb-play-button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 54%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 9px 0 9px 16px;
+    border-color: transparent transparent transparent #ffffff;
+}
+
+a.video-thumb:hover .vpb-play-button {
+    background: rgba(0, 0, 0, 0.85);
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+/* Duração do vídeo */
+.vpb-video-duration {
+    position: absolute;
+    bottom: 6px;
+    right: 8px;
+    background: rgba(0, 0, 0, 0.75);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 3px;
+    pointer-events: none;
+    letter-spacing: 0.3px;
+}
+
+/* Lightbox */
+.vpb-plyr-lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 999999;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.vpb-plyr-lightbox.active {
+    display: flex;
+    opacity: 1;
+}
+
+.vpb-plyr-lightbox-content {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    max-height: 90vh;
+    background: #000;
+    border-radius: 8px;
+    overflow: hidden;
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+}
+
+.vpb-plyr-lightbox.active .vpb-plyr-lightbox-content {
+    transform: scale(1);
+}
+
+.vpb-plyr-lightbox-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 36px;
+    height: 36px;
+    background: rgba(0, 0, 0, 0.6);
+    border: none;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+}
+
+.vpb-plyr-lightbox-close:hover {
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.vpb-plyr-video {
+    width: 100%;
+    max-height: 90vh;
+    display: block;
+}

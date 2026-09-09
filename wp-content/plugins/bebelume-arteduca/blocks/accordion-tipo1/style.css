@@ -1,0 +1,74 @@
+.bebelume-accordion-tipo1 {
+    margin: 0;
+}
+
+.bebelume-accordion-cabecalho-tipo1 {
+    width: 100%;
+    padding: 20px 30px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: left;
+    transition: all 0.3s ease;
+}
+
+.bebelume-accordion-cabecalho-tipo1:hover {
+    opacity: 0.9;
+}
+
+.bebelume-accordion-icone {
+    font-size: 1.5em;
+    transition: transform 0.3s ease;
+    display: inline-block;
+    line-height: 1;
+}
+
+.bebelume-accordion-icone.aberto {
+    transform: rotate(180deg);
+}
+
+.bebelume-accordion-titulo {
+    flex: 1;
+    color: #ffffff;
+}
+
+.bebelume-accordion-icone-custom {
+    margin-right: 10px;
+    display: inline-block;
+}
+
+.bebelume-accordion-conteudo-tipo1 {
+    background-color: #f5f5f5;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s ease;
+}
+
+.bebelume-accordion-conteudo-tipo1.expandido {
+    max-height: 5000px;
+}
+
+.bebelume-accordion-inner {
+    padding: 30px;
+}
+
+/* Editor */
+.wp-block-bebelume-arteduca-accordion-tipo1 .bebelume-accordion-conteudo-tipo1 {
+    background-color: #f5f5f5;
+}
+
+@media (max-width: 768px) {
+    .bebelume-accordion-cabecalho-tipo1 {
+        padding: 15px 20px;
+        font-size: 1em;
+    }
+    
+    .bebelume-accordion-inner {
+        padding: 20px;
+    }
+}

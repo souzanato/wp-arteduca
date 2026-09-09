@@ -1,0 +1,646 @@
+/**
+ * Bebelume ArtEduca Música - Estilo Spotify
+ */
+
+:root {
+    --spotify-green: #1db954;
+    --spotify-bg-dark: #121212;
+    --spotify-bg-card: #181818;
+    --spotify-bg-hover: #282828;
+    --spotify-text-primary: #ffffff;
+    --spotify-text-secondary: #b3b3b3;
+    --spotify-player-height: 90px;
+}
+
+/* Container Principal */
+.bebelume-music-player {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    margin: 40px 0;
+    padding-bottom: 20px;
+}
+
+.bebelume-music-container {
+    background: var(--spotify-bg-card);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Header */
+.bebelume-music-header {
+    padding: 24px;
+    background: linear-gradient(180deg, rgba(29, 185, 84, 0.15) 0%, transparent 100%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.bebelume-music-title {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--spotify-text-primary);
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+}
+
+.bebelume-music-title svg {
+    flex-shrink: 0;
+}
+
+/* Main Player */
+.bebelume-music-main {
+    padding: 24px;
+    background: var(--spotify-bg-dark);
+    display: none; /* Oculto - player funcional mas invisível */
+}
+
+/* Vídeo Container */
+.bebelume-music-video-container {
+    position: relative;
+    width: 100%;
+    max-width: 640px;
+    margin: 0 auto 20px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #000;
+}
+
+.bebelume-music-video-container video {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Thumbnail Container */
+.bebelume-music-thumbnail-container {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto 20px;
+}
+
+.bebelume-music-thumbnail {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.bebelume-music-thumbnail-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0);
+    transition: background 0.3s;
+    border-radius: 12px;
+}
+
+.bebelume-music-thumbnail-container:hover .bebelume-music-thumbnail-overlay {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.bebelume-music-play-overlay {
+    width: 64px;
+    height: 64px;
+    background: var(--spotify-green);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+    opacity: 0;
+    transform: scale(0.9);
+    padding: 0;
+}
+
+.bebelume-music-play-overlay svg {
+    width: 28px;
+    height: 28px;
+    color: white;
+}
+
+.bebelume-music-thumbnail-container:hover .bebelume-music-play-overlay {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.bebelume-music-play-overlay:hover {
+    transform: scale(1.05);
+    background: #1ed760;
+}
+
+.bebelume-music-play-overlay:active {
+    transform: scale(1.05);
+}
+
+/* Placeholder */
+.bebelume-music-placeholder {
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 1;
+    margin: 0 auto 20px;
+    background: var(--spotify-bg-hover);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bebelume-music-placeholder-icon {
+    width: 120px;
+    height: 120px;
+    opacity: 0.3;
+}
+
+/* Info Atual */
+.bebelume-music-current-info {
+    text-align: center;
+    padding: 16px 0;
+}
+
+.bebelume-music-current-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--spotify-text-primary);
+    margin-bottom: 8px;
+}
+
+.bebelume-music-current-author {
+    font-size: 16px;
+    color: var(--spotify-text-secondary);
+}
+
+/* Playlist */
+.bebelume-music-playlist {
+    padding: 24px;
+}
+
+.bebelume-music-playlist-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 16px;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--spotify-text-primary);
+}
+
+.bebelume-music-playlist-header > span:first-child {
+    display: flex;
+    align-items: center;
+}
+
+.bebelume-music-track-count {
+    font-size: 14px;
+    color: var(--spotify-text-secondary);
+    font-weight: 400;
+}
+
+/* Tracks */
+.bebelume-music-tracks {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.bebelume-music-track {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.bebelume-music-track:hover {
+    background: var(--spotify-bg-hover);
+}
+
+.bebelume-music-track.active {
+    background: var(--spotify-bg-hover);
+}
+
+.bebelume-music-track.active .bebelume-music-track-number {
+    color: var(--spotify-green);
+    font-weight: 700;
+}
+
+.bebelume-music-track.active .bebelume-music-track-title {
+    color: var(--spotify-green);
+}
+
+.bebelume-music-track-number {
+    width: 24px;
+    text-align: center;
+    font-size: 14px;
+    color: var(--spotify-text-secondary);
+    flex-shrink: 0;
+    position: relative;
+}
+
+.bebelume-music-track-number .track-num,
+.bebelume-music-track-number .track-playing-icon {
+    display: inline-block;
+}
+
+.bebelume-music-track-number .track-playing-icon {
+    color: var(--spotify-green);
+}
+
+.bebelume-music-track-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.bebelume-music-track-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--spotify-text-primary);
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.bebelume-music-track-author {
+    font-size: 14px;
+    color: var(--spotify-text-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.bebelume-music-track-thumb {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+/* Fixed Player - Estilo Spotify com animação */
+.bebelume-music-fixed {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: var(--spotify-player-height);
+    background: var(--spotify-bg-card);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 9999;
+    transform: translateY(100%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bebelume-music-fixed.visible {
+    transform: translateY(0);
+}
+
+.bebelume-music-fixed-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    height: 100%;
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Fixed Info */
+.bebelume-music-fixed-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.bebelume-music-fixed-thumb {
+    width: 48px;
+    height: 48px;
+    border-radius: 6px;
+    background: var(--spotify-bg-hover);
+    background-size: cover;
+    background-position: center;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bebelume-music-fixed-thumb svg {
+    width: 24px;
+    height: 24px;
+    color: var(--spotify-text-secondary);
+}
+
+.bebelume-music-fixed-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--spotify-text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.bebelume-music-fixed-author {
+    font-size: 12px;
+    color: var(--spotify-text-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Fixed Controls - Botões transparentes */
+.bebelume-music-fixed-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.bebelume-music-btn {
+    background: transparent;
+    border: none;
+    color: var(--spotify-text-secondary);
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+}
+
+.bebelume-music-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+.bebelume-music-btn:hover {
+    color: var(--spotify-text-primary);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.bebelume-music-btn-play {
+    background: var(--spotify-text-primary);
+    color: var(--spotify-bg-dark);
+    width: 40px;
+    height: 40px;
+}
+
+.bebelume-music-btn-play svg {
+    width: 18px;
+    height: 18px;
+}
+
+.bebelume-music-btn-play:hover {
+    background: var(--spotify-text-primary);
+    transform: scale(1.05);
+}
+
+.bebelume-music-btn.active {
+    color: var(--spotify-green);
+}
+
+.bebelume-music-btn-shuffle.active::after,
+.bebelume-music-btn-repeat.active::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    background: var(--spotify-green);
+    border-radius: 50%;
+}
+
+/* Fixed Progress */
+.bebelume-music-fixed-progress {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+}
+
+.bebelume-music-time-current,
+.bebelume-music-time-total {
+    font-size: 11px;
+    color: var(--spotify-text-secondary);
+    font-variant-numeric: tabular-nums;
+    min-width: 40px;
+}
+
+.bebelume-music-time-current {
+    text-align: right;
+}
+
+.bebelume-music-progress-bar {
+    flex: 1;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+    cursor: pointer;
+    position: relative;
+    transition: height 0.1s;
+}
+
+.bebelume-music-progress-bar:hover {
+    height: 6px;
+}
+
+.bebelume-music-progress-fill {
+    height: 100%;
+    background: var(--spotify-green);
+    border-radius: 2px;
+    transition: width 0.1s linear;
+    position: relative;
+}
+
+.bebelume-music-progress-bar:hover .bebelume-music-progress-fill::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    background: var(--spotify-text-primary);
+    border-radius: 50%;
+}
+
+/* Empty State */
+.bebelume-music-empty {
+    padding: 60px 20px;
+    text-align: center;
+    font-size: 18px;
+    color: var(--spotify-text-secondary);
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .bebelume-music-title {
+        font-size: 24px;
+    }
+    
+    .bebelume-music-current-title {
+        font-size: 20px;
+    }
+    
+    .bebelume-music-fixed-controls {
+        gap: 8px;
+    }
+    
+    .bebelume-music-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 16px;
+    }
+    
+    .bebelume-music-btn-play {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .bebelume-music-track {
+        padding: 8px 12px;
+    }
+    
+    .bebelume-music-track-thumb {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .bebelume-music-fixed-progress {
+        bottom: 12px;
+        left: 12px;
+        right: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .bebelume-music-header {
+        padding: 16px;
+    }
+    
+    .bebelume-music-main {
+        padding: 16px;
+    }
+    
+    .bebelume-music-playlist {
+        padding: 16px;
+    }
+    
+    .bebelume-music-title {
+        font-size: 20px;
+    }
+    
+    .bebelume-music-track-title {
+        font-size: 14px;
+    }
+    
+    .bebelume-music-track-author {
+        font-size: 12px;
+    }
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.bebelume-music-track {
+    animation: fadeIn 0.3s ease-out;
+}
+
+.bebelume-music-track:nth-child(1) { animation-delay: 0.05s; }
+.bebelume-music-track:nth-child(2) { animation-delay: 0.1s; }
+.bebelume-music-track:nth-child(3) { animation-delay: 0.15s; }
+.bebelume-music-track:nth-child(4) { animation-delay: 0.2s; }
+.bebelume-music-track:nth-child(5) { animation-delay: 0.25s; }
+
+/* Plyr Customization */
+.bebelume-music-video-container .plyr {
+    border-radius: 0;
+}
+
+.bebelume-music-video-container .plyr__controls {
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+}
+
+.bebelume-music-video-container .plyr__control--overlaid {
+    background: var(--spotify-green);
+}
+
+.bebelume-music-video-container .plyr__control:hover {
+    background: #1ed760;
+}
+
+.bebelume-music-video-container .plyr--audio .plyr__controls {
+    background: transparent;
+    padding: 16px;
+}
+
+.bebelume-music-video-container .plyr--audio .plyr__control.plyr__tab-focus,
+.bebelume-music-video-container .plyr--audio .plyr__control:hover,
+.bebelume-music-video-container .plyr--audio .plyr__control[aria-expanded=true] {
+    background: var(--spotify-green);
+}
+
+.bebelume-music-video-container .plyr__progress input[type=range] {
+    color: var(--spotify-green);
+}
+
+/* ============================================
+   VÍDEO ACCORDION NA PLAYLIST
+   ============================================ */
+
+.bebelume-music-track-wrapper {
+    border-bottom: 1px solid var(--spotify-border);
+}
+
+.bebelume-music-track-video-container {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bebelume-music-track-video-content {
+    padding: 16px;
+    background: var(--spotify-bg-hover);
+}
+
+.bebelume-music-track-video {
+    width: 100%;
+    max-height: 400px; /* Limita altura máxima */
+    border-radius: 8px;
+    display: block;
+    object-fit: contain; /* Mantém proporção */
+}
+

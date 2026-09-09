@@ -1,0 +1,19 @@
+<?php
+/**
+ * Plugin Name: Bebelume Stripe Meta
+ * Description: Passa fbclid e fbp nos metadata da sessão Stripe para maximizar o Match Quality da Meta CAPI.
+ * Version:     1.0.0
+ * Author:      Bebelume
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
+add_filter( 'pmpro_stripe_session_args', function( $args ) {
+    $args['metadata'] = array_merge( $args['metadata'] ?? [], [
+        'fbc' => $_COOKIE['bebelume_fbclid'] ?? '',
+        'fbp' => $_COOKIE['_fbp']            ?? '',
+    ]);
+    return $args;
+});

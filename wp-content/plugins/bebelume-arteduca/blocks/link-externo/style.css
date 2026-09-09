@@ -1,0 +1,124 @@
+/* Bebelume Link Externo - Estilos */
+.bebelume-link-externo-box {
+    background-color: #F3F0EB;
+    padding: 30px;
+    border-radius: 8px;
+    text-align: center;
+    margin: 20px 0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+	border: 2px dashed rgba(42, 69, 130, 0.2);
+}
+
+.bebelume-link-externo-box:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.bebelume-link-externo-icone {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bebelume-link-externo-icone i {
+    color: #2A4582;
+}
+
+.bebelume-link-externo-titulo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin: 0 0 15px 0;
+    line-height: 1.3;
+}
+
+.bebelume-link-externo-descricao {
+    font-size: 16px;
+    color: #666;
+    margin: 0 0 20px 0;
+    line-height: 1.6;
+}
+
+.bebelume-link-externo-preview {
+    margin: 15px 0;
+}
+
+.bebelume-link-externo-url {
+    font-size: 13px;
+    color: #666;
+    word-break: break-all;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.bebelume-link-externo-botao {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: #2A4582;
+    color: #fff;
+    padding: 12px 30px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.bebelume-link-externo-botao:hover {
+    background-color: #1e3161;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    color: #fff;
+    text-decoration: none;
+}
+
+.bebelume-link-externo-botao:active {
+    transform: translateY(0);
+}
+
+.bebelume-link-externo-botao i {
+    width: 20px;
+    height: 20px;
+}
+
+/* Editor específico */
+.wp-block-bebelume-arteduca-link-externo {
+    margin: 20px 0;
+}
+
+.editor-styles-wrapper .bebelume-link-externo-box {
+    max-width: 100%;
+}
+
+.editor-styles-wrapper .bebelume-link-externo-botao {
+    cursor: not-allowed;
+    opacity: 0.8;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .bebelume-link-externo-box {
+        padding: 20px;
+    }
+    
+    .bebelume-link-externo-titulo {
+        font-size: 20px;
+    }
+    
+    .bebelume-link-externo-descricao {
+        font-size: 14px;
+    }
+    
+    .bebelume-link-externo-botao {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}

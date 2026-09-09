@@ -1,0 +1,1506 @@
+/**
+ * Bebelume PMPro Profile — pmpro.css
+ */
+
+:root {
+    --bbl-pink:       #eb2a61;
+    --bbl-pink-dark:  #c41e50;
+    --bbl-green-bg:   #eaf3de;
+    --bbl-green-text: #3b6d11;
+    --bbl-bg:         #fafafa;
+    --bbl-white:      #ffffff;
+    --bbl-border:     #e4e8ed;
+    --bbl-text:       #1a1a2e;
+    --bbl-text-sec:   #6b7480;
+    --bbl-text-light: #9aa3ae;
+    --bbl-radius:     14px;
+    --bbl-font:       'Nunito', sans-serif;
+}
+
+/* ── Override página de conta ── */
+body.pmpro-account {
+    background: #f7f7f5 !important;
+}
+body.pmpro-account #main-content {
+    background: #f7f7f5;
+}
+
+/* ── Wrapper ── */
+.bbl-account {
+    font-family: var(--bbl-font);
+    color: var(--bbl-text);
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 16px 56px;
+}
+.bbl-account--page {
+    padding-top: 2.5rem;
+}
+
+/* ── Boas-vindas ── */
+.bbl-welcome {
+    background: var(--bbl-pink);
+    border-radius: var(--bbl-radius);
+    padding: 1.75rem 1.75rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    position: relative;
+    overflow: hidden;
+}
+.bbl-welcome::before {
+    content: '';
+    position: absolute;
+    top: -50px; right: -50px;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.07);
+    pointer-events: none;
+}
+.bbl-welcome::after {
+    content: '';
+    position: absolute;
+    bottom: -70px; right: 70px;
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+    pointer-events: none;
+}
+.bbl-avatar {
+    width: 52px; height: 52px; border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: 700; color: #fff;
+    border: 1.5px solid rgba(255,255,255,0.35);
+    flex-shrink: 0; position: relative; z-index: 1;
+}
+.bbl-welcome-name {
+    margin: 0; font-size: 20px; font-weight: 700; color: #fff;
+    position: relative; z-index: 1;
+}
+.bbl-welcome-sub {
+    margin: 4px 0 0; font-size: 13px; color: rgba(255,255,255,0.72);
+    position: relative; z-index: 1;
+}
+
+/* ── Card ── */
+.bbl-card {
+    background: var(--bbl-white);
+    border: 1px solid var(--bbl-border);
+    border-radius: var(--bbl-radius);
+    padding: 1.375rem 1.5rem;
+    margin-bottom: 1rem;
+}
+.bbl-card--empty { text-align: center; padding: 2rem; }
+
+/* ── Card header ── */
+.bbl-card-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 1.125rem; padding-bottom: 0.875rem;
+    border-bottom: 1px solid var(--bbl-border);
+}
+.bbl-card-title {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 14px; font-weight: 700; color: var(--bbl-text); margin: 0;
+}
+
+/* ── Badge ativo ── */
+.bbl-badge-active {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: var(--bbl-green-bg); color: var(--bbl-green-text);
+    font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 99px;
+}
+.bbl-pulse {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--bbl-green-text); display: inline-block;
+    animation: bbl-pulse 2s ease-in-out infinite;
+}
+@keyframes bbl-pulse { 0%,100%{opacity:1} 50%{opacity:0.35} }
+
+/* ── Plano ── */
+.bbl-plan-name {
+    font-size: 21px; font-weight: 700; color: var(--bbl-text);
+    margin: 0 0 4px;
+}
+.bbl-plan-meta {
+    font-size: 13px; color: var(--bbl-text-sec); margin: 0 0 1.375rem;
+}
+
+/* ── CTA principal ── */
+.bbl-cta {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    background: var(--bbl-pink);
+    color: #fff !important;
+    font-family: var(--bbl-font);
+    font-size: 15px; font-weight: 700;
+    padding: 13px 24px; border-radius: 99px;
+    text-decoration: none; border: none; cursor: pointer;
+    width: 100%; box-sizing: border-box;
+    letter-spacing: 0.01em;
+    transition: background .15s, transform .1s, box-shadow .15s;
+}
+.bbl-cta:hover {
+    background: var(--bbl-pink-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(235,42,97,.3);
+}
+.bbl-cta:active { transform: translateY(0); box-shadow: none; }
+.bbl-cta:focus-visible { outline: 3px solid rgba(235,42,97,.4); outline-offset: 2px; }
+
+.bbl-cta-icon {
+    width: 26px; height: 26px; border-radius: 50%;
+    background: rgba(255,255,255,0.22);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+}
+
+/* ── Ações secundárias ── */
+.bbl-secondary-actions {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: 1rem; padding-top: 1rem;
+    border-top: 1px solid var(--bbl-border);
+}
+.bbl-btn-outline {
+    display: inline-flex; align-items: center;
+    font-family: var(--bbl-font);
+    font-size: 13px; font-weight: 600;
+    color: var(--bbl-text-sec) !important;
+    border: 1px solid var(--bbl-border);
+    padding: 7px 16px; border-radius: 99px;
+    background: none; cursor: pointer; text-decoration: none;
+    transition: border-color .15s, color .15s;
+}
+.bbl-btn-outline:hover { border-color: #bbb; color: var(--bbl-text) !important; }
+.bbl-btn-outline:focus-visible { outline: 2px solid var(--bbl-pink); outline-offset: 2px; }
+
+.bbl-btn-cancel {
+    font-family: var(--bbl-font);
+    font-size: 13px; color: #c0254f;
+    background: none; border: 1px solid #f5c0cd;
+    padding: 7px 14px; border-radius: 99px; cursor: pointer;
+    text-decoration: none;
+    transition: background .15s, border-color .15s;
+}
+.bbl-btn-cancel:hover { background: #fff0f3; border-color: #e8a0b0; }
+.bbl-btn-cancel:focus-visible { outline: 2px solid #c0254f; outline-offset: 2px; }
+
+/* ── Dados da conta ── */
+.bbl-data-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+}
+.bbl-data-item label {
+    display: block; font-size: 11px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--bbl-text-light); margin-bottom: 4px;
+}
+.bbl-data-item span { font-size: 14px; color: var(--bbl-text); font-weight: 600; }
+
+/* ── Tabela de faturas ── */
+.bbl-invoice-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.bbl-invoice-table th {
+    text-align: left; font-size: 11px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--bbl-text-light); padding-bottom: 10px;
+}
+.bbl-invoice-table td {
+    padding: 11px 0; border-top: 1px solid var(--bbl-border);
+    color: var(--bbl-text); font-weight: 600;
+}
+.bbl-invoice-table tr:hover td { background: var(--bbl-bg); }
+
+.bbl-status {
+    display: inline-block; font-size: 11px; font-weight: 700;
+    padding: 3px 9px; border-radius: 99px;
+}
+.bbl-status--paid    { background: var(--bbl-green-bg); color: var(--bbl-green-text); }
+.bbl-status--pending { background: #fff8e1; color: #b45309; }
+
+.bbl-link {
+    font-size: 13px; color: var(--bbl-pink) !important;
+    text-decoration: none; font-weight: 600;
+    transition: opacity .15s;
+}
+.bbl-link:hover { opacity: .75; }
+
+/* ── Modal de cancelamento ── */
+.bbl-modal-backdrop {
+    display: none;
+    position: fixed; inset: 0; z-index: 99999;
+    background: rgba(0,0,0,0.45);
+    align-items: center; justify-content: center;
+}
+.bbl-modal-backdrop.open { display: flex; }
+.bbl-modal {
+    background: var(--bbl-white);
+    border-radius: var(--bbl-radius);
+    padding: 2rem;
+    max-width: 400px; width: 90%;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+}
+.bbl-modal h3 {
+    font-size: 17px; font-weight: 700; color: var(--bbl-text);
+    margin: 0 0 10px;
+}
+.bbl-modal p {
+    font-size: 14px; color: var(--bbl-text-sec);
+    line-height: 1.6; margin: 0 0 1.5rem;
+}
+.bbl-modal-actions {
+    display: flex; gap: 10px;
+}
+.bbl-modal-back {
+    flex: 1; font-family: var(--bbl-font);
+    font-size: 14px; font-weight: 700;
+    color: var(--bbl-text-sec);
+    background: var(--bbl-bg); border: 1px solid var(--bbl-border);
+    padding: 11px; border-radius: 99px; cursor: pointer;
+    transition: border-color .15s;
+}
+.bbl-modal-back:hover { border-color: #bbb; }
+.bbl-modal-confirm {
+    flex: 1; display: flex; align-items: center; justify-content: center;
+    font-family: var(--bbl-font);
+    font-size: 14px; font-weight: 700;
+    color: #fff !important; text-decoration: none;
+    background: #c0254f; border: none;
+    padding: 11px; border-radius: 99px; cursor: pointer;
+    transition: background .15s;
+}
+.bbl-modal-confirm:hover { background: #a01e42; }
+
+/* ── Formulários (outras páginas PMPro) ── */
+.bbl-pmpro { font-family: var(--bbl-font); }
+.bbl-pmpro label, .bbl-pmpro .pmpro_label {
+    display: block; font-size: 12px; font-weight: 700;
+    color: var(--bbl-text-sec); text-transform: uppercase;
+    letter-spacing: .05em; margin-bottom: 5px;
+}
+.bbl-pmpro input[type="text"],
+.bbl-pmpro input[type="email"],
+.bbl-pmpro input[type="password"],
+.bbl-pmpro input[type="tel"],
+.bbl-pmpro input[type="number"],
+.bbl-pmpro select,
+.bbl-pmpro textarea {
+    width: 100%; height: 46px; padding: 0 14px;
+    border: 1.5px solid var(--bbl-border);
+    border-radius: 10px; background: var(--bbl-bg);
+    font-family: var(--bbl-font); font-size: 14px; color: var(--bbl-text);
+    outline: none; transition: border-color .2s, box-shadow .2s;
+    box-sizing: border-box;
+}
+.bbl-pmpro input:focus, .bbl-pmpro select:focus, .bbl-pmpro textarea:focus {
+    border-color: var(--bbl-pink); background: var(--bbl-white);
+    box-shadow: 0 0 0 3px rgba(235,42,97,.1);
+}
+.bbl-pmpro textarea { height: auto; padding: 12px 14px; }
+.bbl-field { margin-bottom: 16px; }
+.bbl-field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+/* ── Levels ── */
+.bbl-levels-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+.bbl-level-card {
+    background: var(--bbl-white); border: 2px solid var(--bbl-border);
+    border-radius: 16px; padding: 28px 24px; text-align: center;
+    transition: border-color .2s, box-shadow .2s;
+}
+.bbl-level-card:hover, .bbl-level-card--featured {
+    border-color: var(--bbl-pink);
+    box-shadow: 0 8px 32px rgba(235,42,97,.12);
+}
+.bbl-level-name { font-size: 18px; font-weight: 800; margin-bottom: 8px; }
+.bbl-level-price { font-size: 36px; font-weight: 800; color: var(--bbl-pink); margin-bottom: 4px; }
+.bbl-level-period { font-size: 13px; color: var(--bbl-text-sec); margin-bottom: 20px; }
+.bbl-level-desc { font-size: 14px; color: var(--bbl-text-sec); line-height: 1.6; margin-bottom: 24px; }
+
+/* ── Mensagens ── */
+.bbl-msg { padding: 14px 18px; border-radius: 10px; font-size: 14px; font-weight: 600; margin-bottom: 20px; }
+.bbl-msg--success { background: #e8f8f0; color: #2e7d4f; border-left: 4px solid #66BB6A; }
+.bbl-msg--error   { background: #fff0f3; color: #c0254f; border-left: 4px solid #eb2a61; }
+.bbl-msg--info    { background: #e8f8fb; color: #006d7e; border-left: 4px solid #00BCD4; }
+
+
+/* ── Página de cancelamento ── */
+body.pmpro-cancel {
+    background: #f7f7f5 !important;
+}
+.bbl-cancel-page {
+    font-family: var(--bbl-font);
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 2.5rem 16px 56px;
+}
+.bbl-cancel-card {
+    background: var(--bbl-white);
+    border: 1px solid var(--bbl-border);
+    border-radius: var(--bbl-radius);
+    padding: 2.25rem 2rem;
+    text-align: center;
+}
+.bbl-cancel-icon {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: #fff0f3;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.25rem;
+}
+.bbl-cancel-title {
+    font-size: 18px; font-weight: 700;
+    color: var(--bbl-text);
+    margin: 0 0 0.875rem;
+    line-height: 1.4;
+}
+.bbl-cancel-desc {
+    font-size: 14px; color: var(--bbl-text-sec);
+    line-height: 1.65; margin: 0 0 1.5rem;
+}
+.bbl-cancel-list {
+    list-style: none; padding: 0; margin: 0 0 1.75rem;
+    text-align: left;
+    background: #fafafa;
+    border: 1px solid var(--bbl-border);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+}
+.bbl-cancel-list li {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 13px; color: var(--bbl-text-sec);
+    padding: 9px 0;
+    border-bottom: 1px solid var(--bbl-border);
+    line-height: 1.6;
+}
+.bbl-cancel-list li:last-child { border-bottom: none; }
+.bbl-cancel-list svg { flex-shrink: 0; margin-top: 2px; }
+.bbl-cancel-list__neutral { color: var(--bbl-text-light) !important; font-size: 12px !important; }
+.bbl-cancel-list__neutral svg { opacity: 0.6; }
+
+.bbl-cancel-retention {
+    background: var(--bbl-bg);
+    border: 1px solid var(--bbl-border);
+    border-radius: 12px;
+    padding: 1.125rem 1.25rem;
+    margin-bottom: 1.75rem;
+    position: relative;
+}
+.bbl-cancel-retention::before {
+    content: 'ou';
+    position: absolute;
+    top: -12px; left: 50%;
+    transform: translateX(-50%);
+    background: var(--bbl-white);
+    border: 1px solid var(--bbl-border);
+    border-radius: 99px;
+    padding: 2px 10px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--bbl-text-light);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+.bbl-cancel-retention__title {
+    font-size: 12px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--bbl-text-light);
+    margin: 0 0 0.875rem; text-align: center;
+}
+.bbl-cancel-retention__options {
+    display: flex; flex-direction: column; gap: 8px;
+}
+.bbl-cancel-retention__option {
+    display: flex; align-items: center; gap: 12px;
+    background: var(--bbl-white);
+    border: 1px solid var(--bbl-border);
+    border-radius: 10px;
+    padding: 12px 14px;
+    text-decoration: none !important;
+    color: var(--bbl-text) !important;
+    transition: border-color .15s, background .15s;
+}
+.bbl-cancel-retention__option:hover {
+    border-color: #bbb;
+    background: #fafafa;
+}
+.bbl-cancel-retention__option svg {
+    flex-shrink: 0; color: var(--bbl-text-sec);
+}
+.bbl-cancel-retention__option span {
+    display: flex; flex-direction: column; gap: 2px; text-align: left;
+}
+.bbl-cancel-retention__option strong {
+    font-size: 13px; font-weight: 700; color: var(--bbl-text);
+}
+.bbl-cancel-retention__option small {
+    font-size: 12px; color: var(--bbl-text-light);
+}
+
+.bbl-cancel-btn-confirm {
+    display: block; width: 100%;
+    font-family: var(--bbl-font);
+    font-size: 15px; font-weight: 700;
+    color: #fff; background: #c0254f;
+    border: none; border-radius: 99px;
+    padding: 13px 24px; cursor: pointer;
+    margin-bottom: 1rem;
+    transition: background .15s, transform .1s;
+}
+.bbl-cancel-btn-confirm:hover { background: #a01e42; transform: translateY(-1px); }
+.bbl-cancel-btn-confirm:active { transform: translateY(0); }
+.bbl-cancel-btn-confirm:focus-visible { outline: 3px solid rgba(192,37,79,.4); outline-offset: 2px; }
+
+.bbl-cancel-btn-back {
+    display: block;
+    font-family: var(--bbl-font);
+    font-size: 14px; font-weight: 600;
+    color: var(--bbl-pink) !important;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 99px;
+    transition: background .15s;
+}
+.bbl-cancel-btn-back:hover { background: #fff0f3; }
+
+.bbl-cancel-msg {
+    padding: 14px 18px; border-radius: 10px;
+    font-size: 14px; font-weight: 600; margin-bottom: 1rem;
+}
+.bbl-cancel-msg--success { background: #e8f8f0; color: #2e7d4f; border-left: 4px solid #66BB6A; }
+.bbl-cancel-msg--error   { background: #fff0f3; color: #c0254f; border-left: 4px solid #eb2a61; }
+
+@media (max-width: 640px) {
+    .bbl-cancel-page { padding-top: 1.5rem; }
+    .bbl-cancel-card { padding: 1.5rem 1.25rem; }
+}
+
+/* ── Responsivo ── */
+@media (max-width: 640px) {
+
+    /* Wrapper — força espaço entre header e primeiro card */
+    body.pmpro-account #main-content,
+    body.pmpro-account .site-main { padding-top: 1.5rem !important; }
+    .bbl-account--page { padding-top: 0; }
+    .bbl-account { padding: 0 12px 40px; }
+
+    /* Boas-vindas — menos peso, mais respiro */
+    .bbl-welcome {
+        padding: 1.125rem 1.25rem;
+        gap: 12px;
+        border-radius: 12px;
+        margin-bottom: 0.875rem;
+    }
+    .bbl-welcome-name { font-size: 16px; }
+    .bbl-welcome-sub { font-size: 12px; margin-top: 2px; line-height: 1.4; }
+    .bbl-avatar { width: 40px; height: 40px; font-size: 14px; }
+
+    /* Header rosa do tema — menos altura no mobile */
+    .site-header { padding: 0.6rem 0 !important; }
+
+    /* Cards */
+    .bbl-card { padding: 1rem; }
+    .bbl-card-header { flex-wrap: wrap; gap: 10px; margin-bottom: 1rem; padding-bottom: 0.75rem; }
+
+    /* Assinatura — ações empilhadas */
+    .bbl-secondary-actions {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+    .bbl-btn-outline {
+        text-align: center;
+        justify-content: center;
+        padding: 11px 16px;
+        font-size: 14px;
+    }
+    .bbl-btn-cancel {
+        text-align: center;
+        padding: 11px 16px;
+        font-size: 14px;
+        border-radius: 99px;
+        border: 1px solid #f5c0cd;
+    }
+
+    /* Dados da conta — lista vertical */
+    .bbl-data-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+    .bbl-data-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--bbl-border);
+    }
+    .bbl-data-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .bbl-data-item label { margin-bottom: 0; min-width: 60px; }
+    .bbl-data-item span { text-align: right; }
+
+    /* Faturas — cards em vez de tabela */
+    .bbl-invoice-table thead { display: none; }
+    .bbl-invoice-table,
+    .bbl-invoice-table tbody,
+    .bbl-invoice-table tr,
+    .bbl-invoice-table td { display: block; width: 100%; }
+    .bbl-invoice-table tr {
+        padding: 14px 0;
+        border-top: 1px solid var(--bbl-border);
+        display: grid;
+        grid-template-columns: 1fr auto;
+        grid-template-rows: auto auto;
+        gap: 4px 8px;
+        align-items: center;
+    }
+    .bbl-invoice-table tr:first-child { border-top: none; }
+    .bbl-invoice-table td { border: none; padding: 0; }
+
+    /* Data + Plano na primeira linha */
+    .bbl-invoice-table td:nth-child(1) {
+        font-size: 12px; color: var(--bbl-text-sec);
+        grid-column: 1; grid-row: 1;
+    }
+    .bbl-invoice-table td:nth-child(2) {
+        font-size: 14px; font-weight: 700;
+        grid-column: 1; grid-row: 2;
+    }
+    /* Valor na segunda coluna, primeira linha */
+    .bbl-invoice-table td:nth-child(3) {
+        font-size: 15px; font-weight: 700;
+        grid-column: 2; grid-row: 1;
+        text-align: right;
+    }
+    /* Status na segunda coluna, segunda linha */
+    .bbl-invoice-table td:nth-child(4) {
+        grid-column: 2; grid-row: 2;
+        text-align: right;
+    }
+    /* Link Ver escondido no mobile — status já diz tudo */
+    .bbl-invoice-table td:nth-child(5) {
+        grid-column: 1 / -1; grid-row: 3;
+        padding-top: 4px;
+    }
+
+    /* Formulários */
+    .bbl-field-row { grid-template-columns: 1fr; }
+    .bbl-levels-grid { grid-template-columns: 1fr; }
+
+    /* Rodapé */
+    .site-footer .container { padding-top: 1.5rem !important; padding-bottom: 1.5rem !important; }
+    .site-footer .row.mb-4 { margin-bottom: 0 !important; display: none; }
+
+    /* Modal */
+    .bbl-modal { padding: 1.5rem; }
+    .bbl-modal-actions { flex-direction: column-reverse; gap: 8px; }
+    .bbl-modal-back,
+    .bbl-modal-confirm { padding: 13px; font-size: 15px; }
+}
+
+/* ══════════════════════════════════════════════
+   CHECKOUT — Bebelume PMPro
+   Sem override de template. Apenas CSS.
+   ══════════════════════════════════════════════ */
+
+body.pmpro-checkout {
+    background: #f3f2ef !important;
+}
+body.pmpro-checkout #main-content,
+body.pmpro-checkout .site-main {
+    background: #f3f2ef !important;
+    padding-top: 1.5rem !important;
+}
+
+/* Container */
+body.pmpro-checkout .pmpro {
+    font-family: var(--bbl-font) !important;
+    max-width: 600px !important;
+    margin: 0 auto !important;
+    padding: 0 16px 56px !important;
+}
+
+/* ── HERO do plano ── */
+.bbl-checkout-hero {
+    background: linear-gradient(135deg, #eb2a61 0%, #c41e50 100%);
+    border-radius: 18px;
+    padding: 1.75rem 1.75rem 1.5rem;
+    margin-bottom: 1.25rem;
+    position: relative;
+    overflow: hidden;
+}
+.bbl-checkout-hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.07);
+    pointer-events: none;
+}
+.bbl-checkout-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: 40px;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+    pointer-events: none;
+}
+.bbl-checkout-hero-top {
+    margin-bottom: 0.875rem;
+    position: relative; z-index: 1;
+}
+.bbl-checkout-hero-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.65);
+    display: block;
+    margin-bottom: 4px;
+    font-family: var(--bbl-font);
+}
+.bbl-checkout-hero-name {
+    font-size: 26px;
+    font-weight: 800;
+    color: #fff;
+    margin: 0;
+    line-height: 1.2;
+    font-family: var(--bbl-font);
+}
+.bbl-checkout-hero-price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 0.625rem;
+    position: relative; z-index: 1;
+}
+.bbl-checkout-hero-price {
+    font-size: 36px;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1;
+    font-family: var(--bbl-font);
+}
+.bbl-checkout-hero-period {
+    font-size: 16px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.75);
+    font-family: var(--bbl-font);
+}
+.bbl-checkout-hero-trial {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(255,255,255,0.18);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 99px;
+    font-family: var(--bbl-font);
+    letter-spacing: 0.02em;
+}
+.bbl-checkout-hero-micro {
+    font-size: 13px;
+    color: rgba(255,255,255,0.72);
+    margin: 0 0 1rem;
+    font-family: var(--bbl-font);
+    position: relative; z-index: 1;
+}
+.bbl-checkout-hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    background: rgba(0,0,0,0.15);
+    border-radius: 10px;
+    padding: 10px 14px;
+    position: relative; z-index: 1;
+}
+.bbl-checkout-hero-meta-item {
+    font-size: 12px;
+    color: rgba(255,255,255,0.82);
+    font-family: var(--bbl-font);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.bbl-checkout-hero-meta-item strong {
+    color: #fff;
+    font-weight: 700;
+}
+.bbl-checkout-hero-meta-sep {
+    color: rgba(255,255,255,0.3);
+    font-size: 14px;
+}
+
+/* Cards PMPro — base */
+body.pmpro-checkout .pmpro_card {
+    background: var(--bbl-white) !important;
+    border: 1px solid var(--bbl-border) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05) !important;
+    margin-bottom: 10px !important;
+    overflow: visible !important;
+}
+body.pmpro-checkout .pmpro_card_content {
+    padding: 1.375rem 1.5rem !important;
+}
+body.pmpro-checkout .pmpro_card_title,
+body.pmpro-checkout .pmpro_form_heading {
+    font-family: var(--bbl-font) !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    color: var(--bbl-text-sec) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.06em !important;
+    margin: 0 0 1rem !important;
+    padding-bottom: 0.75rem !important;
+    border-bottom: 1px solid var(--bbl-border) !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+}
+body.pmpro-checkout .pmpro_card_actions {
+    padding: 0.75rem 1.5rem !important;
+    background: var(--bbl-bg) !important;
+    border-top: 1px solid var(--bbl-border) !important;
+    font-size: 13px !important;
+    color: var(--bbl-text-sec) !important;
+}
+body.pmpro-checkout .pmpro_card_actions a {
+    color: var(--bbl-pink) !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+}
+
+/* Card de pagamento — destaque secundário */
+body.pmpro-checkout #pmpro_payment_information_fields .pmpro_card {
+    border: 1.5px solid rgba(235,42,97,0.22) !important;
+    box-shadow: 0 2px 12px rgba(235,42,97,0.07) !important;
+}
+body.pmpro-checkout #pmpro_payment_information_fields .pmpro_card_title {
+    color: var(--bbl-text) !important;
+    font-size: 14px !important;
+}
+
+/* Fieldset */
+body.pmpro-checkout .pmpro_form_fieldset {
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Numeração dos cards */
+body.pmpro-checkout #pmpro_user_fields .pmpro_card_title::before,
+body.pmpro-checkout #pmpro_billing_address_fields .pmpro_card_title::before,
+body.pmpro-checkout #pmpro_payment_information_fields .pmpro_card_title::before {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    background: var(--bbl-pink);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 800;
+    flex-shrink: 0;
+    text-transform: none;
+    letter-spacing: 0;
+}
+body.pmpro-checkout #pmpro_user_fields .pmpro_card_title::before { content: '1'; }
+body.pmpro-checkout #pmpro_billing_address_fields .pmpro_card_title::before { content: '2'; }
+body.pmpro-checkout #pmpro_payment_information_fields .pmpro_card_title::before { content: '3'; }
+
+/* Ícones quebrados */
+body.pmpro-checkout .pmpro_card_title i,
+body.pmpro-checkout .pmpro_card_title .lucide,
+body.pmpro-checkout .pmpro_card_title span[data-lucide],
+body.pmpro-checkout .pmpro_card_title img,
+body.pmpro-checkout .pmpro_card_title i[class*="fa-"],
+body.pmpro-checkout .pmpro_card_title i[class*="fa "] {
+    display: none !important;
+}
+
+/* Labels */
+body.pmpro-checkout .pmpro_form_label {
+    font-family: var(--bbl-font) !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.06em !important;
+    color: var(--bbl-text-light) !important;
+    margin-bottom: 5px !important;
+    display: block !important;
+}
+
+/* Inputs */
+body.pmpro-checkout .pmpro_form_input,
+body.pmpro-checkout input[class*="pmpro_form_input"],
+body.pmpro-checkout select[class*="pmpro_form_input"] {
+    font-family: var(--bbl-font) !important;
+    font-size: 14px !important;
+    color: var(--bbl-text) !important;
+    background: var(--bbl-white) !important;
+    border: 1.5px solid var(--bbl-border) !important;
+    border-radius: 10px !important;
+    padding: 11px 14px !important;
+    min-height: 46px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    transition: border-color .15s, box-shadow .15s !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+body.pmpro-checkout .pmpro_form_input:focus,
+body.pmpro-checkout select:focus {
+    border-color: var(--bbl-pink) !important;
+    background: var(--bbl-white) !important;
+    box-shadow: 0 0 0 3px rgba(235,42,97,.1) !important;
+}
+
+/* Campos */
+body.pmpro-checkout .pmpro_form_field { margin-bottom: 14px !important; }
+
+/* Grid — nome/sobrenome, email/conf. lado a lado */
+body.pmpro-checkout .pmpro_cols-2 {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 12px !important;
+}
+/* Apenas email e senha em coluna única */
+body.pmpro-checkout #pmpro_user_fields .pmpro_form_field-email,
+body.pmpro-checkout #pmpro_user_fields .pmpro_form_field-password {
+    grid-column: 1 / -1 !important;
+}
+
+/* Username escondido */
+body.pmpro-checkout .pmpro_form_field-username { display: none !important; }
+
+/* Custo do plano */
+body.pmpro-checkout .pmpro_level_cost_text {
+    font-size: 13px !important;
+    color: var(--bbl-text-sec) !important;
+    background: var(--bbl-bg) !important;
+    border-left: 3px solid var(--bbl-pink) !important;
+    border-radius: 6px !important;
+    padding: 10px 14px !important;
+    margin: 0 !important;
+    line-height: 1.6 !important;
+}
+body.pmpro-checkout .pmpro_level_name_text {
+    font-size: 13px !important;
+    color: var(--bbl-text-sec) !important;
+    margin-bottom: 10px !important;
+}
+body.pmpro-checkout .pmpro_level_description_text {
+    font-size: 13px !important;
+    color: var(--bbl-text-sec) !important;
+    background: var(--bbl-bg) !important;
+    border-left: 3px solid var(--bbl-border) !important;
+    border-radius: 6px !important;
+    padding: 10px 14px !important;
+    margin: 10px 0 !important;
+}
+
+/* Trust signals */
+.bbl-checkout-trust {
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--bbl-border);
+}
+.bbl-checkout-trust-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+.bbl-checkout-trust-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--bbl-text-sec);
+    font-family: var(--bbl-font);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+.bbl-checkout-trust-cards {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+/* "Cancele a qualquer momento" no card de pagamento */
+.bbl-cancel-anytime {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--bbl-text-sec, #6b7480);
+    justify-content: center;
+    margin: 14px 0 0;
+    padding-top: 12px;
+    border-top: 1px solid var(--bbl-border, #e4e8ed);
+    font-weight: 600;
+    font-family: var(--bbl-font);
+}
+.bbl-cancel-anytime svg { flex-shrink: 0; color: var(--bbl-pink, #E73665); }
+
+/* Frase de confiança pré-CTA */
+.bbl-checkout-pre-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-family: var(--bbl-font);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--bbl-text-sec);
+    text-align: center;
+    padding: 0.875rem 0 0.625rem;
+    letter-spacing: 0.01em;
+}
+.bbl-checkout-pre-cta svg { flex-shrink: 0; color: var(--bbl-pink); }
+
+/* Botão submit */
+.bbl-checkout-btn {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    width: 100% !important;
+    background: var(--bbl-pink) !important;
+    color: #fff !important;
+    font-family: var(--bbl-font) !important;
+    font-size: 17px !important;
+    font-weight: 800 !important;
+    padding: 16px 28px !important;
+    border: none !important;
+    border-radius: 99px !important;
+    cursor: pointer !important;
+    letter-spacing: 0.01em !important;
+    transition: background .15s, transform .1s, box-shadow .15s !important;
+    box-shadow: 0 4px 18px rgba(235,42,97,.30) !important;
+    margin-top: 0 !important;
+}
+.bbl-checkout-btn:hover {
+    background: var(--bbl-pink-dark) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 28px rgba(235,42,97,.38) !important;
+}
+.bbl-checkout-btn:active { transform: translateY(0) !important; box-shadow: 0 2px 8px rgba(235,42,97,.2) !important; }
+.bbl-checkout-btn:focus-visible {
+    outline: 3px solid rgba(235,42,97,.4) !important;
+    outline-offset: 2px !important;
+}
+
+/* Terms card — integrado ao fechamento */
+.bbl-terms-card {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+}
+.bbl-terms-card .pmpro_card_content {
+    padding: 0.5rem 0 0 !important;
+}
+
+/* Botão "Usar link" do Stripe */
+body.pmpro-checkout iframe + div button,
+body.pmpro-checkout [class*="LinkButton"],
+body.pmpro-checkout button[class*="link-button"] {
+    background: transparent !important;
+    border: 1px solid var(--bbl-border) !important;
+    color: var(--bbl-text-sec) !important;
+    border-radius: 6px !important;
+    font-family: var(--bbl-font) !important;
+    font-size: 12px !important;
+}
+
+/* Mensagens */
+body.pmpro-checkout .pmpro_message {
+    border-radius: 10px !important;
+    font-family: var(--bbl-font) !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    padding: 12px 16px !important;
+    margin-bottom: 1rem !important;
+    border-left: 4px solid !important;
+}
+body.pmpro-checkout .pmpro_error   { border-color: var(--bbl-pink) !important; color: #c0254f !important; background: #fff0f3 !important; }
+body.pmpro-checkout .pmpro_success { border-color: var(--bbl-green-text) !important; color: var(--bbl-green-text) !important; background: var(--bbl-green-bg) !important; }
+
+/* Processing */
+body.pmpro-checkout #pmpro_processing_message {
+    text-align: center !important;
+    font-family: var(--bbl-font) !important;
+    font-size: 14px !important;
+    color: var(--bbl-text-sec) !important;
+    margin-top: 8px !important;
+}
+
+/* Hint de campo salvo */
+.bbl-field-hint { font-size: 12px; margin: 4px 0 0; color: var(--bbl-text-sec); }
+.bbl-field-hint--ok { color: var(--bbl-green-text); }
+
+/* Password toggle */
+body.pmpro-checkout #pmpro_user_fields .pmpro_btn-password-toggle,
+body.pmpro-checkout .pmpro_btn-password-toggle {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 4px !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    gap: 5px !important;
+    color: var(--bbl-text-sec) !important;
+    font-size: 12px !important;
+    font-family: var(--bbl-font) !important;
+    font-weight: 600 !important;
+    box-shadow: none !important;
+    outline: none !important;
+    line-height: 1.5 !important;
+    min-height: auto !important;
+    width: auto !important;
+}
+body.pmpro-checkout .pmpro_btn-password-toggle:hover { color: var(--bbl-pink) !important; background: transparent !important; }
+body.pmpro-checkout .pmpro_btn-password-toggle .pmpro_icon svg { width: 16px !important; height: 16px !important; stroke: currentColor !important; }
+body.pmpro-checkout #pmpro_user_fields .pmpro_form_field-password-toggle-state,
+body.pmpro-checkout .pmpro_form_field-password-toggle-state { font-size: 12px !important; color: inherit !important; font-weight: 600 !important; }
+body.pmpro-checkout .pmpro_form_field-password-toggle { grid-area: toggle !important; justify-self: end !important; align-self: center !important; margin: 0 !important; padding: 0 !important; }
+
+/* Mobile */
+@media (max-width: 640px) {
+    body.pmpro-checkout .pmpro { padding: 0 12px 40px !important; }
+    body.pmpro-checkout .pmpro_cols-2 { grid-template-columns: 1fr !important; }
+    body.pmpro-checkout .pmpro_card_content { padding: 1rem !important; }
+    .bbl-checkout-hero { padding: 1.375rem 1.25rem 1.25rem; border-radius: 14px; }
+    .bbl-checkout-hero-name { font-size: 22px; }
+    .bbl-checkout-hero-price { font-size: 30px; }
+    .bbl-checkout-hero-meta { flex-direction: column; align-items: flex-start; gap: 4px; }
+    .bbl-checkout-hero-meta-sep { display: none; }
+    .bbl-checkout-trust-badges { gap: 8px; }
+    .bbl-checkout-pre-cta { font-size: 11px; }
+}
+
+/* ── Modal Alterar Senha ── */
+#bbl-password-modal.bbl-pw-modal {
+    display: none !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 999999 !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 1rem !important;
+    box-sizing: border-box !important;
+}
+#bbl-password-modal.bbl-pw-modal--open {
+    display: flex !important;
+}
+#bbl-password-modal .bbl-modal-backdrop {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: rgba(0,0,0,.5) !important;
+    z-index: -1 !important;
+}
+.bbl-modal-box {
+    position: relative;
+    background: var(--bbl-white);
+    border-radius: var(--bbl-radius);
+    width: 100%;
+    max-width: 420px;
+    margin: 1rem;
+    box-shadow: 0 20px 60px rgba(0,0,0,.2);
+    overflow: hidden;
+}
+#bbl-password-modal .bbl-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--bbl-border);
+}
+#bbl-password-modal .bbl-modal-header h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--bbl-text);
+    margin: 0;
+    font-family: var(--bbl-font);
+}
+#bbl-password-modal .bbl-modal-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    color: var(--bbl-text-sec);
+    display: flex;
+    border-radius: 6px;
+    transition: background .15s;
+}
+#bbl-password-modal .bbl-modal-close:hover { background: var(--bbl-bg); }
+#bbl-password-modal .bbl-modal-body {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+#bbl-password-modal .bbl-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 1rem 1.5rem;
+    border-top: 1px solid var(--bbl-border);
+    background: var(--bbl-bg);
+}
+.bbl-form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.bbl-form-field label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--bbl-text-light);
+    font-family: var(--bbl-font);
+}
+.bbl-input {
+    font-family: var(--bbl-font);
+    font-size: 14px;
+    color: var(--bbl-text);
+    background: var(--bbl-bg);
+    border: 1px solid var(--bbl-border);
+    border-radius: 10px;
+    padding: 10px 14px;
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color .15s, box-shadow .15s;
+}
+.bbl-input:focus {
+    border-color: var(--bbl-pink);
+    background: var(--bbl-white);
+    box-shadow: 0 0 0 3px rgba(235,42,97,.1);
+}
+.bbl-pw-msg {
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: var(--bbl-font);
+}
+.bbl-pw-msg--error {
+    background: #fff0f3;
+    color: #c0254f;
+    border-left: 3px solid var(--bbl-pink);
+}
+.bbl-pw-msg--success {
+    background: var(--bbl-green-bg);
+    color: var(--bbl-green-text);
+    border-left: 3px solid var(--bbl-green-text);
+}
+.bbl-btn-ghost {
+    background: transparent;
+    border: 1px solid var(--bbl-border);
+    color: var(--bbl-text-sec);
+    font-family: var(--bbl-font);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 99px;
+    cursor: pointer;
+    transition: background .15s;
+}
+.bbl-btn-ghost:hover { background: var(--bbl-bg); }
+
+/* ── Link voltar ── */
+.bbl-back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--bbl-font);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--bbl-text-sec);
+    text-decoration: none;
+    margin-bottom: 1rem;
+    transition: color .15s;
+}
+.bbl-back-link:hover { color: var(--bbl-pink); }
+.bbl-back-link svg { flex-shrink: 0; }
+
+/* ── Cards inativos ── */
+.bbl-card--inactive {
+    opacity: .7;
+    background: #fafafa;
+}
+.bbl-plan-name--inactive {
+    color: var(--bbl-text-sec) !important;
+}
+.bbl-badge-inactive {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--bbl-font);
+    font-size: 11px;
+    font-weight: 700;
+    color: #9aa3ae;
+    background: #f0f2f4;
+    border-radius: 99px;
+    padding: 3px 10px;
+}
+
+/* ── Card inteiro como link ── */
+.bbl-card--link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    position: relative;
+    transition: border-color .2s, box-shadow .2s, transform .15s;
+}
+.bbl-card--link:hover {
+    border-color: var(--bbl-pink) !important;
+    box-shadow: 0 4px 20px rgba(235,42,97,.10) !important;
+    transform: translateY(-2px);
+    color: inherit;
+}
+.bbl-card--link:hover .bbl-plan-name {
+    color: var(--bbl-pink);
+}
+.bbl-card--link:hover .bbl-card-arrow {
+    color: var(--bbl-pink);
+    transform: translateX(3px);
+}
+.bbl-card-arrow {
+    position: absolute;
+    right: 1.5rem;
+    bottom: 1.25rem;
+    color: var(--bbl-border);
+    transition: color .2s, transform .2s;
+}
+
+/* ── Bloco usuário logado no checkout ── */
+.bbl-logged-user-box {
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
+    margin-bottom: 0;
+    border: none;
+}
+.bbl-logged-user-greeting {
+    font-size: 14px;
+    color: var(--bbl-text);
+    margin-bottom: 12px;
+}
+.bbl-logged-user-data {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .5rem .75rem;
+    background: #f7f7f7;
+    border-radius: 8px;
+    padding: 16px 20px;
+    border: none;
+    box-shadow: none;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 12px;
+}
+.bbl-data-item label {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--bbl-text-sec);
+    text-transform: uppercase;
+    letter-spacing: .4px;
+    margin-bottom: 2px;
+}
+.bbl-data-item span {
+    font-size: 13px;
+    color: var(--bbl-text);
+    font-weight: 600;
+}
+.bbl-logged-user-switch {
+    font-size: 12px;
+    color: var(--bbl-pink);
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-block;
+}
+.bbl-logged-user-switch:hover { text-decoration: underline; }
+
+/* ── Checkbox de termos ── */
+.bbl-terms-card {
+    margin-top: 0;
+}
+.bbl-terms-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-family: var(--bbl-font);
+    font-size: 13px;
+    color: var(--bbl-text-sec);
+    cursor: pointer;
+    line-height: 1.5;
+}
+.bbl-terms-check {
+    margin-top: 2px;
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    accent-color: var(--bbl-pink);
+    cursor: pointer;
+}
+.bbl-terms-link {
+    color: var(--bbl-pink);
+    font-weight: 600;
+    text-decoration: underline;
+}
+.bbl-terms-link:hover {
+    opacity: .8;
+}
+
+/* ── Card link: aviso de período de teste + label "Mais detalhes" ── */
+.bbl-trial-msg {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-size: 12.5px; font-weight: 700;
+    color: var(--bbl-pink);
+    background: rgba(235, 42, 97, .08);
+    border: 1px solid rgba(235, 42, 97, .20);
+    border-radius: 99px;
+    padding: 5px 12px;
+    margin: 0 0 1.375rem;
+    line-height: 1.35;
+}
+.bbl-trial-msg svg { flex: none; }
+.bbl-trial-msg strong { font-weight: 800; }
+.bbl-card--link:hover .bbl-trial-msg {
+    border-color: rgba(235, 42, 97, .38);
+}
+.bbl-card-details-label {
+    position: absolute;
+    right: 3rem;
+    bottom: 1.25rem;
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--bbl-text-sec);
+    white-space: nowrap;
+    transition: color .2s;
+}
+.bbl-card--link:hover .bbl-card-details-label {
+    color: var(--bbl-pink);
+}
+
+/* ── Tela de detalhe: aviso de período de teste ── */
+.bbl-trial-note {
+    display: flex; align-items: flex-start; gap: 10px;
+    background: rgba(235, 42, 97, .07);
+    border: 1px solid rgba(235, 42, 97, .18);
+    border-left: 4px solid var(--bbl-pink);
+    border-radius: 12px;
+    padding: 12px 14px;
+    margin: 0 0 1.125rem;
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: var(--bbl-text);
+}
+.bbl-trial-note svg { flex: none; margin-top: 2px; color: var(--bbl-pink); }
+.bbl-trial-note strong { font-weight: 800; color: var(--bbl-pink); }
+
+/* ── Cancelamento: itens da lista com título + descrição ── */
+.bbl-cancel-list__text {
+    display: flex; flex-direction: column; gap: 3px;
+}
+.bbl-cancel-list__text strong {
+    font-size: 13px; font-weight: 700; color: var(--bbl-text); line-height: 1.4;
+}
+.bbl-cancel-list__text small {
+    font-size: 12px; color: var(--bbl-text-sec); line-height: 1.5;
+}
+.bbl-cancel-list__neutral .bbl-cancel-list__text strong { color: var(--bbl-green-text); }
+.bbl-cancel-list__neutral .bbl-cancel-list__text small  { color: var(--bbl-text-light); }
+.bbl-cancel-list__neutral svg { opacity: 1; color: var(--bbl-green-text); }
+
+
+/* ── Cancelamento: aviso pill no card (visão geral) — variante âmbar ── */
+.bbl-cancel-pill {
+    display: inline-flex; align-items: center; gap: 7px;
+    font-size: 12.5px; font-weight: 700;
+    color: #b45309;
+    background: rgba(245, 158, 11, .10);
+    border: 1px solid rgba(245, 158, 11, .28);
+    border-radius: 99px;
+    padding: 5px 12px;
+    margin: 0 0 1.375rem;
+    line-height: 1.35;
+}
+.bbl-cancel-pill svg { flex: none; }
+.bbl-cancel-pill strong { font-weight: 800; }
+.bbl-card--link:hover .bbl-cancel-pill {
+    border-color: rgba(245, 158, 11, .45);
+}
+
+/* ── Tela de detalhe: aviso de assinatura cancelada (variante âmbar) ── */
+.bbl-trial-note--cancel {
+    background: rgba(245, 158, 11, .09);
+    border: 1px solid rgba(245, 158, 11, .22);
+    border-left: 4px solid #f59e0b;
+}
+.bbl-trial-note--cancel svg { color: #d97706; }
+.bbl-trial-note--cancel strong { color: #b45309; }
+
+/* ── Checkout reassinatura: card de atenção — cobrança imediata (período grátis já usado) ── */
+.bbl-reassa-note {
+    display: flex; align-items: flex-start; gap: 14px;
+    background: #fff7d6;
+    border: 1px solid #f0cb5e;
+    border-radius: 16px;
+    padding: 16px 18px;
+    margin: 0 0 10px;
+}
+.bbl-reassa-note__icon {
+    flex: none; display: flex; align-items: center; justify-content: center;
+    width: 42px; height: 42px; border-radius: 50%;
+    background: #f7b500;
+    color: #fff;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,.05);
+    margin-top: 1px;
+}
+.bbl-reassa-note__body { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.bbl-reassa-note__title {
+    font-size: 15.5px; font-weight: 800; color: #7c4a03;
+    margin: 0; line-height: 1.3; font-family: var(--bbl-font);
+}
+.bbl-reassa-note__text {
+    font-size: 13.5px; line-height: 1.55; color: var(--bbl-text);
+    margin: 0; font-family: var(--bbl-font);
+}
+.bbl-reassa-note__text strong { font-weight: 800; color: #b45309; }
+.bbl-reassa-note__charge {
+    display: inline-flex; align-items: center; gap: 9px;
+    margin: 8px 0 0; font-family: var(--bbl-font);
+}
+.bbl-reassa-note__charge-label {
+    font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .05em;
+    color: #7c4a03; background: #fbe488;
+    border-radius: 99px; padding: 5px 11px;
+}
+.bbl-reassa-note__charge strong {
+    font-size: 16px; font-weight: 800; color: #92400e; line-height: 1;
+}
+@media (max-width: 480px) {
+    .bbl-reassa-note { padding: 14px 14px; gap: 12px; }
+    .bbl-reassa-note__icon { width: 38px; height: 38px; }
+}

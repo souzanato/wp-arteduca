@@ -1,0 +1,25 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "bebelume/andar-casinha-bebelume",
+  "version": "1.1.0",
+  "title": "Andar Casinha Bebelume",
+  "category": "bebelume",
+  "icon": "admin-multisite",
+  "description": "Andar da Casinha Bebelume com opção de nuvens flutuantes",
+  "keywords": ["bebelume", "andar", "casinha", "nuvens"],
+  "textdomain": "bebelume-theme",
+  "supports": { "html": false, "anchor": true },
+  "attributes": {
+    "backgroundImage": { "type": "string", "default": "" },
+    "backgroundColor": { "type": "string", "default": "#ffffff" },
+    "link": { "type": "string", "default": "" },
+    "invertLayout": { "type": "boolean", "default": false },
+    "hasImage": { "type": "boolean", "default": false },
+    "showClouds": { "type": "boolean", "default": true },
+    "showGarden": { "type": "boolean", "default": false }
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./editor.css",
+  "style": "file:./style.css"
+}

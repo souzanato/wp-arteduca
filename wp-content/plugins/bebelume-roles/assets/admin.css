@@ -1,0 +1,234 @@
+/* ============================================================
+   Bebelume Profiles - Admin Styles
+   ============================================================ */
+
+/* General */
+.bebelume-wrap {
+    max-width: 1200px;
+}
+
+/* Empty State */
+.bebelume-empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    background: #fff;
+    border: 1px solid #c3c4c7;
+    border-radius: 4px;
+    margin-top: 20px;
+}
+
+.bebelume-empty-icon {
+    margin-bottom: 20px;
+}
+
+.bebelume-empty-icon .dashicons {
+    font-size: 64px;
+    width: 64px;
+    height: 64px;
+    color: #c3c4c7;
+}
+
+.bebelume-empty-state h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #1d2327;
+}
+
+.bebelume-empty-state p {
+    color: #646970;
+    font-size: 14px;
+    margin-bottom: 24px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Badges */
+.bebelume-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+    background: #f0f0f1;
+    color: #50575e;
+    line-height: 1.6;
+}
+
+.bebelume-badge-blue {
+    background: #e7f3ff;
+    color: #0073aa;
+}
+
+/* Profiles Table */
+.bebelume-profiles-table .column-title {
+    width: 25%;
+}
+
+.bebelume-profiles-table .column-description {
+    width: 35%;
+}
+
+.bebelume-profiles-table .column-menus {
+    width: 20%;
+}
+
+.bebelume-profiles-table .column-users {
+    width: 20%;
+}
+
+/* Form Sections */
+.bebelume-form-section {
+    background: #fff;
+    border: 1px solid #c3c4c7;
+    border-radius: 4px;
+    padding: 20px 24px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.bebelume-form-section h2 {
+    margin-top: 0;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #f0f0f1;
+    font-size: 1.2em;
+}
+
+/* Menu Controls */
+.bebelume-menu-controls {
+    margin: 16px 0;
+    display: flex;
+    gap: 8px;
+}
+
+/* Menu Grid */
+.bebelume-menus-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 12px;
+    margin-top: 16px;
+}
+
+/* Menu Card */
+.bebelume-menu-card {
+    border: 2px solid #dcdcde;
+    border-radius: 6px;
+    background: #fff;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    overflow: hidden;
+}
+
+.bebelume-menu-card:hover {
+    border-color: #a7aaad;
+}
+
+.bebelume-menu-card.is-active {
+    border-color: #2271b1;
+    box-shadow: 0 0 0 1px #2271b1;
+    background: #f6fbff;
+}
+
+/* Menu Header */
+.bebelume-menu-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+}
+
+.bebelume-menu-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    flex: 1;
+    font-weight: 500;
+    font-size: 13px;
+}
+
+.bebelume-menu-label input[type="checkbox"] {
+    margin: 0;
+    width: 18px;
+    height: 18px;
+}
+
+.bebelume-menu-label .dashicons {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+    color: #646970;
+}
+
+.bebelume-menu-card.is-active .bebelume-menu-label .dashicons {
+    color: #2271b1;
+}
+
+.bebelume-menu-title {
+    color: #1d2327;
+}
+
+/* Toggle Children Button */
+.bebelume-toggle-children {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    color: #646970;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s;
+}
+
+.bebelume-toggle-children:hover {
+    background: #f0f0f1;
+    color: #1d2327;
+}
+
+.bebelume-toggle-children[aria-expanded="true"] {
+    transform: rotate(180deg);
+}
+
+/* Submenu List */
+.bebelume-submenu-list {
+    border-top: 1px solid #f0f0f1;
+    padding: 8px 16px 12px 46px;
+    background: #fafafa;
+}
+
+.bebelume-menu-card.is-active .bebelume-submenu-list {
+    background: #f0f7fd;
+}
+
+.bebelume-submenu-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 0;
+    cursor: pointer;
+    font-size: 13px;
+    color: #50575e;
+}
+
+.bebelume-submenu-label:hover {
+    color: #1d2327;
+}
+
+.bebelume-submenu-label input[type="checkbox"] {
+    margin: 0;
+}
+
+/* Submit */
+.bebelume-profile-form .submit {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+/* Responsive */
+@media screen and (max-width: 782px) {
+    .bebelume-menus-grid {
+        grid-template-columns: 1fr;
+    }
+}

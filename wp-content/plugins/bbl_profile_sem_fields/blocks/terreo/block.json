@@ -1,0 +1,18 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "bebelume/associacoes-terreo",
+  "version": "1.0.0",
+  "title": "Bebelume Associação Térreo",
+  "category": "bebelume",
+  "icon": "admin-home",
+  "description": "Bloco térreo com jardim animado e área de conteúdo livre.",
+  "supports": {
+    "html": false
+  },
+  "usesContext": [],
+  "textdomain": "bebelume-profile",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./editor.css",
+  "style": "file:./style.css"
+}

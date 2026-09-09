@@ -1,0 +1,480 @@
+<?php
+/**
+ * Plugin Name: Bebelume Pixel
+ * Plugin URI:  https://bebelume.com.br
+ * Description: Facebook Pixel + Conversions API integrado ao PMPro. Pagamento on-site.
+ * Version:     3.0.1
+ * Author:      Bebelume
+ * License:     GPL-2.0+
+ * Text Domain: bebelume-pixel
+ */
+
+if ( ! defined( 'ABSPATH' ) ) exit;
+
+define( 'BEBELUME_PIXEL_VERSION', '3.0.1' );
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 1. ADMIN
+// ─────────────────────────────────────────────────────────────────────────────
+
+add_action( 'admin_menu', function() {
+    add_menu_page( 'Bebelume Pixel', 'Bebelume Pixel', 'manage_options',
+        'bebelume-pixel', 'bebelume_pixel_settings_page', 'dashicons-facebook', 80 );
+} );
+
+add_action( 'admin_init', function() {
+    foreach ( [
+        'bebelume_pixel_id'             => 'sanitize_text_field',
+        'bebelume_capi_token'           => 'sanitize_text_field',
+        'bebelume_test_mode'            => 'absint',
+        'bebelume_capi_test_event_code' => 'sanitize_text_field',
+    ] as $key => $cb ) {
+        register_setting( 'bebelume_pixel_group', $key, [ 'sanitize_callback' => $cb, 'default' => '' ] );
+    }
+} );
+
+function bebelume_pixel_settings_page() { ?>
+<div class="wrap">
+    <h1>🎯 Bebelume Pixel — Configurações</h1>
+    <p>Versão 3.0 — pagamento on-site. Webhook Stripe removido.</p>
+    <form method="post" action="options.php">
+        <?php settings_fields( 'bebelume_pixel_group' ); ?>
+        <h2>Facebook Pixel</h2>
+        <table class="form-table">
+            <tr>
+                <th><label for="bebelume_pixel_id">Pixel ID</label></th>
+                <td>
+                    <input type="text" id="bebelume_pixel_id" name="bebelume_pixel_id"
+                           value="<?php echo esc_attr( get_option( 'bebelume_pixel_id' ) ); ?>"
+                           placeholder="Ex: 1234567890123456" class="regular-text" />
+                </td>
+            </tr>
+        </table>
+        <h2>Conversions API (CAPI)</h2>
+        <table class="form-table">
+            <tr>
+                <th><label for="bebelume_capi_token">Access Token</label></th>
+                <td>
+                    <input type="password" id="bebelume_capi_token" name="bebelume_capi_token"
+                           value="<?php echo esc_attr( get_option( 'bebelume_capi_token' ) ); ?>"
+                           class="regular-text" />
+                    <p class="description">Meta Business → Gerenciador de Eventos → Pixel → Configurações → Conversions API → Gerar token.</p>
+                </td>
+            </tr>
+            <tr>
+                <th><label for="bebelume_test_mode">Modo de teste</label></th>
+                <td>
+                    <label>
+                        <input type="checkbox" id="bebelume_test_mode" name="bebelume_test_mode" value="1"
+                               <?php checked( 1, get_option( 'bebelume_test_mode', 0 ) ); ?> />
+                        Ativar modo de teste
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <th><label for="bebelume_capi_test_event_code">Código de evento de teste</label></th>
+                <td>
+                    <input type="text" id="bebelume_capi_test_event_code" name="bebelume_capi_test_event_code"
+                           value="<?php echo esc_attr( get_option( 'bebelume_capi_test_event_code' ) ); ?>"
+                           placeholder="Ex: TEST12345" class="regular-text" />
+                </td>
+            </tr>
+        </table>
+        <?php submit_button( 'Salvar configurações' ); ?>
+    </form>
+
+    <hr>
+    <h2>Eventos implementados</h2>
+    <table class="widefat" style="max-width:860px">
+        <thead><tr><th>Evento</th><th>Quando dispara</th><th>Canal</th></tr></thead>
+        <tbody>
+            <tr><td>✅ PageView</td><td>Toda página</td><td>Pixel (browser)</td></tr>
+            <tr><td>👁️ ViewContent</td><td>Página de planos</td><td>Pixel (browser)</td></tr>
+            <tr><td>🟡 AddToCart</td><td>Entra no checkout com plano</td><td>Pixel (browser)</td></tr>
+            <tr><td>🔵 InitiateCheckout</td><td>Carrega checkout PMPro</td><td>Pixel (browser)</td></tr>
+            <tr><td>✔️ CompleteRegistration</td><td>Novo usuário finaliza cadastro</td><td>Pixel (browser) + CAPI</td></tr>
+            <tr style="background:#fff3e0"><td>🎁 Purchase (trial)</td><td>Checkout com valor R$0</td><td>Pixel (browser) + CAPI</td></tr>
+            <tr style="background:#e8f5e9"><td>🛒 <strong>Purchase</strong></td><td>Pagamento confirmado PMPro</td><td>Pixel (browser) + CAPI</td></tr>
+        </tbody>
+    </table>
+</div>
+<?php }
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 2. HELPERS
+// ─────────────────────────────────────────────────────────────────────────────
+
+function bebelume_get_pixel_id()   { return trim( get_option( 'bebelume_pixel_id', '' ) ); }
+function bebelume_get_capi_token() { return trim( get_option( 'bebelume_capi_token', '' ) ); }
+function bebelume_pixel_active()   { return ! empty( bebelume_get_pixel_id() ) && function_exists( 'pmpro_getLevel' ); }
+function bebelume_capi_active()    { return ! empty( bebelume_get_pixel_id() ) && ! empty( bebelume_get_capi_token() ); }
+
+function bebelume_get_level_price( $level ) {
+    if ( ! $level ) return 0;
+    return floatval( $level->billing_amount ) > 0
+        ? floatval( $level->billing_amount )
+        : floatval( $level->initial_payment ?? 0 );
+}
+
+function bebelume_hash_pii( $v )             { return hash( 'sha256', strtolower( trim( $v ) ) ); }
+function bebelume_generate_event_id( $p = 'ev' ) { return $p . '_' . uniqid( '', true ); }
+function bebelume_get_fbp() { return isset( $_COOKIE['_fbp'] ) ? sanitize_text_field( wp_unslash( $_COOKIE['_fbp'] ) ) : ''; }
+
+function bebelume_is_pmpro_checkout_context() {
+    // Sinal mais forte: pmpro_checkout_preheader já disparou nesta request.
+    if ( did_action( 'pmpro_checkout_preheader' ) ) return true;
+    // Fallback canônico: funções do PMPro.
+    if ( function_exists( 'pmpro_is_checkout' ) && pmpro_is_checkout() ) return true;
+    if ( function_exists( 'pmpro_isCheckout' ) && pmpro_isCheckout() ) return true;
+    return false;
+}
+
+function bebelume_get_client_ip() {
+    foreach ( [ 'HTTP_CF_CONNECTING_IP', 'HTTP_X_FORWARDED_FOR', 'HTTP_X_REAL_IP', 'REMOTE_ADDR' ] as $k ) {
+        if ( ! empty( $_SERVER[ $k ] ) ) {
+            $ip = trim( explode( ',', $_SERVER[ $k ] )[0] );
+            if ( filter_var( $ip, FILTER_VALIDATE_IP ) ) return $ip;
+        }
+    }
+    return '';
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 3. fbclid — captura e persistência
+// ─────────────────────────────────────────────────────────────────────────────
+
+add_action( 'init', function() {
+    if ( empty( $_GET['fbclid'] ) ) return;
+    $fbclid = sanitize_text_field( wp_unslash( $_GET['fbclid'] ) );
+    $click_time_ms = round( microtime( true ) * 1000 );
+    $fbc_formatted = 'fb.1.' . $click_time_ms . '.' . $fbclid;
+
+    // Cookie com fbclid cru — semântica preservada, usado apenas como fallback
+    setcookie( 'bebelume_fbclid', $fbclid, time() + 90 * DAY_IN_SECONDS, '/', '.bebelume.com.br', is_ssl(), false );
+    $_COOKIE['bebelume_fbclid'] = $fbclid;
+
+    // Cookie com _fbc já formatado — timestamp fixo em ms do momento do clique
+    setcookie( 'bebelume_fbc', $fbc_formatted, time() + 90 * DAY_IN_SECONDS, '/', '.bebelume.com.br', is_ssl(), false );
+    $_COOKIE['bebelume_fbc'] = $fbc_formatted;
+
+    // Cookie nativo da Meta (_fbc) — para o pixel JS e CAPI terem o mesmo valor
+    setcookie( '_fbc', $fbc_formatted, time() + 90 * DAY_IN_SECONDS, '/', '.bebelume.com.br', is_ssl(), false );
+    $_COOKIE['_fbc'] = $fbc_formatted;
+
+    if ( is_user_logged_in() ) {
+        $uid = get_current_user_id();
+        update_user_meta( $uid, 'bebelume_fbc', $fbc_formatted );
+        $fbp = bebelume_get_fbp();
+        if ( $fbp ) update_user_meta( $uid, 'bebelume_fbp', $fbp );
+    }
+} );
+
+function bebelume_get_fbc() {
+    // Prioridade: cookie nativo Meta > cookie formatado plugin > user_meta (SSO) > fallback por fbclid cru
+    if ( ! empty( $_COOKIE['_fbc'] ) ) {
+        return sanitize_text_field( wp_unslash( $_COOKIE['_fbc'] ) );
+    }
+    if ( ! empty( $_COOKIE['bebelume_fbc'] ) ) {
+        return sanitize_text_field( wp_unslash( $_COOKIE['bebelume_fbc'] ) );
+    }
+    $uid = get_current_user_id();
+    if ( $uid ) {
+        $meta_fbc = get_user_meta( $uid, 'bebelume_fbc', true );
+        if ( $meta_fbc ) return $meta_fbc;
+    }
+    // Último fallback: gerar a partir do fbclid cru (compatível com cookies antigos)
+    $fbclid = isset( $_COOKIE['bebelume_fbclid'] ) ? sanitize_text_field( wp_unslash( $_COOKIE['bebelume_fbclid'] ) ) : '';
+    return $fbclid ? 'fb.1.' . round( microtime( true ) * 1000 ) . '.' . $fbclid : '';
+}
+
+add_action( 'wp_login',      function( $login, $user ) { bebelume_save_attribution( $user->ID ); }, 10, 2 );
+add_action( 'user_register', function( $uid )          { bebelume_save_attribution( $uid ); } );
+
+function bebelume_save_attribution( $uid ) {
+    $fbc = bebelume_get_fbc();
+    $fbp = bebelume_get_fbp();
+    if ( $fbc ) update_user_meta( $uid, 'bebelume_fbc', $fbc );
+    if ( $fbp ) update_user_meta( $uid, 'bebelume_fbp', $fbp );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 4. CAPI — envio server-side
+// ─────────────────────────────────────────────────────────────────────────────
+
+function bebelume_capi_send( $event_name, $event_data, $user_data = [], $event_id = '' ) {
+    $pixel_id = bebelume_get_pixel_id();
+    $token    = bebelume_get_capi_token();
+    if ( ! $pixel_id || ! $token ) return;
+
+    $ud = [];
+    if ( ! empty( $user_data['email'] ) )      $ud['em']                = bebelume_hash_pii( $user_data['email'] );
+    if ( ! empty( $user_data['first_name'] ) )  $ud['fn']                = bebelume_hash_pii( $user_data['first_name'] );
+    if ( ! empty( $user_data['last_name'] ) )   $ud['ln']                = bebelume_hash_pii( $user_data['last_name'] );
+    if ( ! empty( $user_data['phone'] ) )       $ud['ph']                = bebelume_hash_pii( preg_replace( '/\D/', '', $user_data['phone'] ) );
+    if ( ! empty( $user_data['fbc'] ) )         $ud['fbc']               = $user_data['fbc'];
+    if ( ! empty( $user_data['fbp'] ) )         $ud['fbp']               = $user_data['fbp'];
+    if ( ! empty( $user_data['client_ip'] ) )   $ud['client_ip_address'] = $user_data['client_ip'];
+    if ( ! empty( $user_data['user_agent'] ) )  $ud['client_user_agent'] = $user_data['user_agent'];
+    if ( ! empty( $user_data['external_id'] ) ) $ud['external_id']       = bebelume_hash_pii( $user_data['external_id'] );
+
+    $payload = [
+        'event_name'       => $event_name,
+        'event_time'       => time(),
+        'action_source'    => 'website',
+        'event_source_url' => $user_data['event_source_url'] ?? home_url(),
+        'user_data'        => $ud,
+        'custom_data'      => $event_data,
+    ];
+    if ( $event_id ) $payload['event_id'] = $event_id;
+
+    $body = [ 'data' => [ $payload ] ];
+    if ( get_option( 'bebelume_test_mode' ) ) {
+        $code = get_option( 'bebelume_capi_test_event_code', '' );
+        if ( $code ) $body['test_event_code'] = $code;
+    }
+
+    $resp = wp_remote_post(
+        "https://graph.facebook.com/v19.0/{$pixel_id}/events?access_token={$token}",
+        [ 'headers' => [ 'Content-Type' => 'application/json' ], 'body' => wp_json_encode( $body ), 'timeout' => 15 ]
+    );
+
+    if ( get_option( 'bebelume_test_mode' ) ) {
+        error_log( '[Bebelume CAPI] ' . $event_name . ' → ' .
+            ( is_wp_error( $resp )
+                ? $resp->get_error_message()
+                : wp_remote_retrieve_response_code( $resp ) . ': ' . wp_remote_retrieve_body( $resp ) )
+        );
+    }
+}
+
+function bebelume_build_user_data( WP_User $wp_user ) {
+    $name_parts = explode( ' ', trim( $wp_user->display_name ), 2 );
+    $fbc = get_user_meta( $wp_user->ID, 'bebelume_fbc', true ) ?: bebelume_get_fbc();
+    $fbp = get_user_meta( $wp_user->ID, 'bebelume_fbp', true ) ?: bebelume_get_fbp();
+    return [
+        'email'            => $wp_user->user_email,
+        'first_name'       => $wp_user->first_name ?: ( $name_parts[0] ?? '' ),
+        'last_name'        => $wp_user->last_name  ?: ( $name_parts[1] ?? '' ),
+        'fbc'              => $fbc,
+        'fbp'              => $fbp,
+        'external_id'      => (string) $wp_user->ID,
+        'client_ip'        => bebelume_get_client_ip(),
+        'user_agent'       => isset( $_SERVER['HTTP_USER_AGENT'] ) ? sanitize_text_field( $_SERVER['HTTP_USER_AGENT'] ) : '',
+        'event_source_url' => home_url( $_SERVER['REQUEST_URI'] ?? '/' ),
+    ];
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 5. PageView — base pixel
+// ─────────────────────────────────────────────────────────────────────────────
+
+add_action( 'wp_head', function() {
+    if ( ! bebelume_pixel_active() ) return;
+    $pid = esc_js( bebelume_get_pixel_id() );
+    $pid_attr = esc_attr( bebelume_get_pixel_id() );
+    echo "<!-- Bebelume Pixel v3 -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','{$pid}');
+fbq('track','PageView');
+</script>
+<noscript><img height='1' width='1' style='display:none'
+src='https://www.facebook.com/tr?id={$pid_attr}&ev=PageView&noscript=1'/></noscript>
+<!-- /Bebelume Pixel -->\n";
+}, 5 );
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 6. ViewContent — página de planos
+// ─────────────────────────────────────────────────────────────────────────────
+
+add_action( 'wp_footer', function() {
+    if ( ! bebelume_pixel_active() ) return;
+    if ( function_exists( 'pmpro_isCheckout' ) && pmpro_isCheckout() ) return;
+
+    global $post;
+    $level_obj = null;
+    $level_id  = isset( $_GET['level'] ) ? absint( $_GET['level'] ) : 0;
+    if ( $level_id ) $level_obj = pmpro_getLevel( $level_id );
+    $is_levels = $post && (
+        has_shortcode( $post->post_content, 'pmpro_levels' ) ||
+        ( function_exists( 'pmpro_isLevels' ) && pmpro_isLevels() )
+    );
+    if ( ! $is_levels && ! $level_obj ) return;
+
+    $name  = esc_js( $level_obj ? $level_obj->name : 'Planos Bebelume' );
+    $id    = $level_obj ? intval( $level_obj->id ) : 0;
+    $value = $level_obj ? floatval( bebelume_get_level_price( $level_obj ) ) : 0;
+    echo "<script>if(typeof fbq!=='undefined'){fbq('track','ViewContent',{content_name:'{$name}',content_ids:['{$id}'],content_type:'product',value:{$value},currency:'BRL'});}</script>\n";
+}, 20 );
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 7. AddToCart + InitiateCheckout — entrada no checkout
+// ─────────────────────────────────────────────────────────────────────────────
+
+add_action( 'pmpro_checkout_preheader', function() {
+    if ( ! bebelume_pixel_active() ) return;
+    $level_id = absint( $_REQUEST['level'] ?? 0 );
+    if ( ! $level_id ) return;
+    $level = pmpro_getLevel( $level_id );
+    if ( ! $level ) return;
+
+    $name  = esc_js( $level->name );
+    $id    = intval( $level->id );
+    $value = floatval( bebelume_get_level_price( $level ) );
+
+    add_action( 'wp_footer', function() use ( $name, $id, $value ) {
+        echo "<script>if(typeof fbq!=='undefined'){
+fbq('track','AddToCart',{content_name:'{$name}',content_ids:['{$id}'],content_type:'product',value:{$value},currency:'BRL'});
+fbq('track','InitiateCheckout',{content_name:'{$name}',num_items:1,value:{$value},currency:'BRL'});
+}</script>\n";
+    }, 20 );
+} );
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 8. Purchase + CompleteRegistration — pmpro_after_checkout (on-site)
+//
+//    CAPI: dispara server-side imediatamente no hook (dados completos disponíveis)
+//    Browser: dispara na página de confirmação via transient
+//    Deduplicação: event_id compartilhado entre CAPI e browser (fbq)
+// ─────────────────────────────────────────────────────────────────────────────
+
+add_action( 'pmpro_after_checkout', function( $user_id, $order ) {
+    if ( ! $order || ! $user_id ) return;
+
+    $level = pmpro_getLevel( $order->membership_id );
+    if ( ! $level ) return;
+
+    $wp_user   = get_userdata( $user_id );
+    if ( ! $wp_user ) return;
+
+    $total     = floatval( $order->total ?? 0 );
+    $recurring = floatval( $level->billing_amount );
+    $is_trial  = $total == 0 && $recurring > 0;
+    // Idempotência — evita disparar duas vezes
+    $ikey = 'bbl_capi_purchase_' . $user_id . '_' . $order->id;
+    if ( get_transient( $ikey ) ) return;
+    set_transient( $ikey, true, HOUR_IN_SECONDS );
+
+    $event_id = bebelume_generate_event_id( $is_trial ? 'trial' : 'purchase' );
+
+    // ── CAPI server-side ─────────────────────────────────────────────────────
+    if ( bebelume_capi_active() ) {
+        bebelume_capi_send(
+            'Purchase',
+            [
+                'value'        => $is_trial ? 0.00 : $total,
+                'currency'     => 'BRL',
+                'content_name' => $level->name,
+                'content_ids'  => [ (string) $level->id ],
+                'content_type' => 'product',
+                'order_id'     => $order->code . ( $is_trial ? '_trial' : '' ),
+            ],
+            bebelume_build_user_data( $wp_user ),
+            $event_id
+        );
+    }
+
+    // ── Browser — salva para disparar na confirmação ─────────────────────────
+    if ( bebelume_pixel_active() ) {
+        set_transient( 'bbl_pixel_purchase_' . $user_id, [
+            'order_id'   => $order->code . ( $is_trial ? '_trial' : '' ),
+            'level_id'   => $level->id,
+            'level_name' => $level->name,
+            'value'      => $is_trial ? 0.00 : $total,
+            'event_id'   => $event_id,
+        ], 600 );
+    }
+}, 10, 2 );
+
+add_action( 'wp_footer', function() {
+    if ( ! bebelume_pixel_active() || ! is_user_logged_in() ) return;
+    if ( function_exists( 'pmpro_isConfirmation' ) && ! pmpro_isConfirmation() ) return;
+
+    $uid  = get_current_user_id();
+    $data = get_transient( 'bbl_pixel_purchase_' . $uid );
+    if ( ! $data ) return;
+    delete_transient( 'bbl_pixel_purchase_' . $uid );
+
+    $name     = esc_js( $data['level_name'] );
+    $id       = intval( $data['level_id'] );
+    $value    = floatval( $data['value'] );
+    $order_id = esc_js( $data['order_id'] );
+    $eid      = esc_js( $data['event_id'] );
+
+    echo "<script>
+(function(){
+    var eid='{$eid}';
+    var ck='bbl_'+eid.replace(/[^a-zA-Z0-9_\\-]/g,'_');
+
+    function hasCookie(n){
+        return document.cookie.split('; ').some(function(r){
+            return r.indexOf(n+'=')===0;
+        });
+    }
+    function setCookie(n){
+        document.cookie=n+'=1; Max-Age=86400; Path=/; SameSite=Lax; Secure';
+    }
+
+    try{
+        window._bbl_sent=window._bbl_sent||{};
+        if(window._bbl_sent[eid])return;
+        if(window.sessionStorage&&sessionStorage.getItem(ck))return;
+        if(hasCookie(ck))return;
+
+        window._bbl_sent[eid]=true;
+        if(window.sessionStorage)sessionStorage.setItem(ck,'1');
+        setCookie(ck);
+    }catch(e){}
+
+    if(typeof fbq!=='undefined'){
+        fbq('track','Purchase',{
+            value:{$value},currency:'BRL',
+            content_name:'{$name}',content_ids:['{$id}'],
+            content_type:'product',order_id:'{$order_id}'
+        },{eventID:eid});
+    }
+})();
+</script>\n";
+}, 25 );
+
+// ─────────────────────────────────────────────────────────────────────────────
+// 9. CompleteRegistration avulso (fora do checkout PMPro)
+// ─────────────────────────────────────────────────────────────────────────────
+
+add_action( 'user_register', function( $uid ) {
+    // Se o cadastro ocorreu dentro do checkout PMPro, o Purchase já cobre o evento.
+    if ( bebelume_is_pmpro_checkout_context() ) return;
+
+    if ( bebelume_pixel_active() ) {
+        set_transient( 'bbl_pixel_new_user_' . $uid, true, 300 );
+    }
+    if ( bebelume_capi_active() ) {
+        $wp_user = get_userdata( $uid );
+        if ( $wp_user ) {
+            $cr_event_id = bebelume_generate_event_id( 'cr' );
+            set_transient( 'bbl_pixel_cr_eid_' . $uid, $cr_event_id, 600 );
+            bebelume_capi_send(
+                'CompleteRegistration',
+                [ 'status' => 'completed' ],
+                bebelume_build_user_data( $wp_user ),
+                $cr_event_id
+            );
+        }
+    }
+} );
+
+add_action( 'wp_footer', function() {
+    if ( ! bebelume_pixel_active() || ! is_user_logged_in() ) return;
+    $uid = get_current_user_id();
+    if ( ! get_transient( 'bbl_pixel_new_user_' . $uid ) ) return;
+    if ( get_transient( 'bbl_pixel_purchase_' . $uid ) ) return;
+    delete_transient( 'bbl_pixel_new_user_' . $uid );
+    $cr_eid = get_transient( 'bbl_pixel_cr_eid_' . $uid );
+    delete_transient( 'bbl_pixel_cr_eid_' . $uid );
+    $cr_eid_js = $cr_eid ? ",{eventID:'" . esc_js( $cr_eid ) . "'}" : '';
+    echo "<script>if(typeof fbq!=='undefined'){fbq('track','CompleteRegistration',{status:'completed'}{$cr_eid_js});}</script>\n";
+}, 30 );

@@ -1,0 +1,77 @@
+/* ============================================
+   Bebelume Telhado — CSS do editor
+   Replica o CSS do tema para preview idêntico
+   ============================================ */
+
+/* .bebelume-andar base */
+.editor-styles-wrapper .bebelume-andar {
+    position: relative;
+    max-width: var(--max-width-casa, 900px);
+    margin: 0 auto;
+    z-index: 2;
+}
+
+/* Remove o ::before de aspect-ratio */
+.editor-styles-wrapper .bebelume-andar.telhado-passarinhos-bebelume::before {
+    content: none;
+}
+
+/* Caixa branca com borda */
+.editor-styles-wrapper .bebelume-andar.telhado-passarinhos-bebelume .andar-content {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    background-color: #fff;
+    border: 3px solid #000;
+    margin-top: 2em;
+    min-height: 200px;
+    padding: 2em;
+    box-sizing: border-box;
+}
+
+/* Passarinho amarelo (esquerda) — URLs injetadas via PHP inline */
+.editor-styles-wrapper .bebelume-andar.telhado-passarinhos-bebelume .andar-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: clamp(10px, 3%, 40px);
+    width: clamp(50px, 7vw, 100px);
+    height: clamp(50px, 7vw, 100px);
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    background-size: contain;
+    transform: translateY(-60%);
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* Passarinho roxo (direita) */
+.editor-styles-wrapper .bebelume-andar.telhado-passarinhos-bebelume .andar-content::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: clamp(10px, 3%, 40px);
+    width: clamp(50px, 7vw, 100px);
+    height: clamp(50px, 7vw, 100px);
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    background-size: contain;
+    transform: translateY(-60%);
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* Margem do bloco no editor */
+.editor-styles-wrapper .bebelume-associacoes-telhado {
+    margin-top: 5em !important;
+}
+
+/* Área de InnerBlocks ocupa o espaço todo */
+.editor-styles-wrapper .bebelume-andar.telhado-passarinhos-bebelume .andar-content .block-editor-inner-blocks,
+.editor-styles-wrapper .bebelume-andar.telhado-passarinhos-bebelume .andar-content .block-editor-block-list__layout {
+    min-height: 80px;
+    width: 100%;
+}
+

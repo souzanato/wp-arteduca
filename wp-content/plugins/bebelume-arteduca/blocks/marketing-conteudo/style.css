@@ -1,0 +1,14 @@
+.bebelume-marketing-conteudo {
+    width: 100%;
+    padding-top: 48px;
+    padding-bottom: 48px;
+    padding-left: max(1em, calc((100% - 1050px) / 2));
+    padding-right: max(1em, calc((100% - 1050px) / 2));
+}
+
+@media (max-width: 768px) {
+    .bebelume-marketing-conteudo {
+        padding-top: 24px;
+        padding-bottom: 24px;
+    }
+}

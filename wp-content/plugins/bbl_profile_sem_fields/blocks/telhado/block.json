@@ -1,0 +1,25 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "bebelume/telhado",
+  "version": "1.0.0",
+  "title": "Bebelume Associação Telhado",
+  "category": "bebelume",
+  "icon": "admin-home",
+  "description": "Bloco casca com bordas e passarinhos decorativos no topo.",
+  "supports": {
+    "html": false,
+    "color": {
+      "background": true,
+      "text": false
+    },
+    "spacing": {
+      "padding": true,
+      "margin": true
+    }
+  },
+  "textdomain": "bebelume-profile",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./editor.css",
+  "style": "file:./style.css"
+}

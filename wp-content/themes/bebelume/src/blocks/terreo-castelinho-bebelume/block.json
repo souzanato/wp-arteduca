@@ -1,0 +1,25 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "bebelume/terreo-castelinho-bebelume",
+  "version": "1.1.0",
+  "title": "Terreo do Castelinho Bebelume",
+  "category": "bebelume",
+  "icon": "admin-multisite",
+  "description": "Terreo do Castelinho Bebelume com nuvens e jardim",
+  "keywords": ["bebelume", "terreo", "castelinho", "nuvens", "jardim"],
+  "textdomain": "bebelume-theme",
+  "supports": { "html": false, "anchor": true },
+  "attributes": {
+    "backgroundImage": { "type": "string", "default": "" },
+    "backgroundColor": { "type": "string", "default": "#ffffff" },
+    "link": { "type": "string", "default": "" },
+    "invertLayout": { "type": "boolean", "default": false },
+    "hasImage": { "type": "boolean", "default": false },
+    "showClouds": { "type": "boolean", "default": true },
+    "showGarden": { "type": "boolean", "default": false }
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./editor.css",
+  "style": "file:./style.css"
+}

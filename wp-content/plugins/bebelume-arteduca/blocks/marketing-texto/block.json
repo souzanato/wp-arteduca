@@ -1,0 +1,37 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "bebelume-arteduca/marketing-texto",
+  "version": "1.5.0",
+  "title": "Marketing Bebelume — Texto",
+  "category": "bebelume-arteduca",
+  "icon": "text",
+  "description": "Parágrafo(s) de texto corrido com a fonte Open Sans (fonte de corpo oficial do projeto), cor e tamanho customizáveis.",
+  "supports": {
+    "html": false,
+    "anchor": true
+  },
+  "attributes": {
+    "corFundo": {
+      "type": "string",
+      "default": "#F4F2EA"
+    },
+    "corTexto": {
+      "type": "string",
+      "default": "#000000"
+    },
+    "tamanhoFonte": {
+      "type": "number",
+      "default": 18
+    },
+    "negrito": {
+      "type": "boolean",
+      "default": false
+    },
+    "alignment": {
+      "type": "string",
+      "default": "left"
+    }
+  },
+  "textdomain": "bebelume-arteduca"
+}

@@ -1,0 +1,83 @@
+.bebelume-marketing-capa {
+    --capa-borda: 28px;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* --- Moldura (faixa de 6 cores no topo/base, preto/creme nas laterais) --- */
+
+.bebelume-capa-borda {
+    position: absolute;
+    z-index: 1;
+}
+
+/* Faixa de 6 blocos: preto, azul, roxo, vermelho, laranja, creme */
+.bebelume-capa-borda-topo {
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--capa-borda);
+    background: linear-gradient(
+        to right,
+        #000000 0%, #000000 16.666%,
+        #214587 16.666%, #214587 33.333%,
+        #5E4F98 33.333%, #5E4F98 50%,
+        #E85445 50%, #E85445 66.666%,
+        #F5B04B 66.666%, #F5B04B 83.333%,
+        #F0E8DA 83.333%, #F0E8DA 100%
+    );
+}
+
+.bebelume-capa-borda-base {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: var(--capa-borda);
+    background: linear-gradient(
+        to right,
+        #000000 0%, #000000 16.666%,
+        #214587 16.666%, #214587 33.333%,
+        #5E4F98 33.333%, #5E4F98 50%,
+        #E85445 50%, #E85445 66.666%,
+        #F5B04B 66.666%, #F5B04B 83.333%,
+        #F0E8DA 83.333%, #F0E8DA 100%
+    );
+}
+
+/* Lateral esquerda: continuação sólida do primeiro bloco (preto) */
+.bebelume-capa-borda-esquerda {
+    top: var(--capa-borda);
+    bottom: var(--capa-borda);
+    left: 0;
+    width: var(--capa-borda);
+    background: #000000;
+}
+
+/* Lateral direita: continuação sólida do último bloco (creme) */
+.bebelume-capa-borda-direita {
+    top: var(--capa-borda);
+    bottom: var(--capa-borda);
+    right: 0;
+    width: var(--capa-borda);
+    background: #F0E8DA;
+}
+
+/* --- Conteúdo interno (InnerBlocks) --- */
+
+.bebelume-capa-conteudo {
+    position: relative;
+    z-index: 2;
+    padding-top: calc(var(--capa-borda) + 48px);
+    padding-bottom: calc(var(--capa-borda) + 48px);
+    padding-left: calc(var(--capa-borda) + max(1em, calc((100% - 1050px) / 2)));
+    padding-right: calc(var(--capa-borda) + max(1em, calc((100% - 1050px) / 2)));
+}
+
+/* --- Responsivo --- */
+
+@media (max-width: 768px) {
+    .bebelume-marketing-capa {
+        --capa-borda: 14px;
+    }
+}

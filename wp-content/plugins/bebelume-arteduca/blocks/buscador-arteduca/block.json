@@ -1,0 +1,30 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "bebelume/buscador-arteduca",
+  "title": "Buscador Bebelume ArtEduca",
+  "category": "bebelume-arteduca",
+  "icon": "search",
+  "description": "Container para busca com título e blocos internos",
+  "keywords": ["busca", "container", "arteduca"],
+  "textdomain": "bebelume-arteduca",
+  "editorScript": "file:./block.js",
+  "style": "file:./style.css",
+  "attributes": {
+    "titulo": {
+      "type": "string",
+      "default": "BEBELUME ARTEDUCA"
+    },
+    "corFundo": {
+      "type": "string",
+      "default": "#000000"
+    },
+    "alignment": {
+      "type": "string"
+    }
+  },
+  "supports": {
+    "html": false,
+    "align": ["wide", "full"]
+  }
+}

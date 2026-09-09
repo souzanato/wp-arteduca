@@ -1,0 +1,167 @@
+/* ============================================
+   Bebelume Níveis PMPro — estilos extraídos do main.css
+   ============================================ */
+
+.bbl-niveis-pmpro { width: 100%; }
+.bbl-niveis-pmpro .container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+.bbl-niveis-pmpro .row { margin: 0; }
+.bbl-niveis-pmpro .col-md-6 { padding: 0; }
+
+.pmpro-pink-bkg {
+    background-color: #E72A63 !important;
+}
+
+.pmpro-yellow-bkg {
+    background-color: #F7D21A !important;
+}
+
+.pmpro-pink-bkg,
+.pmpro-yellow-bkg {
+    position: relative;
+    padding: 20px 20px 20px 50px !important;
+}
+
+.nivel-tipo {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-size: 1.5em;
+    font-weight: 900;
+    letter-spacing: 2px;
+    background-color: rgba(0,0,0,0.15);
+    margin: 0;
+    text-align: center;
+}
+
+.pmpro-pink-bkg .nivel-tipo { text-align: right; }
+
+.nivel-preco-novo {
+    text-align: left;
+    margin: 0 0 15px 0;
+}
+
+.preco-valor {
+    font-size: clamp(2.5em, 6vw, 4em);
+    font-weight: 700 !important;
+    line-height: 1 !important;
+    margin: 0;
+}
+
+.preco-periodo {
+    font-size: 1.2em;
+    margin: 5px 0 0 0;
+}
+
+.nivel-descricao { margin: 20px 0; font-size: 15px; line-height: 1.6; }
+.nivel-descricao p { margin: 0; }
+
+.nivel-expiracao { font-size: 13px; margin: 15px 0; opacity: 0.8; }
+
+.nivel-trial {
+    background-color: rgba(255,255,255,0.5);
+    padding: 1em;
+    margin: 2em 0;
+}
+.nivel-trial p {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.pmpro-pink-bkg .nivel-tipo,
+.pmpro-pink-bkg .preco-valor,
+.pmpro-pink-bkg .preco-periodo,
+.pmpro-pink-bkg .nivel-descricao,
+.pmpro-pink-bkg .nivel-descricao p,
+.pmpro-pink-bkg .nivel-expiracao { color: #ffffff !important; }
+
+.pmpro-yellow-bkg .nivel-tipo,
+.pmpro-yellow-bkg .preco-valor,
+.pmpro-yellow-bkg .preco-periodo,
+.pmpro-yellow-bkg .nivel-descricao,
+.pmpro-yellow-bkg .nivel-descricao p,
+.pmpro-yellow-bkg .nivel-expiracao { color: #1a1a1a !important; }
+
+.nivel-acao { margin-top: 25px; }
+
+.nivel-acao a {
+    display: block;
+    text-align: center;
+    padding: 16px 24px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    font-family: 'Nunito', sans-serif;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.pmpro-pink-bkg .nivel-acao a { background: #fff; color: #E72A63; border: 2px solid #fff; }
+.pmpro-pink-bkg .nivel-acao a:hover { background: transparent; color: #fff; border-color: #fff; }
+
+.pmpro-yellow-bkg .nivel-acao a { background: #1a1a1a; color: #F7D21A; border: 2px solid #1a1a1a; }
+.pmpro-yellow-bkg .nivel-acao a:hover { background: transparent; color: #1a1a1a; border-color: #1a1a1a; }
+
+.nivel-atual { position: relative; }
+.nivel-atual::before {
+    content: "✓ SEU PLANO";
+    position: absolute;
+    top: -15px;
+    right: 10px;
+    background: #4CAF50;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.nivel-item {
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+    .pmpro-pink-bkg,
+    .pmpro-yellow-bkg { padding: 15px 15px 15px 50px !important; }
+    .preco-valor { font-size: 32px; }
+    .nivel-tipo { font-size: 12px; }
+    .nivel-acao a { padding: 14px 20px; font-size: 13px; }
+}
+
+@media (max-width: 480px) {
+    .pmpro-pink-bkg,
+    .pmpro-yellow-bkg { padding: 12px 12px 12px 50px !important; }
+    .preco-valor { font-size: 28px; }
+}
+
+/* 2026-09-04 — aviso "benefício já utilizado" (plano cancelado/retornante): texto longo */
+.nivel-trial--usado p {
+    text-transform: none;
+    font-size: 0.95em;
+    line-height: 1.45;
+    font-weight: 600;
+}

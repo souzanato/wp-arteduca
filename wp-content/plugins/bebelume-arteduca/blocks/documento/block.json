@@ -1,0 +1,51 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "bebelume-arteduca/documento",
+  "version": "1.0.0",
+  "title": "Bebelume Doc Download",
+  "category": "bebelume-arteduca",
+  "icon": "media-document",
+  "description": "Bloco para disponibilizar documentos para download com título e descrição",
+  "supports": {
+    "html": false,
+    "anchor": true
+  },
+  "attributes": {
+    "titulo": {
+      "type": "string",
+      "default": "Documento para Download"
+    },
+    "descricao": {
+      "type": "string",
+      "default": "Clique no botão abaixo para fazer o download do documento."
+    },
+    "documentoId": {
+      "type": "number",
+      "default": 0
+    },
+    "documentoUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "documentoNome": {
+      "type": "string",
+      "default": ""
+    },
+    "documentoTamanho": {
+      "type": "string",
+      "default": ""
+    },
+    "corFundo": {
+      "type": "string",
+      "default": "#F3F0EB"
+    },
+    "corBotao": {
+      "type": "string",
+      "default": "#2A4582"
+    }
+  },
+  "textdomain": "bebelume-arteduca",
+  "editorScript": "file:./block.js",
+  "style": "file:./style.css"
+}

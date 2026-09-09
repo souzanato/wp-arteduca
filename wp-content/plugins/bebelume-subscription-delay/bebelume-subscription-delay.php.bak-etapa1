@@ -1,0 +1,177 @@
+<?php
+/**
+ * Plugin Name: Bebelume - Subscription Delay
+ * Description: Aplica trial gratuito por nível e previne abuso de trial no Stripe.
+ * Version: 4.1.0
+ * Author: Bebelume
+ */
+
+if (!defined('ABSPATH')) {
+    exit;
+}
+
+class Bebelume_Subscription_Delay {
+
+    private static $instance = null;
+
+    public static function get_instance() {
+        if (null === self::$instance) {
+            self::$instance = new self();
+        }
+        return self::$instance;
+    }
+
+    private function __construct() {
+        add_action('pmpro_membership_level_after_other_settings', array($this, 'add_delay_field'));
+        add_action('pmpro_save_membership_level', array($this, 'save_delay_field'));
+
+        // Prioridade alta para executar depois dos demais filtros.
+        add_filter('pmpro_stripe_checkout_session_parameters', array($this, 'apply_trial_settings'), 999, 3);
+
+        add_filter('pmpro_get_membership_level', array($this, 'add_delay_to_level'), 10, 2);
+    }
+
+    public function add_delay_field($level) {
+        $delay_days = get_option('pmpro_level_' . $level->id . '_delay_days', '');
+        ?>
+        <h3 class="topborder">Configurações de Trial (Bebelume)</h3>
+        <table class="form-table">
+            <tbody>
+                <tr>
+                    <th scope="row" valign="top">
+                        <label for="bebelume_delay_days">Trial Grátis (dias)</label>
+                    </th>
+                    <td>
+                        <input type="number"
+                               id="bebelume_delay_days"
+                               name="bebelume_delay_days"
+                               value="<?php echo esc_attr($delay_days); ?>"
+                               min="0"
+                               max="730"
+                               step="1"
+                               style="width: 100px;">
+                        <p class="description">
+                            Número de dias de trial gratuito para este nível.<br>
+                            Usuários que já utilizaram um trial não recebem novamente.
+                        </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <?php
+    }
+
+    public function save_delay_field($level_id) {
+        if (isset($_POST['bebelume_delay_days'])) {
+            $delay_days = intval($_POST['bebelume_delay_days']);
+            if ($delay_days > 730) {
+                $delay_days = 730;
+            }
+            update_option('pmpro_level_' . $level_id . '_delay_days', $delay_days);
+        }
+    }
+
+    public function add_delay_to_level($level, $level_id) {
+        if (!empty($level) && !empty($level_id)) {
+            $delay_days = get_option('pmpro_level_' . $level_id . '_delay_days', 0);
+            $level->subscription_delay = intval($delay_days);
+        }
+        return $level;
+    }
+
+    /**
+     * Aplica o trial configurado no nível, mas remove-o para usuários
+     * que já utilizaram um período gratuito antes (guarda anti-abuso).
+     */
+    public function apply_trial_settings($checkout_session_params, $morder, $customer) {
+        $level_id = $morder->membership_id;
+
+        if ( empty( $level_id ) ) {
+            return $checkout_session_params;
+        }
+
+        $delay_days = intval( get_option( 'pmpro_level_' . $level_id . '_delay_days', 0 ) );
+        if ( $delay_days <= 0 ) {
+            return $checkout_session_params;
+        }
+
+        if ( $delay_days > 730 ) {
+            $delay_days = 730;
+        }
+
+        // Guarda anti-abuso: quem já foi assinante não recebe trial de novo.
+        if ( ! empty( $morder->user_id ) && bbl_user_already_used_trial( $morder->user_id ) ) {
+            if ( isset( $checkout_session_params['subscription_data'] ) ) {
+                unset( $checkout_session_params['subscription_data']['trial_period_days'] );
+            }
+            return $checkout_session_params;
+        }
+
+        // Usuário de primeira vez: força o trial configurado.
+        if ( isset( $checkout_session_params['subscription_data'] ) ) {
+            $checkout_session_params['subscription_data']['trial_period_days'] = $delay_days;
+        } else {
+            $checkout_session_params['subscription_data'] = array(
+                'trial_period_days' => $delay_days,
+            );
+        }
+
+        return $checkout_session_params;
+    }
+}
+
+/**
+ * Retorna true se o usuário já utilizou um período de trial antes.
+ *
+ * Fonte única de verdade (Pilar 1). Considera qualquer assinatura
+ * registrada (ativa ou cancelada) ou qualquer pedido concluído.
+ *
+ * @param int $user_id
+ * @return bool
+ */
+if ( ! function_exists( 'bbl_user_already_used_trial' ) ) {
+    function bbl_user_already_used_trial( $user_id ) {
+        global $wpdb;
+
+        $user_id = (int) $user_id;
+        if ( ! $user_id ) {
+            return false;
+        }
+
+        $subscriptions = (int) $wpdb->get_var( $wpdb->prepare(
+            "SELECT COUNT(*) FROM {$wpdb->prefix}pmpro_subscriptions WHERE user_id = %d",
+            $user_id
+        ) );
+        if ( $subscriptions > 0 ) {
+            return true;
+        }
+
+        $orders = (int) $wpdb->get_var( $wpdb->prepare(
+            "SELECT COUNT(*) FROM {$wpdb->prefix}pmpro_membership_orders WHERE user_id = %d AND status = 'success'",
+            $user_id
+        ) );
+
+        return $orders > 0;
+    }
+}
+
+function bebelume_subscription_delay_init() {
+    if (!class_exists('MemberOrder')) {
+        add_action('admin_notices', 'bebelume_subscription_delay_notice');
+        return;
+    }
+
+    Bebelume_Subscription_Delay::get_instance();
+}
+add_action('plugins_loaded', 'bebelume_subscription_delay_init');
+
+function bebelume_subscription_delay_notice() {
+    ?>
+    <div class="notice notice-error">
+        <p>
+            <strong>Bebelume - Subscription Delay</strong> requer o plugin
+            <strong>Paid Memberships Pro</strong> para funcionar.
+        </p>
+    </div>
+    <?php
+}

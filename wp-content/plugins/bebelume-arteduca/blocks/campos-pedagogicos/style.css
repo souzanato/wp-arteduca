@@ -1,0 +1,68 @@
+/* ================================================
+   Campos Pedagógicos — Bebelume ArtEduca
+   Frontend + Editor preview
+   ================================================ */
+
+.bebelume-campos-pedagogicos {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* Cada linha (Direitos / Campos) */
+.bebelume-campo-row {
+    margin-bottom: 4px;
+}
+
+/* Título em negrito — exatamente como na imagem de referência */
+.bebelume-campo-titulo {
+    font-weight: 700;
+    font-size: inherit;
+    margin: 0 0 2px 0;
+    line-height: 1.5;
+}
+
+/* Valor — texto normal */
+.bebelume-campo-valor {
+    font-weight: 400;
+    font-size: inherit;
+    margin: 0 0 12px 0;
+    line-height: 1.6;
+    color: inherit;
+}
+
+/* ── Estado vazio no editor ─────────────────── */
+.bebelume-preview-vazio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 28px 20px;
+    border: 2px dashed #c5cfe8;
+    border-radius: 8px;
+    background: #f5f7ff;
+    text-align: center;
+    color: #2A4582;
+}
+
+.bebelume-preview-vazio p {
+    font-weight: 700;
+    margin: 0;
+    font-size: 14px;
+}
+
+.bebelume-preview-vazio small {
+    color: #666;
+    font-size: 12px;
+}
+
+/* ── Aviso de conteúdo vazio ─────────────────── */
+.bebelume-vazio-aviso {
+    padding: 12px 16px;
+    border: 1px dashed #ccc;
+    border-radius: 6px;
+    color: #999;
+    font-style: italic;
+    font-size: 13px;
+}

@@ -1,0 +1,17 @@
+/* Editor Styles */
+.bebelume-music-editor {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+.bebelume-music-editor input[type="text"],
+.bebelume-music-editor input[type="url"] {
+    width: 100% !important;
+}
+
+.bebelume-music-editor .components-base-control {
+    margin-bottom: 0 !important;
+}
+
+.bebelume-music-editor .components-toggle-control {
+    margin-top: 8px;
+}

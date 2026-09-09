@@ -1,0 +1,130 @@
+.sobre-nos-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+/* CONTAINER DO BLOB */
+.sobre-nos-blob {
+  width: 100%;
+  max-width: 900px;
+
+  background-image: url('../../../assets/images/blob-mobile.png');
+  background-repeat: no-repeat;
+  background-position: center top;
+
+  aspect-ratio: 3 / 4.2;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* conteúdo no topo */
+  padding-top: 13%;
+}
+
+/* CONTENT */
+.sobre-nos-content {
+  width: 80%;
+  max-width: 600px;
+  text-align: center;
+  color: #6b9b9e; /* <<<<<<<<<< NOVA COR DE TEXTO */
+}
+
+.sobre-nos-content h1 {
+  font-size: 2.4rem;
+  margin-bottom: 20px;
+}
+
+.sobre-nos-content p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+/* ====================== */
+/* 1) MOBILE PEQUENO      */
+/* ====================== */
+@media (min-width: 360px) {
+	.sobre-nos-blob {
+		background-size: 100% auto;
+	}
+
+	.sobre-nos-content p {
+		font-size: .8rem;
+		padding: 0 1.2em;
+	}
+
+}
+
+/* ====================== */
+/* 2) MOBILE MÉDIO        */
+/* ====================== */
+@media (min-width: 480px) {
+	.sobre-nos-blob {
+	background-size: 100% auto;
+	}
+
+  .sobre-nos-content p {
+		font-size: 1.1rem;
+		padding: 0 1.2em;
+	}
+
+	/* iPhone 8, 11 Pro, Android padrão */
+}
+
+/* ====================== */
+/* 3) MOBILE GRANDE       */
+/* ====================== */
+@media (min-width: 576px) {
+	.sobre-nos-content p {
+		font-size: 1.2rem;
+		padding: 0 2em;
+	}
+	.sobre-nos-blob {
+  background-size: 100% auto;
+}
+
+}
+
+/* ====================== */
+/* 4) TABLET VERTICAL     */
+/* ====================== */
+@media (min-width: 768px) {
+	.sobre-nos-content p {
+		font-size: 1.5rem;
+		padding: 0 3em;
+	}
+	.sobre-nos-blob {
+  background-size: 100% auto;
+}
+
+}
+
+
+/* ====================== */
+/* 5) TABLET HORIZONTAL   */
+/* ====================== */
+@media (min-width: 992px) {
+    /* iPad horizontal, Galaxy Tab */
+	.sobre-nos-content p {
+		font-size: 1.5rem;
+		padding: 0 3em;
+	}
+	.sobre-nos-blob {
+  background-size: 75% auto;
+}
+
+}
+
+/* ====================== */
+/* 6) DESKTOP MÉDIO       */
+/* ====================== */
+@media (min-width: 1200px) {
+    /* Laptops 13–15” */
+}
+
+/* ====================== */
+/* 7) DESKTOP GRANDE      */
+/* ====================== */
+@media (min-width: 1400px) {
+    /* Monitores 1080p */
+}
